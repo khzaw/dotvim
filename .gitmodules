@@ -4,9 +4,10 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule "bundle/delmitmate"]
-	path = bundle/delmitmate
-	url = git://github.com/Raimondi/delimitMate.git
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = git://github.com/docunext/closetag.vim.git
+[submodule "bundle/delimitmate"]
+	path = bundle/delimitmate
+	url = git://github.com/Raimondi/delimitMate.git
+    
