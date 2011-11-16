@@ -1,6 +1,7 @@
 call pathogen#infect()
 set nocompatible			" Don't maintain compatibilityw tih vi
 syntax on				" Highlight known syntax
+syntax enable
 
 filetype on
 filetype plugin on
@@ -9,8 +10,16 @@ filetype plugin indent on
 " Configuration
 " -------------
 " let &t_Co=256               " Enable 
-colorscheme zmrok
-set background=dark
+
+if has('gui_running')
+    colorscheme solarized
+else
+    let &t_Co=256
+    colorscheme zenburn
+endif
+
+" colorscheme solarized
+set background=light
 set guifont=Inconsolata:h14
 set guioptions-=T			" Remove GUI toolbar
 set guioptions-=r           " Remove RHS scroll-bar
@@ -186,11 +195,9 @@ inoremap <leader>a <C-x><C-o>
 " So that the completation doesn't select the first item
 set completeopt=longest,menuone
 
-" Zen-Coding
-" ----------
-
-
-
+" SuperTab
+" --------
+let g:SuperTabDefaultCompletionType = "context"
 
 " .vimrc
 " ------
@@ -249,7 +256,7 @@ EOF
 " -----------------------
 abbrev ff :! open -a firefox.app %:p<cr>
 abbrev chrome :! open -a google\ chrome\ canary.app %:p<cr>
-abbrev safari :! open -a safari.app %:p<cr>
+abbrev sf :! open -a safari.app %:p<cr>
 
 " Zen-Coding
 " ----------
@@ -261,8 +268,23 @@ let g:user_zen_expandabbr_key = '<C-e>'
 " ------------
 
 " Start a Shell in the Horizontal Split
-nmap ,cs :ConqueTermSplit bash
-nmap ,vcs :ConqueTermVSplit bash
+nmap <leader>cs :ConqueTermSplit bash
+nmap <leader>vcs :ConqueTermVSplit bash
 
 
-let g:pydiction_location = '/Users/emoosx/.vim/bundle/pydiction/complete-dict'
+" Pydiction
+" ---------
+" let g:pydiction_location = '/Users/emoosx/.vim/bundle/pydiction/complete-dict'
+
+" Command-T
+map <leader>t :CommandT<cr>
+map <leader>T :CommandTFlush<cr>
+
+" Tagbar
+" ------
+map <leader>l :TagbarToggle<cr>
+
+" Solarized Color Scheme
+" ----------------------
+let g:solarized_contrast="့့့့့high"
+let g:solarized_visibility="high"
