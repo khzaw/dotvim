@@ -39,7 +39,7 @@ set ignorecase
 set smartcase
 
 
-"set list
+" set list
 "set listchars=tab:▸\ ,trail:¬
 set showmatch
 set hidden
@@ -90,9 +90,6 @@ nmap <C-j>      <C-w>j
 nmap <C-k>      <C-w>k
 nmap <C-h>      <C-w>h
 nmap <C-l>      <C-w>l
-
-" Open .vimrc file in new tab.
-map <D-<>       :tabedit ~/.vimrc<CR>
 
 " Remove highlighting post-search
 nmap <leader>y  :nohls<CR>
@@ -197,7 +194,9 @@ set completeopt=longest,menuone
 
 " SuperTab
 " --------
+au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
+let g:tagbar_ctags_bin="/opt/local/bin"
 
 " .vimrc
 " ------
@@ -288,3 +287,9 @@ map <leader>l :TagbarToggle<cr>
 " ----------------------
 let g:solarized_contrast="့့့့့high"
 let g:solarized_visibility="high"
+
+" Pyflakes
+" --------
+
+" Disable quickfix support
+let g:pyflakes_use_quickfix=0
