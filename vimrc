@@ -12,14 +12,14 @@ filetype plugin indent on
 " let &t_Co=256               " Enable 
 
 if has('gui_running')
-    colorscheme solarized
+    colorscheme molokai
 else
     let &t_Co=256
     colorscheme zenburn
 endif
 
 " colorscheme solarized
-set background=light
+set background=dark
 set guifont=Inconsolata:h14
 set guioptions-=T			" Remove GUI toolbar
 set guioptions-=r           " Remove RHS scroll-bar
@@ -141,7 +141,7 @@ autocmd BufEnter * cd %:p:h
 map <leader>/ <c-_><c-_>
 
 " Small default width for NERDTree pane
-let g:NERDTreeWinSize = 25
+let g:NERDTreeWinSize = 30
 
 
 " Whitespace & highlighting & language-specific config
@@ -196,7 +196,6 @@ set completeopt=longest,menuone
 " --------
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
-let g:tagbar_ctags_bin="/opt/local/bin"
 
 " .vimrc
 " ------
@@ -210,16 +209,16 @@ nmap ,rc :tabedit $MYVIMRC
 
 " Django-specific
 let g:last_relative_dir = ''
-nnoremap \1 :call RelatedFile ("models.py")<cr>
-nnoremap \2 :call RelatedFile ("views.py")<cr>
-nnoremap \3 :call RelatedFile ("urls.py")<cr>
-nnoremap \4 :call RelatedFile ("admin.py")<cr>
-nnoremap \5 :call RelatedFile ("tests.py")<cr>
-nnoremap \6 :call RelatedFile ( "templates/" )<cr>
-nnoremap \7 :call RelatedFile ( "templatetags/" )<cr>
-nnoremap \8 :call RelatedFile ( "management/" )<cr>
-nnoremap \0 :e settings.py<cr>
-nnoremap \9 :e urls.py<cr>
+nnoremap <leader>1 :call RelatedFile ("models.py")<cr>
+nnoremap <leader>2 :call RelatedFile ("views.py")<cr>
+nnoremap <leader>3 :call RelatedFile ("urls.py")<cr>
+nnoremap <leader>4 :call RelatedFile ("admin.py")<cr>
+nnoremap <leader>5 :call RelatedFile ("tests.py")<cr>
+nnoremap <leader>6 :call RelatedFile ( "templates/" )<cr>
+nnoremap <leader>7 :call RelatedFile ( "templatetags/" )<cr>
+nnoremap <leader>8 :call RelatedFile ( "management/" )<cr>
+nnoremap <leader>0 :e settings.py<cr>
+nnoremap <leader>9 :e urls.py<cr>
 
 fun! RelatedFile(file)
     #This is to check that the directory looks djangoish
@@ -282,6 +281,7 @@ map <leader>T :CommandTFlush<cr>
 " Tagbar
 " ------
 map <leader>l :TagbarToggle<cr>
+" let g:tagbar_ctags_bin='/opt/local/bin/ctags'
 
 " Solarized Color Scheme
 " ----------------------
@@ -293,3 +293,12 @@ let g:solarized_visibility="high"
 
 " Disable quickfix support
 let g:pyflakes_use_quickfix=0
+
+" Path to Ctags
+" ------------
+" let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
+
+" Processing
+" -----------
+
+let g:processing_doc_style="web"
