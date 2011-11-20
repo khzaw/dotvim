@@ -44,3 +44,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = git://github.com/plasticboy/vim-markdown.git
+[submodule "bundle/vim-processing"]
+	path = bundle/vim-processing
+	url = git://github.com/sophacles/vim-processing.git
