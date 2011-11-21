@@ -288,11 +288,6 @@ map <leader>l :TagbarToggle<cr>
 let g:solarized_contrast="့့့့့high"
 let g:solarized_visibility="high"
 
-" Pyflakes
-" --------
-
-" Disable quickfix support
-let g:pyflakes_use_quickfix=0
 
 " Path to Ctags
 " ------------
