@@ -1,0 +1,1 @@
+twitvim-0.7.2.vmb: call delete('/Users/emoosx/.vim/bundle/twitvim/plugin/twitvim.vim')|call delete('/Users/emoosx/.vim/bundle/twitvim/doc/twitvim.txt')

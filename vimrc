@@ -297,3 +297,15 @@ let g:solarized_visibility="high"
 " -----------
 
 let g:processing_doc_style="web"
+
+" TwitVim
+" -------
+
+let twitvim_login = "emoosx:3m0tux"
+let twitvim_enable_python = 1
+
+" Send direct message
+map <leader>dm :SendDMTwitter
+
+" Post tweet
+map <leader>tw :PosttoTwitter<cr>
