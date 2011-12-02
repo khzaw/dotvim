@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Applications/MAMP/htdocs/myArea'
-let g:netrw_dirhist_2='/Applications/MAMP/htdocs/Social-Sense'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
+let g:netrw_dirhist_2='/Users/emoosx/Desktop/Coding/odeon_git/proj'
+let g:netrw_dirhist_3='/Users/emoosx/Desktop/kinect_gestures'
+let g:netrw_dirhist_4='/Applications/MAMP/htdocs/Social-Sense'
+let g:netrw_dirhist_5='/Applications/MAMP/htdocs/ss_experiment'
+let g:netrw_dirhist_6='/Applications/MAMP/htdocs/Social-Sense'
+let g:netrw_dirhist_7='/Applications/MAMP/htdocs/mondrian'
