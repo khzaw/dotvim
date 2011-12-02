@@ -79,7 +79,7 @@ nmap <leader>s  :%s/
 vmap <leader>s  :s/
 
 " Split screen
-map <leader>v   :vsp<CR>
+map <leader>v   :vsp<cr>
 
 " Move between screens
 map <leader>w   ^Ww
