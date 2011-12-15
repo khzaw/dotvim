@@ -12,7 +12,7 @@ filetype plugin indent on
 " let &t_Co=256               " Enable 
 
 if has('gui_running')
-    colorscheme molokai
+    colorscheme zmrok
 else
     let &t_Co=256
     colorscheme zenburn
@@ -34,13 +34,14 @@ set tabstop=4
 set autoindent
 set smarttab
 set shiftwidth=4
+" set textwidth=80
 set number
 set ignorecase
 set smartcase
 
 
 " set list
-"set listchars=tab:▸\ ,trail:¬
+" set listchars=trail:¬
 set showmatch
 set hidden
 set splitright
@@ -63,6 +64,12 @@ set autowriteall
 
 let mapleader = ","
 let maplocalleader = ";"
+
+" Stop using the arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " kj - get out of insert mode
 imap kj         <Esc>

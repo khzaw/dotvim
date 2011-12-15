@@ -44,6 +44,6 @@
 [submodule "bundle/vim-processing"]
 	path = bundle/vim-processing
 	url = git://github.com/sophacles/vim-processing.git
-[submodule "bundle/html5"]
-	path = bundle/html5
-	url = git://github.com/othree/html5.vim.git
+[submodule "bundle/css-color"]
+	path = bundle/css-color
+	url = git://github.com/skammer/vim-css-color.git
