@@ -129,23 +129,29 @@ map <Leader><Leader> :!
 " ---------
 nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 
-" NERDTree
+" NERDTree & NERDCommenter
 " --------
 nmap ,nt :NERDTree
 nmap ,nc :NERDTreeToggle
 let NERDTreeShowHidden=1
 
+" Use arrow characters instead of old +~
+let NERDTreeDirArrows=1
+
+" Use Minimal UI
+"let NERDTreeMinimalUI=1
+
 " Showing current file
 map \|      :NERDTreeFind<CR>
 
 " Automatically change current directory to that of the file in the buffer
-autocmd BufEnter * cd %:p:h
+"autocmd BufEnter * cd %:p:h
 
 " Comment/uncomment lines
-" map <leader>/   <plug>NERDCommenterToggle
+map <leader>/   <plug>NERDCommenterToggle
 
 " T comment
-map <leader>/ <c-_><c-_>
+" map <leader>/ <c-_><c-_>
 
 " Small default width for NERDTree pane
 let g:NERDTreeWinSize = 30
@@ -183,7 +189,7 @@ autocmd FileType scss set iskeyword=@,48-57,_,-,?,!,192-255
 autocmd FileType ruby imap  <Space>=><Space>
 
 " Python, Django
-autocmd FileType python set ft=python.django
+"autocmd FileType python set ft=python.django
 autocmd FileType html set ft=htmldjango.html
 
 " Autocomplete
@@ -267,14 +273,17 @@ abbrev sf :! open -a safari.app %:p<cr>
 " ----------
 
 " Change zen-coding plugin expansion key to Ctrl-E
-let g:user_zen_expandabbr_key = '<C-e>'
+"let g:user_zen_expandabbr_key = '<C-e>'
+
+" Change zen-coding leader key for expanding or balance tag or for all
+"let g:user_zen_leader_key = '<C-y>'
 
 " Conque-Shell
 " ------------
 
 " Start a Shell in the Horizontal Split
-nmap <leader>cs :ConqueTermSplit bash
-nmap <leader>vcs :ConqueTermVSplit bash
+nmap <leader>cs :ConqueTermSplit bash<cr>
+nmap <leader>vcs :ConqueTermVSplit bash<cr>
 
 
 " Pydiction
@@ -316,3 +325,29 @@ map <leader>dm :SendDMTwitter
 
 " Post tweet
 map <leader>tw :PosttoTwitter<cr>
+
+
+" Swapping Split Screens
+" ----------------------
+
+function! MarkWindowSwap()
+    let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+    "Mark destination
+    let curNum = winnr()
+    let curBuf = bufnr( "%" )
+    exe g:markedWinNum . "wincmd w"
+    "Switch to source and shuffle dest->source
+    let markedBuf = bufnr( "%" )
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' curBuf
+    "Switch to dest and shuffle source->dest
+    exe curNum . "wincmd w"
+    "Hide and open so that we aren't prompted and keep history
+    exe 'hide buf' markedBuf 
+endfunction
+
+nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
+nmap <silent> <leader>pw :call DoWindowSwap()<CR>
