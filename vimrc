@@ -12,13 +12,14 @@ filetype plugin indent on
 " let &t_Co=256               " Enable 
 
 if has('gui_running')
-    colorscheme zmrok
+    "colorscheme zmrok
+    colorscheme molokai
 else
     let &t_Co=256
-    colorscheme zenburn
+    "colorscheme zenburn
+    colorscheme wombat256
 endif
 
-" colorscheme solarized
 set background=dark
 set guifont=Inconsolata:h14
 set guioptions-=T			" Remove GUI toolbar
@@ -29,12 +30,19 @@ set notimeout				" No command timeout
 set showcmd			    	" Show typed command prefixes
 set ruler
 
+set hlsearch                " Highlight search
+set incsearch
+set showmatch
+
+
+
 set expandtab
 set tabstop=4
+set softtabstop=4
 set autoindent
 set smarttab
 set shiftwidth=4
-" set textwidth=80
+set textwidth=80
 set number
 set ignorecase
 set smartcase
@@ -42,10 +50,8 @@ set smartcase
 
 " set list
 " set listchars=trail:¬
-set showmatch
 set hidden
 set splitright
-" set splitbelow
 set wildmode=list:longest
 set scrolloff=3
 set cursorline
@@ -58,6 +64,8 @@ set nowritebackup
 
 set autowriteall
 "autocmd FocusLost * silent! wall
+
+set completeopt=longest,menuone,preview
 
 " Keybindings
 " -----------
@@ -129,6 +137,29 @@ map <Leader><Leader> :!
 " ---------
 nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 
+" Rainbow Parentheses
+" -------------------
+nnoremap <leader>R :RainbowParenthesesToggle<cr>
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+
 " NERDTree & NERDCommenter
 " --------
 nmap ,nt :NERDTree
@@ -143,6 +174,9 @@ let NERDTreeDirArrows=1
 
 " Showing current file
 map \|      :NERDTreeFind<CR>
+
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=['.vim$', '\~$', '.*\pyc$', 'pip-log\.txt$']
 
 " Automatically change current directory to that of the file in the buffer
 "autocmd BufEnter * cd %:p:h
@@ -189,7 +223,7 @@ autocmd FileType scss set iskeyword=@,48-57,_,-,?,!,192-255
 autocmd FileType ruby imap  <Space>=><Space>
 
 " Python, Django
-"autocmd FileType python set ft=python.django
+autocmd FileType python set ft=python.django
 autocmd FileType html set ft=htmldjango.html
 
 " Autocomplete
@@ -207,8 +241,8 @@ set completeopt=longest,menuone
 
 " SuperTab
 " --------
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
 
 " .vimrc
 " ------
@@ -297,7 +331,6 @@ map <leader>T :CommandTFlush<cr>
 " Tagbar
 " ------
 map <leader>l :TagbarToggle<cr>
-" let g:tagbar_ctags_bin='/opt/local/bin/ctags'
 
 " Solarized Color Scheme
 " ----------------------
@@ -307,7 +340,7 @@ let g:solarized_visibility="high"
 
 " Path to Ctags
 " ------------
-" let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
+let g:Tlist_Ctags_Cmd='/opt/local/bin/ctags'
 
 " Processing
 " -----------
@@ -351,3 +384,56 @@ endfunction
 
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
 nmap <silent> <leader>pw :call DoWindowSwap()<CR>
+
+
+" Make sure Vim returns to the same line when you reopen a file
+" -------------------------------------------------------------
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   execute 'normal! g`"zvzz"' |
+        \ endif
+augroup END    
+
+" Indent Guides
+" -------------
+
+let g:indentguides_state = 0
+function! IndentGuides()
+    if g:indentguides_state
+        let g:indentguides_state = 0
+        2match None
+    else
+        let g:indentguides_state = 1
+        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
+    endif
+endfunction
+nnoremap <leader>i :call IndentGuides()<cr>
+
+" Block Colors
+" ------------
+let g:blockcolor_state = 0
+function! BlockColor()
+    if g:blockcolor_state
+        let g:blockcolor_state = 0
+        call matchdelete(77880)
+        call matchdelete(77881)
+        call matchdelete(77882)
+        call matchdelete(77883)
+    else
+        let g:blockcolor_state = 1
+        call matchdelete("BlockColor1", '^ \{4}.*', 1, 77880)
+        call matchdelete("BlockColor2", '^ \{8}.*', 2, 77881)
+        call matchdelete("BlockColor3", '^ \{12}.*', 3, 77882)
+        call matchdelete("BlockColor4", '^ \{16}.*', 4, 77883)
+    endif
+endfunction
+nnoremap <leader>B :call BlockColor()<cr>
+
+" Ctags
+" -----
+nnoremap <leader><cr> :silent !/opt/local/bin/ctags -R . && sed -i .bak -E -e '/^[^	]+	[^	]+.py	.+v$/d' tags<cr>
+
+
+
