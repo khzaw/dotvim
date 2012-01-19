@@ -1,7 +1,7 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Applications/MAMP/htdocs/Social-Sense'
-let g:netrw_dirhist_2='/Users/emoosx/Desktop/grumble'
-let g:netrw_dirhist_3='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
-let g:netrw_dirhist_4='/Users/emoosx/Desktop/experiments/grumble'
-let g:netrw_dirhist_5='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
+let g:netrw_dirhist_1='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
+let g:netrw_dirhist_2='/Users/emoosx/.rvm'
+let g:netrw_dirhist_3='/Users/emoosx/Desktop/Problem13/resources/resources'
+let g:netrw_dirhist_4='/Users/emoosx/Desktop/Problem13/resources/source'
+let g:netrw_dirhist_5='/Users/emoosx/Desktop/Problem13/resources/resources'
