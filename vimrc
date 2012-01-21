@@ -1,9 +1,9 @@
 " ----------------------------------------------------------------------
 "   Kaung Htet Zaw
 "   emoosx@gmail.com
-"   vimrc
+"   .vimrc
 
-"   Inspired by 
+"   Inspired by the .VIMRC of these awesome devs
 "       https://github.com/altercation/es-etc.git
 "       https://github.com/sjl/dotfiles.git
     
@@ -11,6 +11,7 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -33,7 +34,8 @@ filetype plugin indent on
 
     if has('gui_running')
         set background=dark
-        colorscheme twilight
+        "colorscheme twilight
+        colorscheme Tomorrow-Night
 
         " Font
         "set guifont=Inconsolata:h14
@@ -49,10 +51,11 @@ filetype plugin indent on
         " Fullscreen Options
         set fullscreen
         set fuoptions=maxvert,maxhorz
+        set transparency=5
 
     else
         let &t_Co=256
-        colorscheme twilight256
+        colorscheme railscasts3
     endif
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -102,6 +105,8 @@ filetype plugin indent on
         set visualbell          " blink
         set report=0            " report this or greater number of changed lines
         set ruler               " always show current positions along the bottom
+
+        "set statusline=...[%{&fo}]...
         
     " Completion
     " -------------------------------------------
@@ -128,7 +133,7 @@ filetype plugin indent on
     " -------------------------------------------
         set wrap                " soft wrap long lines
         set textwidth=79        " maximum width of text line during insert
-        "set formatoptions=qrn1
+        set formatoptions=qrn1
         "set colorcolumn=+1
  
         " Indentation
@@ -185,7 +190,7 @@ filetype plugin indent on
         abbrev ff :! open -a firefox.app %:p<cr>
         abbrev chrome :! open -a google\ chrome.app %:p<cr>
         abbrev sf :! open -a safari.app %:p<cr>
-
+         
     " Make Y consistent with D and C
     " -------------------------------------------
         map Y           y$
@@ -280,10 +285,115 @@ filetype plugin indent on
             \ ]
         let g:rbpt_max = 16
 
-    " Python Syntax Highlighting
+    " Always on
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+
+    " Python 
     " -------------------------------------------
         let python_highlight_all = 1
         au FileType python syn keyword pythonDecorator True None False self
+
+        " Documentation
+        let g:pymode_doc = 1        " load show documentation plugin
+        let g:pymode_doc_key = 'D'  " key for showing python docs
+        let g:pydoc = 'pydoc'       " executable command for docs search
+
+        " Run Python codes
+        let g:pymode_run = 1
+
+        " Key for running python code
+        let g:pymode_run_key = '<leader>r'
+
+        " Code checking
+        let g:pymode_lint = 1
+
+        " Switch pylint or pyflakes code checker values (pylint, pyflakes)
+        let g:pymode_lint_checker = "pylint"
+
+        " Pylint configuration file
+        let g:pymode_lint_config = "$HOME/.pylintrc"
+
+        " Check code every save
+        let g:pymode_lint_write = 1
+
+        " Auto open cwindow if errors are found
+        let g:pymode_lint_cwindow = 1
+
+        " Auto jump on first error
+        let g:pymode_lint_jump = 0
+
+        " Place error signs
+        let g:pymode_lint_signs = 1
+
+        " Minimum height of pylint error window
+        let g:pymode_lint_minheight = 3
+
+        " Maximum height of pylint error window
+        let g:pymode_lint_maxheight = 6
+
+
+        " Load rope plugin
+        let g:pymode_rope = 1
+
+        " Auto create and open ropeproject
+        let g:pymode_rope_auto_project = 1
+
+        " Enable autoimport
+        let g:pymode_rope_enable_autoimport = 1
+
+        " Auto generate global cache
+        let g:pymode_rope_autoimport_generate = 1
+
+        let g:pymode_rope_autoimport_underlineds = 0
+
+        let g:pymode_rope_codeassist_maxfixes = 10
+
+        let g:pymode_rope_sorted_completions = 1
+
+        let g:pymode_rope_extended_complete = 1
+
+        "let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"])
+
+        let g:pymode_rope_confirm_saving = 1
+
+        let g:pymode_rope_global_prefix = "<C-x>p"
+
+        let g:pymode_rope_local_prefix = "<C-c>r"
+
+        let g:pymode_rope_vim_completion = 1
+
+        let g:pymode_rope_guess_project = 1
+
+        let g:pymode_rope_goto_def_newwin = 0
+
+        let g:pymode_rope_always_show_complete_menu = 0
+
+        " Load breakpoints plugin
+        let g:pymode_breakpoint = 1
+
+        " Key for set/unset breakpoint
+        let g:pymode_breakpoint_key = '<leader>b'
+
+        " Autoremove unused whitespaces
+        let g:pymode_utils_whitespaces = 1
+
+        " Auto fix vim python paths if virtualenv enabled
+        let g:pymode_virtualenv = 1
+
+        " Set default pymode python indent options
+        let g:pymode_options_indent = 1
+
+        " Set default pymode python fold options
+        let g:pymode_options_fold = 1
+
+        " Set default pymode python other options
+        let g:pymode_options_other = 1
+
+        " Enable pymode's custom syntax highlighting
+        let g:pymode_syntax = 1
 
     " Molokai Colorscheme
     " -------------------------------------------
@@ -308,9 +418,11 @@ filetype plugin indent on
         let g:NERDTreeWinSize=30    " default width for NERDTree pane
 
         " Automatically change current directory to that of the file in the buffer
-        "autocmd BufEnter * cd %:p:h
+        autocmd BufEnter * cd %:p:h
 
-        map <leader>/   <plug>NERDCommenterToggle   " auto comment
+        " NERDCommenter
+        " ------------------------------
+        map <leader>/   <plug>NERDCommenterToggle   
 
     " T comment
     " -------------------------------------------
@@ -382,7 +494,7 @@ filetype plugin indent on
 
         " Ruby, Rails
         " -------------------------------------------
-            autocmd BufWritePre *.rb,*.yml,*.js,*.json,*.css,*.less,*.sass,*.html,*.xml,*.erb,*.haml,*.feature :%s/\s\+$//e
+            "autocmd BufWritePre *.rb,*.yml,*.js,*.json,*.css,*.less,*.sass,*.html,*.xml,*.erb,*.haml,*.feature :%s/\s\+$//e
             au BufRead,BufNewFile *.thor set filetype=ruby
             au BufRead,BufNewFile *.god set filetype=ruby
             au BufRead,BufNewFile Gemfile* set filetype=ruby
