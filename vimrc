@@ -35,7 +35,8 @@ filetype plugin indent on
     if has('gui_running')
         set background=dark
         "colorscheme twilight
-        colorscheme Tomorrow-Night
+        "colorscheme mustang
+        colorscheme molokai
 
         " Font
         "set guifont=Inconsolata:h14
@@ -167,7 +168,11 @@ filetype plugin indent on
 
     " Shortcut to edit .vimrc file
     " -------------------------------------------
-        nmap ,rc :tabedit $MYVIMRC      " 
+        nmap ,rc :tabedit $MYVIMRC   
+
+    " Shortcut to clear highlighted search
+    " -------------------------------------------
+        nnoremap <esc> :noh<return><esc>
 
     " Leader Keys
     " -------------------------------------------
@@ -262,6 +267,10 @@ filetype plugin indent on
 " Plugins
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+    " Prefixr
+    " -------------------------------------------
+    vmap <leader>pfx :Prefixr<cr>
+
     " Rainbow Parentheses
     " -------------------------------------------
         nnoremap <leader>R :RainbowParenthesesToggle<cr>
@@ -286,10 +295,10 @@ filetype plugin indent on
         let g:rbpt_max = 16
 
     " Always on
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
+    "au VimEnter * RainbowParenthesesToggle
+    "au Syntax * RainbowParenthesesLoadRound
+    "au Syntax * RainbowParenthesesLoadSquare
+    "au Syntax * RainbowParenthesesLoadBraces
 
     " Python 
     " -------------------------------------------
