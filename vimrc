@@ -268,9 +268,14 @@ filetype plugin indent on
 " Plugins
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+    " JumpToCSS
+    " -------------------------------------------
+        nnoremap <leader>jc :JumpToCSS<cr>
+        let g:jumptocss_autoclose=1     " In order for the quickfix window to close
+
     " Prefixr
     " -------------------------------------------
-    vmap <leader>pfx :Prefixr<cr>
+        vmap <leader>pfx :Prefixr<cr>
 
     " Rainbow Parentheses
     " -------------------------------------------
