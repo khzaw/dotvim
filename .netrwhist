@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/emoosx/Documents/Nettuts+ Premium/CSS3/box-shadow'
+let g:netrw_dirhist_2='/Users/emoosx/Desktop/Panda-project'
+let g:netrw_dirhist_3='/Users/emoosx/Desktop/grokking/assignment-two'
+let g:netrw_dirhist_4='/Users/emoosx/Desktop/grokking/assignment-two/src'

@@ -36,7 +36,8 @@ filetype plugin indent on
         set background=dark
         "colorscheme twilight
         "colorscheme mustang
-        colorscheme molokai
+        "colorscheme molokai
+        colorscheme blackboard
 
         " Font
         "set guifont=Inconsolata:h14
@@ -52,7 +53,7 @@ filetype plugin indent on
         " Fullscreen Options
         set fullscreen
         set fuoptions=maxvert,maxhorz
-        set transparency=5
+        set transparency=10
 
     else
         let &t_Co=256
@@ -135,7 +136,7 @@ filetype plugin indent on
         set wrap                " soft wrap long lines
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
-        "set colorcolumn=+1
+        set colorcolumn=+1
  
         " Indentation
         " -------------------------------------------

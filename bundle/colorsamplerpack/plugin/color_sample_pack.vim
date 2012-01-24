@@ -24,6 +24,8 @@ amenu T&hemes.&New.&Dark.Adaryn :colo adaryn<CR>
 amenu T&hemes.&New.&Dark.Adrian :colo adrian<CR>
 amenu T&hemes.&New.&Dark.Anotherdark :colo anotherdark<CR>
 amenu T&hemes.&New.&Dark.BlackSea :colo blacksea<CR>
+amenu T&hemes.&New.&Dark.Blackboard :colo blackboard<CR>
+amenu T&hemes.&New.&Dark.Jellybeans :colo jellybeans<CR>
 amenu T&hemes.&New.&Dark.Colorer :colo colorer<CR>
 amenu T&hemes.&New.&Dark.Darkbone :colo darkbone<CR>
 amenu T&hemes.&New.&Dark.DarkZ :colo darkz<CR>
@@ -36,10 +38,15 @@ amenu T&hemes.&New.&Dark.Molokai :colo molokai<CR>
 amenu T&hemes.&New.&Dark.Mustang :colo mustang<CR>
 amenu T&hemes.&New.&Dark.TIRBlack :colo tir_black<CR>
 amenu T&hemes.&New.&Dark.Twilight :colo twilight<CR>
+amenu T&hemes.&New.&Dark.Twilight256 :colo twilight256<CR>
 amenu T&hemes.&New.&Dark.Two2Tango :colo two2tango<CR>
+amenu T&hemes.&New.&Dark.TomorrowNight :colo Tomorrow-Night<CR>
+amenu T&hemes.&New.&Dark.TomorrowNightBright :colo Tomorrow-Night-Bright<CR>
+amenu T&hemes.&New.&Dark.TomorrowNightEighties :colo Tomorrow-Night-Eighties<CR>
 amenu T&hemes.&New.&Dark.Wuye :colo wuye<CR>
 amenu T&hemes.&New.&Dark.Zmrok :colo zmrok<CR>
 amenu T&hemes.&New.&Light.BClear :colo bclear<CR>
+amenu T&hemes.&New.&Light.TomorrowNightBright :colo Tomorrow-Night-Bright<CR>
 amenu T&hemes.&New.&Light.Satori :colo satori<CR>
 amenu T&hemes.&New.&Light.Silent :colo silent<CR>
 amenu T&hemes.&New.&Light.SoSo :colo soso<CR>
@@ -58,6 +65,7 @@ amenu T&hemes.&New.&Other.NoQuarter :colo no_quarter<CR>
 amenu T&hemes.&New.&Other.RobinHood :colo robinhood<CR>
 amenu T&hemes.&New.&Other.SoftBlue :colo softblue<CR>
 amenu T&hemes.&New.&Other.Wood :colo wood<CR>
+amenu T&hemes.&New.&Other.Gardener :colo gardener<CR>
 
 " 30 removed themes
 amenu T&hemes.De&precated.&Dark.DwBlue :colo dw_blue<CR>
@@ -73,6 +81,7 @@ amenu T&hemes.De&precated.&Dark.Matrix :colo matrix<CR>
 amenu T&hemes.De&precated.&Dark.Metacosm :colo metacosm<CR>
 amenu T&hemes.De&precated.&Dark.Northland :colo northland<CR>
 amenu T&hemes.De&precated.&Dark.Railscasts2 :colo railscasts2<CR>
+amenu T&hemes.De&precated.&Dark.Railscasts3 :colo railscasts3<CR>
 amenu T&hemes.De&precated.&Dark.Synic :colo synic<CR>
 amenu T&hemes.De&precated.&Dark.Wombat256 :colo wombat256<CR>
 amenu T&hemes.De&precated.&Dark.Xoria256 :colo xoria256<CR>
@@ -85,6 +94,7 @@ amenu T&hemes.De&precated.&Light.Print_bw :colo print_bw<CR>
 amenu T&hemes.De&precated.&Light.Pyte :colo pyte<CR>
 amenu T&hemes.De&precated.&Light.Spring :colo spring<CR>
 amenu T&hemes.De&precated.&Light.Winter :colo winter<CR>
+amenu T&hemes.De&precated.&Light.Proton :colo proton<CR>
 amenu T&hemes.De&precated.&Other.Astronaut :colo astronaut<CR>
 amenu T&hemes.De&precated.&Other.Bluegreen :colo bluegreen<CR>
 amenu T&hemes.De&precated.&Other.Navajo :colo navajo<CR>
