@@ -267,6 +267,9 @@ filetype plugin indent on
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Plugins
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    " Vimroom
+    " -------------------------------------------
+        nnoremap  <silent> <leader>vr :VimroomToggle<cr>    
 
     " JumpToCSS
     " -------------------------------------------
@@ -323,7 +326,7 @@ filetype plugin indent on
         let g:pymode_run_key = '<leader>r'
 
         " Code checking
-        let g:pymode_lint = 1
+        let g:pymode_lint = 0
 
         " Switch pylint or pyflakes code checker values (pylint, pyflakes)
         let g:pymode_lint_checker = "pylint"

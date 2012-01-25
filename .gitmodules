@@ -73,3 +73,6 @@
 [submodule "bundle/jump-to-css"]
 	path = bundle/jump-to-css
 	url = https://github.com/ptrin/JumpToCSS.git
+[submodule "bundle/vimroom"]
+	path = bundle/vimroom
+	url = https://github.com/mikewest/vimroom.git

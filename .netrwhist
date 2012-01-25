@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/emoosx/Documents/Nettuts+ Premium/CSS3/box-shadow'
 let g:netrw_dirhist_2='/Users/emoosx/Desktop/Panda-project'
 let g:netrw_dirhist_3='/Users/emoosx/Desktop/grokking/assignment-two'
 let g:netrw_dirhist_4='/Users/emoosx/Desktop/grokking/assignment-two/src'
 let g:netrw_dirhist_5='/Users/emoosx/Dropbox/Year 3/Sem 2/C316/Problem12/mywork/code'
+let g:netrw_dirhist_6='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
