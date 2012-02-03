@@ -76,3 +76,15 @@
 [submodule "bundle/vimroom"]
 	path = bundle/vimroom
 	url = https://github.com/mikewest/vimroom.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/pretty-vim-python"]
+	path = bundle/pretty-vim-python
+	url = https://github.com/pfdevilliers/Pretty-Vim-Python.git
+[submodule "bundle/hemisu"]
+	path = bundle/hemisu
+	url = https://github.com/noahfrederick/Hemisu.git
+[submodule "bundle/sbd"]
+	path = bundle/sbd
+	url = git://github.com/orftz/sbd.vim.git
