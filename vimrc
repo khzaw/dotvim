@@ -14,6 +14,7 @@ call pathogen#helptags()
 syntax on
 filetype on
 filetype plugin on
+filetype indent on
 filetype plugin indent on
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -36,11 +37,12 @@ filetype plugin indent on
         set background=dark
         "colorscheme twilight
         "colorscheme mustang
-        "colorscheme molokai
-        colorscheme blackboard
+        colorscheme molokai
+        let g:molokai_original = 1
+        
+        "colorscheme blackboard
 
         " Font
-        "set guifont=Inconsolata:h14
         set guifont=Inconsolata-dz\ for\ Powerline:h14
 
         " Disable all toolbars
@@ -50,10 +52,13 @@ filetype plugin indent on
         set go-=r
         set go-=R
 
+        " Highlight spelling mistakes
+        highlight SpellBad term=underline gui=undercurl guisp=Orange
+
         " Fullscreen Options
         set fullscreen
         set fuoptions=maxvert,maxhorz
-        set transparency=10
+        set transparency=7
 
     else
         let &t_Co=256
@@ -64,6 +69,7 @@ filetype plugin indent on
 " Various Configurations
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+    set nostartofline                   " don't jump to the start of line when scrolling
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
     set number                          " show line numbers
@@ -84,7 +90,8 @@ filetype plugin indent on
     " Characters display
     " -------------------------------------------
         set list
-        set listchars=tab:▸\ ,extends:❯,precedes:❮
+        "set listchars=tab:▸\ ,extends:❯,precedes:❮
+        set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
         set showbreak=↪
 
     " Location Indicators
@@ -123,6 +130,7 @@ filetype plugin indent on
             autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
             autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
             autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+            autocmd FileType javascript set syn=jquery
 
         inoremap <leader>a <C-x><C-o> " key combo to toggle omnicomplete
     
@@ -136,7 +144,7 @@ filetype plugin indent on
         set wrap                " soft wrap long lines
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
-        set colorcolumn=+1
+        "set colorcolumn=+1
  
         " Indentation
         " -------------------------------------------
@@ -150,6 +158,7 @@ filetype plugin indent on
             set shiftwidth=4    " auto-indent amount
             set shiftround      " when at 3 spaces, when I hit > .. go to 4, not 5
             set smarttab
+            set expandtab
 
     " Backup & saving
     " -------------------------------------------
@@ -267,6 +276,10 @@ filetype plugin indent on
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Plugins
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    " Sbd
+    " -------------------------------------------
+        nnoremap <silent> <leader>bd :Sbd<cr>
+
     " Vimroom
     " -------------------------------------------
         nnoremap  <silent> <leader>vr :VimroomToggle<cr>    
@@ -313,6 +326,8 @@ filetype plugin indent on
     " -------------------------------------------
         let python_highlight_all = 1
         au FileType python syn keyword pythonDecorator True None False self
+
+        autocmd BufNewFile,BufRead *.py setlocal textwidth=80
 
         " Documentation
         let g:pymode_doc = 1        " load show documentation plugin
