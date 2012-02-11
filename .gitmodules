@@ -88,3 +88,6 @@
 [submodule "bundle/sbd"]
 	path = bundle/sbd
 	url = git://github.com/orftz/sbd.vim.git
+[submodule "bundle/gummybears-colorscheme"]
+	path = bundle/gummybears-colorscheme
+	url = https://github.com/jelera/vim-gummybears-colorscheme
