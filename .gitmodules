@@ -91,3 +91,6 @@
 [submodule "bundle/gummybears-colorscheme"]
 	path = bundle/gummybears-colorscheme
 	url = https://github.com/jelera/vim-gummybears-colorscheme
+[submodule "bundle/octopress"]
+	path = bundle/octopress
+	url = https://github.com/tangledhelix/vim-octopress.git
