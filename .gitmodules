@@ -94,3 +94,6 @@
 [submodule "bundle/octopress"]
 	path = bundle/octopress
 	url = https://github.com/tangledhelix/vim-octopress.git
+[submodule "bundle/badwolf"]
+	path = bundle/badwolf
+	url = https://github.com/sjl/badwolf.git

@@ -37,13 +37,15 @@ filetype plugin indent on
         set background=dark
         "colorscheme twilight
         "colorscheme mustang
-        colorscheme molokai
-        let g:molokai_original = 1
+        "colorscheme molokai
+        colorscheme badwolf
+        "let g:molokai_original = 1
         
         "colorscheme blackboard
 
         " Font
         set guifont=Inconsolata-dz\ for\ Powerline:h14
+        "set guifont=Menlo:h13
 
         " Disable all toolbars
         set go-=T
@@ -58,7 +60,7 @@ filetype plugin indent on
         " Fullscreen Options
         set fullscreen
         set fuoptions=maxvert,maxhorz
-        set transparency=7
+        set transparency=4
 
     else
         let &t_Co=256
