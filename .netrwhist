@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
 let g:netrw_dirhist_2='/Users/emoosx/Desktop/work/odeon/bams_git/proj'
-let g:netrw_dirhist_3='/Users/emoosx/Desktop/work/odeon/bams_git'
+let g:netrw_dirhist_3='/Users/emoosx/Libraries/octopress'
+let g:netrw_dirhist_4='/Users/emoosx/Desktop/woody-mobile-theme/html'
+let g:netrw_dirhist_5='/Users/emoosx/Desktop/work/odeon/sec_git/proj'
+let g:netrw_dirhist_6='/Users/emoosx/Dropbox/Year 3/Sem 2/C316/Problem5'

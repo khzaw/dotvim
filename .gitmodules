@@ -64,9 +64,9 @@
 [submodule "bundle/tomorrow-theme"]
 	path = bundle/tomorrow-theme
 	url = https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git
-[submodule "bundle/prefixr"]
-	path = bundle/prefixr
-	url = https://github.com/mr-szymanski/prefixr.git
+;[submodule "bundle/prefixr"]
+	;path = bundle/prefixr
+	;url = https://github.com/mr-szymanski/prefixr.git
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = https://github.com/vim-scripts/Gist.vim.git
