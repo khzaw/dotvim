@@ -61,12 +61,6 @@
 [submodule "bundle/rainbow_parentheses"]
 	path = bundle/rainbow_parentheses
 	url = https://github.com/kien/rainbow_parentheses.vim.git
-[submodule "bundle/tomorrow-theme"]
-	path = bundle/tomorrow-theme
-	url = https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git
-;[submodule "bundle/prefixr"]
-	;path = bundle/prefixr
-	;url = https://github.com/mr-szymanski/prefixr.git
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = https://github.com/vim-scripts/Gist.vim.git
@@ -97,3 +91,9 @@
 [submodule "bundle/badwolf"]
 	path = bundle/badwolf
 	url = https://github.com/sjl/badwolf.git
+[submodule "bundle/pep8"]
+	path = bundle/pep8
+	url = https://github.com/vim-scripts/pep8.git
+[submodule "bundle/minibufexpl"]
+	path = bundle/minibufexpl
+	url = https://github.com/sontek/minibufexpl.vim.git

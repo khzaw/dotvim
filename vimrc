@@ -35,13 +35,7 @@ filetype plugin indent on
 
     if has('gui_running')
         set background=dark
-        "colorscheme twilight
-        "colorscheme mustang
-        "colorscheme molokai
         colorscheme badwolf
-        "let g:molokai_original = 1
-        
-        "colorscheme blackboard
 
         " Font
         set guifont=Inconsolata-dz\ for\ Powerline:h14
@@ -60,7 +54,7 @@ filetype plugin indent on
         " Fullscreen Options
         set fullscreen
         set fuoptions=maxvert,maxhorz
-        set transparency=4
+        set transparency=3
 
     else
         let &t_Co=256
@@ -323,6 +317,12 @@ filetype plugin indent on
     "au Syntax * RainbowParenthesesLoadRound
     "au Syntax * RainbowParenthesesLoadSquare
     "au Syntax * RainbowParenthesesLoadBraces
+    "
+    let g:syntastic_check_on_open=1
+
+    " PEP 8
+    " -------------------------------------------
+        let g:pep8_map='<leader>8'
 
     " Python 
     " -------------------------------------------
@@ -441,7 +441,7 @@ filetype plugin indent on
     " NERDTree & NERDCommenter
     " -------------------------------------------
         nmap ,nt :NERDTree
-        nmap ,nc :NERDTreeToggle<cr>
+        nmap <F2> :NERDTreeToggle<cr>
         let NERDTreeShowHidden=1
         let NERDTreeDirArrows=1     " arrow characters instead of +~
         "let NERDTreeMinimalUI=1     " minimal UI
@@ -465,7 +465,8 @@ filetype plugin indent on
 
     " SuperTab
     " -------------------------------------------
-        let g:SuperTabDefaultCompletionType = "<c-n>"
+        let g:SuperTabDefaultCompletionType = "context"
+        "let g:SuperTabDefaultCompletionType = "<c-n>"
         let g:SuperTabLongestHighlight = 1
 
     " Zen-Coding
