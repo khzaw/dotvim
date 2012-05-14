@@ -284,6 +284,10 @@ filetype plugin indent on
     " -------------------------------------------
         nnoremap <silent> <leader>bd :Sbd<cr>
 
+    " Gundo
+    " -------------------------------------------
+        nnoremap <F5> :GundoToggle<cr>
+
     " Vimroom
     " -------------------------------------------
         nnoremap  <silent> <leader>vr :VimroomToggle<cr>    
