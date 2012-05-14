@@ -39,7 +39,6 @@ filetype plugin indent on
 
         " Font
         set guifont=Inconsolata-dz\ for\ Powerline:h14
-        "set guifont=Menlo:h13
 
         " Disable all toolbars
         set go-=T
@@ -69,7 +68,7 @@ filetype plugin indent on
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
     set number                          " show line numbers
-    set numberwidth=5                   " until 99999 lines
+    "set numberwidth=3                   " until 99999 lines
     "set linespace=3                    " vertical spacing
 
     " Search and Highlight
@@ -110,8 +109,6 @@ filetype plugin indent on
         set visualbell          " blink
         set report=0            " report this or greater number of changed lines
         set ruler               " always show current positions along the bottom
-
-        "set statusline=...[%{&fo}]...
         
     " Completion
     " -------------------------------------------
@@ -140,7 +137,8 @@ filetype plugin indent on
         set wrap                " soft wrap long lines
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
-        "set colorcolumn=+1
+        set colorcolumn=80
+        highlight ColorColumn ctermbg=233
  
         " Indentation
         " -------------------------------------------
@@ -167,6 +165,16 @@ filetype plugin indent on
         set autoread
         "autocmd FocusLost * silent! wall
 
+    " Relative Number
+    " -------------------------------------------
+        function! g:ToggleRelativeNumber()
+            if &relativenumber
+                setlocal number
+            else
+                setlocal relativenumber
+            endif
+        endfunction
+        nnoremap <silent> <f1> :call g:ToggleRelativeNumber()<cr>
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Keybindings
