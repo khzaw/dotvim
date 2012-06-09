@@ -1,10 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/emoosx/groks/work/odeon/bams_git/proj'
-let g:netrw_dirhist_2='/Users/emoosx/Desktop/cytoscapeweb_v1.0.1'
-let g:netrw_dirhist_3='/Users/emoosx/groks/work/odeon/bams_git/proj'
-let g:netrw_dirhist_4='/Users/emoosx/Documents/Education/Udacity/CS253 - Web Application Engineering/homework3'
-let g:netrw_dirhist_5='/Users/emoosx/Documents/Education/Udacity/CS253 - Web Application Engineering/assignment'
-let g:netrw_dirhist_6='/Users/emoosx/groks/work/odeon/bams_git/proj'
-let g:netrw_dirhist_7='/Users/emoosx/Documents/Education/Udacity/CS253 - Web Application Engineering/assignment'
-let g:netrw_dirhist_8='/Users/emoosx/groks/work/odeon/bams_git/proj'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/emoosx/Dropbox/teaser setup'
+let g:netrw_dirhist_2='/Users/emoosx/Desktop/nusshouldacceptme'
