@@ -5,16 +5,18 @@
 
 " Default GUI Colours
 let s:foreground = "4d4d4c"
-let s:background = "ffffff"
-let s:selection = "c5cce9"
-let s:line = "e9efff"
+let s:background = "fafafa"
+let s:selection = "d6d6d6"
+let s:line = "efefef"
 let s:comment = "8e908c"
 let s:red = "c82829"
 let s:orange = "f5871f"
 let s:yellow = "eab700"
 let s:green = "718c00"
+let s:aqua = "3e999f"
 let s:blue = "4271ae"
 let s:purple = "8959a8"
+let s:window = "efefef"
 
 set background=light
 hi clear
@@ -232,10 +234,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Vim Highlighting
 	call <SID>X("Normal", s:foreground, s:background, "")
-	call <SID>X("LineNr", s:selection, "", "")
+  highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 	call <SID>X("NonText", s:selection, "", "")
 	call <SID>X("SpecialKey", s:selection, "", "")
-	call <SID>X("Search", s:background, s:yellow, "")
+	call <SID>X("Search", s:foreground, s:yellow, "")
 	call <SID>X("TabLine", s:foreground, s:background, "reverse")
 	call <SID>X("StatusLine", s:window, s:yellow, "reverse")
 	call <SID>X("StatusLineNC", s:window, s:foreground, "reverse")
@@ -321,6 +323,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptRepeat", s:purple, "", "")
 	call <SID>X("javaScriptNumber", s:orange, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
+
+	" HTML Highlighting
+	call <SID>X("htmlTag", s:red, "", "")
+	call <SID>X("htmlTagName", s:red, "", "")
+	call <SID>X("htmlArg", s:red, "", "")
+	call <SID>X("htmlScriptTag", s:red, "", "")
 
 	" Diff Highlighting
 	call <SID>X("diffAdded", s:green, "", "")

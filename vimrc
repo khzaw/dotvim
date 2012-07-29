@@ -23,7 +23,7 @@ filetype plugin indent on
 
     set nocompatible 			" leave vi-compatibility mode
     set encoding=utf-8 			" unicode encoding by default
-    set title                   " show title in terminal
+    "set title                   " show title in terminal
     set hidden                  " buffer hidden, not closed, when abandoned
     set noexrc
     set linebreak
@@ -35,7 +35,8 @@ filetype plugin indent on
 
     if has('gui_running')
         set background=dark
-        colorscheme badwolf
+        "colorscheme badwolf
+        colorscheme Tomorrow-Night-Eighties
 
         " Font
         set guifont=Inconsolata-dz\ for\ Powerline:h14
@@ -51,8 +52,8 @@ filetype plugin indent on
         highlight SpellBad term=underline gui=undercurl guisp=Orange
 
         " Fullscreen Options
-        set fullscreen
-        set fuoptions=maxvert,maxhorz
+        "set fullscreen
+        "set fuoptions=maxvert,maxhorz
         set transparency=3
 
     else
@@ -69,7 +70,7 @@ filetype plugin indent on
     set backspace=indent,eol,start      " make backspace more flexible
     set number                          " show line numbers
     "set numberwidth=3                   " until 99999 lines
-    "set linespace=3                    " vertical spacing
+    set linespace=1                    " vertical spacing
 
     " Search and Highlight
     " -------------------------------------------
@@ -96,9 +97,9 @@ filetype plugin indent on
         
     " Screen Drawing
     " -------------------------------------------
-        set linespace=0         " don't insert extra pixel lines between rows
-        set lazyredraw          " don't redraw while running macros
-        set ttyfast             " fast redraw screen
+        "set linespace=1         " don't insert extra pixel lines between rows
+        "set lazyredraw          " don't redraw while running macros
+        "set ttyfast             " fast redraw screen
 
     " Status Indicators
     " -------------------------------------------
@@ -126,11 +127,10 @@ filetype plugin indent on
             autocmd FileType javascript set syn=jquery
 
         inoremap <leader>a <C-x><C-o> " key combo to toggle omnicomplete
-    
+
     " Splitting Windows
     " -------------------------------------------
         set splitright
-        "set splitbelow
 
     " Text Formatting and Layout
     " -------------------------------------------
@@ -508,7 +508,7 @@ filetype plugin indent on
 
     " Path to Ctags
     " -------------------------------------------
-        let g:Tlist_Ctags_Cmd='/opt/local/bin/ctags'
+        let g:Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
     " Processing
     " -------------------------------------------
