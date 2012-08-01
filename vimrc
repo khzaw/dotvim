@@ -54,7 +54,7 @@ filetype plugin indent on
         " Fullscreen Options
         "set fullscreen
         "set fuoptions=maxvert,maxhorz
-        set transparency=3
+        set transparency=2
 
     else
         let &t_Co=256

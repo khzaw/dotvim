@@ -103,3 +103,6 @@
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+[submodule "bundle/writer"]
+	path = bundle/writer
+	url = git://github.com/honza/writer.vim
