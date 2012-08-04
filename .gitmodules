@@ -106,3 +106,6 @@
 [submodule "bundle/vim-notes"]
 	path = bundle/vim-notes
 	url = git://github.com/xolox/vim-notes.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
