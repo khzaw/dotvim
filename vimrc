@@ -13,8 +13,6 @@ call pathogen#helptags()
 
 syntax on
 filetype on
-filetype plugin on
-filetype indent on
 filetype plugin indent on
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -23,7 +21,7 @@ filetype plugin indent on
 
     set nocompatible 			" leave vi-compatibility mode
     set encoding=utf-8 			" unicode encoding by default
-    "set title                   " show title in terminal
+    set title                   " show title in terminal
     set hidden                  " buffer hidden, not closed, when abandoned
     set noexrc
     set linebreak
@@ -35,8 +33,7 @@ filetype plugin indent on
 
     if has('gui_running')
         set background=dark
-        "colorscheme badwolf
-        colorscheme Tomorrow-Night-Eighties
+        colorscheme badwolf
 
         " Font
         set guifont=Inconsolata-dz\ for\ Powerline:h14
@@ -52,13 +49,11 @@ filetype plugin indent on
         highlight SpellBad term=underline gui=undercurl guisp=Orange
 
         " Fullscreen Options
-        "set fullscreen
-        "set fuoptions=maxvert,maxhorz
-        set transparency=2
+        set fullscreen
+        set fuoptions=maxvert,maxhorz
 
-    else
-        let &t_Co=256
-        colorscheme railscasts3
+        " Transparency
+        set transparency=7
     endif
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -69,8 +64,6 @@ filetype plugin indent on
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
     set number                          " show line numbers
-    "set numberwidth=3                   " until 99999 lines
-    set linespace=1                    " vertical spacing
 
     " Search and Highlight
     " -------------------------------------------
@@ -95,12 +88,6 @@ filetype plugin indent on
         set nocursorcolumn              " highlight current column, off
         set cursorline                  " hightlight current line
         
-    " Screen Drawing
-    " -------------------------------------------
-        "set linespace=1         " don't insert extra pixel lines between rows
-        "set lazyredraw          " don't redraw while running macros
-        "set ttyfast             " fast redraw screen
-
     " Status Indicators
     " -------------------------------------------
         set showcmd             " show the command being typed
@@ -118,15 +105,15 @@ filetype plugin indent on
         set wildmode=longest:full
         set completeopt=longest,menuone,preview
 
-        " File type specific completion
-        " -------------------------------------------
-            autocmd FileType python set omnifunc=pythoncomplete#Complete
-            autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-            autocmd FileType javascript set syn=jquery
+         "File type specific completion
+         "-------------------------------------------
+            "autocmd FileType python set omnifunc=pythoncomplete#Complete
+            "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+            "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+            "autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+            "autocmd FileType javascript set syn=jquery
 
-        inoremap <leader>a <C-x><C-o> " key combo to toggle omnicomplete
+
 
     " Splitting Windows
     " -------------------------------------------
@@ -138,7 +125,7 @@ filetype plugin indent on
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
         set colorcolumn=80
-        highlight ColorColumn ctermbg=233
+        "highlight ColorColumn ctermbg=233
  
         " Indentation
         " -------------------------------------------
@@ -442,10 +429,6 @@ filetype plugin indent on
         " Enable pymode's custom syntax highlighting
         let g:pymode_syntax = 1
 
-    " Molokai Colorscheme
-    " -------------------------------------------
-        let g:molokai_original = 1
-
     " Powerline
     " -------------------------------------------
         let g:Powerline_symbols = 'fancy'
@@ -477,9 +460,9 @@ filetype plugin indent on
 
     " SuperTab
     " -------------------------------------------
-        let g:SuperTabDefaultCompletionType = "context"
+        "let g:SuperTabDefaultCompletionType = "context"
         "let g:SuperTabDefaultCompletionType = "<c-n>"
-        let g:SuperTabLongestHighlight = 1
+        "let g:SuperTabLongestHighlight = 1
 
     " Zen-Coding
     " -------------------------------------------
