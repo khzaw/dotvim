@@ -37,9 +37,6 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = git://github.com/tomtom/tcomment_vim.git
-[submodule "bundle/markdown"]
-	path = bundle/markdown
-	url = git://github.com/plasticboy/vim-markdown.git
 [submodule "bundle/vim-processing"]
 	path = bundle/vim-processing
 	url = git://github.com/sophacles/vim-processing.git
@@ -106,3 +103,6 @@
 [submodule "bundle/writer"]
 	path = bundle/writer
 	url = git://github.com/honza/writer.vim
+[submodule "bundle/vim-notes"]
+	path = bundle/vim-notes
+	url = git://github.com/xolox/vim-notes.git
