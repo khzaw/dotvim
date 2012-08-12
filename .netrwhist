@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/emoosx/Groks/work/odeon/bams_git/proj'
-let g:netrw_dirhist_2='/Applications/MAMP/htdocs/storyzer_web'
-let g:netrw_dirhist_3='/Users/emoosx/.dotfiles/oh-my-zsh/custom'
-let g:netrw_dirhist_4='/Users/emoosx/Blog'
-let g:netrw_dirhist_5='/Applications/MAMP/htdocs/storyzer_web'
-let g:netrw_dirhist_6='/Users/emoosx/Blog'
-let g:netrw_dirhist_7='/Applications/MAMP/htdocs/storyzer_web'

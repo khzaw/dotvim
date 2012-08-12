@@ -26,6 +26,8 @@ filetype plugin indent on
     set noexrc
     set linebreak
     set scrolloff=3
+    set sidescrolloff=7
+    set sidescroll=1
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " GUI Options
@@ -49,11 +51,13 @@ filetype plugin indent on
         highlight SpellBad term=underline gui=undercurl guisp=Orange
 
         " Fullscreen Options
-        set fullscreen
-        set fuoptions=maxvert,maxhorz
+        "set fullscreen
+        "set fuoptions=maxvert,maxhorz
 
         " Transparency
-        set transparency=7
+        set transparency=15
+    else
+        colorscheme zenburn
     endif
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -70,6 +74,10 @@ filetype plugin indent on
         set hlsearch                " Highlight search
         set incsearch
         set showmatch
+
+    " Code Folding
+    " -------------------------------------------
+        set nofoldenable                " don't fold by default 
 
     " Case
     " -------------------------------------------
