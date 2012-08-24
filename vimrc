@@ -55,7 +55,7 @@ filetype plugin indent on
         "set fuoptions=maxvert,maxhorz
 
         " Transparency
-        set transparency=15
+        set transparency=7
     else
         colorscheme zenburn
     endif
@@ -67,7 +67,8 @@ filetype plugin indent on
     set nostartofline                   " don't jump to the start of line when scrolling
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
-    set number                          " show line numbers
+    "set number                          " show line numbers
+    set relativenumber
 
     " Search and Highlight
     " -------------------------------------------
@@ -132,7 +133,7 @@ filetype plugin indent on
         set wrap                " soft wrap long lines
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
-        set colorcolumn=80
+        set colorcolumn=85
         "highlight ColorColumn ctermbg=233
  
         " Indentation
@@ -158,7 +159,8 @@ filetype plugin indent on
 
         set autowriteall
         set autoread
-        "autocmd FocusLost * silent! wall
+
+        au FocusLost * :wa  " auto save when losing focus
 
     " Relative Number
     " -------------------------------------------
@@ -181,7 +183,7 @@ filetype plugin indent on
 
     " Shortcut to clear highlighted search
     " -------------------------------------------
-        nnoremap <esc> :noh<return><esc>
+        nnoremap <esc> :noh<cr>
 
     " Leader Keys
     " -------------------------------------------
@@ -190,10 +192,17 @@ filetype plugin indent on
 
     " Stop using the arrow keys
     " -------------------------------------------
-        nmap <up> <nop>
-        nmap <down> <nop>
-        nmap <left> <nop>
-        nmap <right> <nop>
+        nnoremap <up> <nop>
+        nnoremap <down> <nop>
+        nnoremap <left> <nop>
+        nnoremap <right> <nop>
+        inoremap <up> <nop>
+        inoremap <down> <nop>
+        inoremap <left> <nop>
+        inoremap <right> <nop>
+        nnoremap j gj
+        nnoremap k gk
+
 
     " kj - Get out of insert mode
     " -------------------------------------------
@@ -218,6 +227,9 @@ filetype plugin indent on
     " -------------------------------------------
         nmap <leader>s  :%s/
         vmap <leader>s  :s/
+        nnoremap / /\v
+        vnoremap / /\v
+        set gdefault        " Global searching as default
 
     " Split screen
     " -------------------------------------------
@@ -481,12 +493,6 @@ filetype plugin indent on
     " -------------------------------------------
         nmap <leader>cts :ConqueTermSplit bash<cr>  
         nmap <leader>vcts :ConqueTermVSplit bash<cr>
-
-    " Command-T
-    " -------------------------------------------
-        map <leader>t :CommandT<cr>
-        map <leader>T :CommandTFlush<cr>
-        set wildignore+=*.o,.git,*.pyc
 
     " Tagbar
     " -------------------------------------------
