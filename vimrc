@@ -8,12 +8,12 @@
 "       https://github.com/sjl/dotfiles.git
     
 " ----------------------------------------------------------------------
+filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-syntax on
-filetype on
 filetype plugin indent on
+syntax on
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Environment
@@ -25,9 +25,6 @@ filetype plugin indent on
     set hidden                  " buffer hidden, not closed, when abandoned
     set noexrc
     set linebreak
-    set scrolloff=3
-    set sidescrolloff=7
-    set sidescroll=1
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " GUI Options
@@ -35,27 +32,16 @@ filetype plugin indent on
 
     if has('gui_running')
         set background=dark
-        colorscheme badwolf
-
-        " Font
+        colorscheme inkpot
         set guifont=Inconsolata-dz\ for\ Powerline:h14
-
-        " Disable all toolbars
-        set go-=T
-        set go-=l
-        set go-=L
-        set go-=r
-        set go-=R
-
-        " Highlight spelling mistakes
+        set linespace=2
+        set guioptions-=T
+        set guioptions-=r
+        set guioptions-=L
         highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-        " Fullscreen Options
-        "set fullscreen
-        "set fuoptions=maxvert,maxhorz
-
-        " Transparency
-        set transparency=7
+        set transparency=8
+        set fullscreen
+        set lines=9999
     else
         colorscheme zenburn
     endif
@@ -64,10 +50,10 @@ filetype plugin indent on
 " Various Configurations
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+    set term=screen-256color
     set nostartofline                   " don't jump to the start of line when scrolling
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
-    "set number                          " show line numbers
     set relativenumber
 
     " Search and Highlight
@@ -88,7 +74,6 @@ filetype plugin indent on
     " Characters display
     " -------------------------------------------
         set list
-        "set listchars=tab:▸\ ,extends:❯,precedes:❮
         set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
         set showbreak=↪
 
@@ -99,8 +84,6 @@ filetype plugin indent on
         
     " Status Indicators
     " -------------------------------------------
-        set showcmd             " show the command being typed
-        set showmode            " show insert, replace & visual mode indicator
         set notimeout           " no command timeout
         set laststatus=2        " always show the status line
         set visualbell          " blink
@@ -110,35 +93,34 @@ filetype plugin indent on
     " Completion
     " -------------------------------------------
         set wildchar=<Tab>
-        "set wildmode=list:longest
-        set wildmode=longest:full
+        set wildmode=longest:full:list
         set completeopt=longest,menuone,preview
 
          "File type specific completion
          "-------------------------------------------
-            "autocmd FileType python set omnifunc=pythoncomplete#Complete
+            autocmd FileType python set omnifunc=pythoncomplete#Complete
             "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
             "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
             "autocmd FileType css set omnifunc=csscomplete#CompleteCSS
             "autocmd FileType javascript set syn=jquery
 
-
-
     " Splitting Windows
     " -------------------------------------------
         set splitright
+        set splitbelow
 
     " Text Formatting and Layout
     " -------------------------------------------
         set wrap                " soft wrap long lines
+        set wm=4
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
         set colorcolumn=85
-        "highlight ColorColumn ctermbg=233
  
         " Indentation
         " -------------------------------------------
             set autoindent      " copy indent form current when starting a new line
+            set smartindent
 
         " Tabs
         " -------------------------------------------
@@ -148,14 +130,12 @@ filetype plugin indent on
             set shiftwidth=4    " auto-indent amount
             set shiftround      " when at 3 spaces, when I hit > .. go to 4, not 5
             set smarttab
-            set expandtab
 
     " Backup & saving
     " -------------------------------------------
         set noswapfile
         set nobackup
         set nowritebackup
-        set nowb
 
         set autowriteall
         set autoread
@@ -207,6 +187,7 @@ filetype plugin indent on
     " kj - Get out of insert mode
     " -------------------------------------------
         imap kj     <Esc>
+        imap jj     <Esc>
 
     " Launching External Apps
     " -------------------------------------------
@@ -331,12 +312,6 @@ filetype plugin indent on
             \ ]
         let g:rbpt_max = 16
 
-    " Always on
-    "au VimEnter * RainbowParenthesesToggle
-    "au Syntax * RainbowParenthesesLoadRound
-    "au Syntax * RainbowParenthesesLoadSquare
-    "au Syntax * RainbowParenthesesLoadBraces
-    "
     let g:syntastic_check_on_open=1
 
     " PEP 8
@@ -350,105 +325,6 @@ filetype plugin indent on
 
         autocmd BufNewFile,BufRead *.py setlocal textwidth=80
 
-        " Documentation
-        let g:pymode_doc = 1        " load show documentation plugin
-        let g:pymode_doc_key = 'D'  " key for showing python docs
-        let g:pydoc = 'pydoc'       " executable command for docs search
-
-        " Run Python codes
-        let g:pymode_run = 1
-
-        " Key for running python code
-        let g:pymode_run_key = '<leader>r'
-
-        " Code checking
-        let g:pymode_lint = 0
-
-        " Switch pylint or pyflakes code checker values (pylint, pyflakes)
-        let g:pymode_lint_checker = "pylint"
-
-        " Pylint configuration file
-        let g:pymode_lint_config = "$HOME/.pylintrc"
-
-        " Check code every save
-        let g:pymode_lint_write = 1
-
-        " Auto open cwindow if errors are found
-        let g:pymode_lint_cwindow = 1
-
-        " Auto jump on first error
-        let g:pymode_lint_jump = 0
-
-        " Place error signs
-        let g:pymode_lint_signs = 1
-
-        " Minimum height of pylint error window
-        let g:pymode_lint_minheight = 3
-
-        " Maximum height of pylint error window
-        let g:pymode_lint_maxheight = 6
-
-
-        " Load rope plugin
-        let g:pymode_rope = 1
-
-        " Auto create and open ropeproject
-        let g:pymode_rope_auto_project = 1
-
-        " Enable autoimport
-        let g:pymode_rope_enable_autoimport = 1
-
-        " Auto generate global cache
-        let g:pymode_rope_autoimport_generate = 1
-
-        let g:pymode_rope_autoimport_underlineds = 0
-
-        let g:pymode_rope_codeassist_maxfixes = 10
-
-        let g:pymode_rope_sorted_completions = 1
-
-        let g:pymode_rope_extended_complete = 1
-
-        "let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"])
-
-        let g:pymode_rope_confirm_saving = 1
-
-        let g:pymode_rope_global_prefix = "<C-x>p"
-
-        let g:pymode_rope_local_prefix = "<C-c>r"
-
-        let g:pymode_rope_vim_completion = 1
-
-        let g:pymode_rope_guess_project = 1
-
-        let g:pymode_rope_goto_def_newwin = 0
-
-        let g:pymode_rope_always_show_complete_menu = 0
-
-        " Load breakpoints plugin
-        let g:pymode_breakpoint = 1
-
-        " Key for set/unset breakpoint
-        let g:pymode_breakpoint_key = '<leader>b'
-
-        " Autoremove unused whitespaces
-        let g:pymode_utils_whitespaces = 1
-
-        " Auto fix vim python paths if virtualenv enabled
-        let g:pymode_virtualenv = 1
-
-        " Set default pymode python indent options
-        let g:pymode_options_indent = 1
-
-        " Set default pymode python fold options
-        let g:pymode_options_fold = 1
-
-        " Set default pymode python other options
-        let g:pymode_options_other = 1
-
-        " Enable pymode's custom syntax highlighting
-        let g:pymode_syntax = 1
-
     " Powerline
     " -------------------------------------------
         let g:Powerline_symbols = 'fancy'
@@ -459,7 +335,7 @@ filetype plugin indent on
         nmap <F2> :NERDTreeToggle<cr>
         let NERDTreeShowHidden=1
         let NERDTreeDirArrows=1     " arrow characters instead of +~
-        "let NERDTreeMinimalUI=1     " minimal UI
+        let NERDTreeMinimalUI=1     " minimal UI
         map \|  :NERDTreeFind<CR>   " show current find
 
         let NERDTreeHighlightCursorline=1
@@ -478,12 +354,6 @@ filetype plugin indent on
     " -------------------------------------------
         "map <leader>/ <c-_><c-_>
 
-    " SuperTab
-    " -------------------------------------------
-        "let g:SuperTabDefaultCompletionType = "context"
-        "let g:SuperTabDefaultCompletionType = "<c-n>"
-        "let g:SuperTabLongestHighlight = 1
-
     " Zen-Coding
     " -------------------------------------------
         let g:user_zen_expandabbr_key = '<C-e>'     " Change zen-coding plugin expansion key
@@ -491,17 +361,12 @@ filetype plugin indent on
 
     " Conque-Shell
     " -------------------------------------------
-        nmap <leader>cts :ConqueTermSplit bash<cr>  
-        nmap <leader>vcts :ConqueTermVSplit bash<cr>
+        nmap <leader>cts :ConqueTermSplit zsh<cr>  
+        nmap <leader>vcts :ConqueTermVSplit zsh<cr>
 
     " Tagbar
     " -------------------------------------------
         map <leader>l :TagbarToggle<cr>
-
-    " Solarized Color Scheme
-    " -------------------------------------------
-        "let g:solarized_contrast="့့့့့high"
-        "let g:solarized_visibility="high"
 
     " Path to Ctags
     " -------------------------------------------
@@ -511,16 +376,10 @@ filetype plugin indent on
     " -------------------------------------------
         let g:processing_doc_style="web"
 
-    " TwitVim
-    " -------------------------------------------
-        let twitvim_login = "emoosx:3m0tux"
-        let twitvim_enable_python = 1
-        map <leader>dm :SendDMTwitter       " send direct message
-        map <leader>tw :PosttoTwitter<cr>   " post a new tweet
-
     " Pydiction
     " -------------------------------------------
         " let g:pydiction_location = '/Users/emoosx/.vim/bundle/pydiction/complete-dict'
+
     " Ctags
     " -------------------------------------------
         nnoremap <leader><cr> :silent !/opt/local/bin/ctags -R . && sed -i .bak -E -e '/^[^	]+	[^	]+.py	.+v$/d' tags<cr>
@@ -563,16 +422,16 @@ filetype plugin indent on
             "autocmd FileType ruby set iskeyword=@,48-57,_,?,!,192-255
             "autocmd FileType scss set iskeyword=@,48-57,_,-,?,!,192-255
 
-        " Insert ' => '
-        " -------------------------------------------
-            autocmd FileType ruby imap  <Space>=><Space>
-
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Auto saving VIMRC
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    augroup myvimrchooks
+    augroups vimrcs
         au!
-        autocmd bufwritepost .vimrc so $MYVIMRC
+        au bufwritepost ~/.vimrc
+            \ source ~/.vimrc |
+            \ if exists('g:Powerline_loaded') |
+                \ silent! call Pl#Load()
+            \ endif
     augroup END
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -726,55 +585,3 @@ filetype plugin indent on
         nnoremap <F4> :set invcursorcolumn<CR>
         inoremap <F4> <ESC>:set invcursorcolumn<CR>a
         vnoremap <F4> <ESC>:set invcursorcolumn<CR>
-
-    " Font Scaling
-    " -------------------------------------------------------------
-        let s:pattern = '^\(.*\:h\)\([1-9][0-9]*\)$'
-        let s:minfontsize = 6
-        let s:maxfontsize = 100
-        function! AdjustFontSize(amount)
-        if has("gui_running")
-            let fontname = substitute(&guifont, s:pattern, '\1', '')
-            let cursize = substitute(&guifont, s:pattern, '\2', '')
-            let newsize = cursize + a:amount
-            if (newsize >= s:minfontsize) && (newsize <= s:maxfontsize)
-            let newfont = fontname . newsize
-            let &guifont = newfont
-            endif
-        else
-            echoerr "Command requires gui version of vim to run."
-        endif
-        endfunction
-
-        function! LargerFont()
-            call AdjustFontSize(1)
-        endfunction
-
-        command! LargerFont call LargerFont()
-
-        function! SmallerFont()
-            call AdjustFontSize(-1)
-        endfunction
-
-        command! SmallerFont call SmallerFont()
-
-        let i=0
-        function! ScaleFont()
-            if &columns > 1
-            let origcol=&columns
-            let thiscol=&columns
-            for i in range(1, 3)
-                echo "count is" i " and columns =" thiscol
-                if thiscol > 88
-                    call AdjustFontSize(1)
-                    let thiscol=&columns
-                    redrawstatus!
-                    redraw!
-                endif
-            endfor
-            else
-                echo "too big"
-            endif
-            let w:DebugThisA = thiscol
-            let w:DebugThisB = &columns
-        endfunction
