@@ -32,7 +32,8 @@ syntax on
 
     if has('gui_running')
         set background=dark
-        colorscheme inkpot
+        colorscheme jellybeans
+        "colorscheme codeschool
         set guifont=Inconsolata-dz\ for\ Powerline:h14
         set linespace=2
         set guioptions-=T
@@ -50,11 +51,12 @@ syntax on
 " Various Configurations
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    set term=screen-256color
+    "set term=screen-256color
     set nostartofline                   " don't jump to the start of line when scrolling
     set visualbell                      " supress audio/visual error
     set backspace=indent,eol,start      " make backspace more flexible
     set relativenumber
+    set lazyredraw
 
     " Search and Highlight
     " -------------------------------------------
@@ -94,6 +96,7 @@ syntax on
     " -------------------------------------------
         set wildchar=<Tab>
         set wildmode=longest:full:list
+        set wildignore=*.o,*.pyc,.DS_Store
         set completeopt=longest,menuone,preview
 
          "File type specific completion
@@ -115,7 +118,7 @@ syntax on
         set wm=4
         set textwidth=79        " maximum width of text line during insert
         set formatoptions=qrn1
-        set colorcolumn=85
+        "set colorcolumn=85
  
         " Indentation
         " -------------------------------------------
@@ -157,9 +160,14 @@ syntax on
 " Keybindings
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+    " Toggle spell-checking
+    " -------------------------------------------
+    map <leader>ss :setlocal spell!<cr>
+
     " Shortcut to edit .vimrc file
     " -------------------------------------------
-        nmap ,rc :tabedit $MYVIMRC   
+        "nmap ,rc :tabedit $MYVIMRC   
+        nmap <leader>rc :vcplit $MYVIMRC<cr>
 
     " Shortcut to clear highlighted search
     " -------------------------------------------
@@ -292,25 +300,6 @@ syntax on
     " Rainbow Parentheses
     " -------------------------------------------
         nnoremap <leader>R :RainbowParenthesesToggle<cr>
-        let g:rbpt_colorpairs = [
-            \ ['brown',       'RoyalBlue3'],
-            \ ['Darkblue',    'SeaGreen3'],
-            \ ['darkgray',    'DarkOrchid3'],
-            \ ['darkgreen',   'firebrick3'],
-            \ ['darkcyan',    'RoyalBlue3'],
-            \ ['darkred',     'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['black',       'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue',    'firebrick3'],
-            \ ['darkgreen',   'RoyalBlue3'],
-            \ ['darkcyan',    'SeaGreen3'],
-            \ ['darkred',     'DarkOrchid3'],
-            \ ['red',         'firebrick3'],
-            \ ]
-        let g:rbpt_max = 16
 
     let g:syntastic_check_on_open=1
 
@@ -320,7 +309,6 @@ syntax on
 
     " Python 
     " -------------------------------------------
-        let python_highlight_all = 1
         au FileType python syn keyword pythonDecorator True None False self
 
         autocmd BufNewFile,BufRead *.py setlocal textwidth=80
@@ -425,7 +413,7 @@ syntax on
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Auto saving VIMRC
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    augroups vimrcs
+    augroup vimrcs
         au!
         au bufwritepost ~/.vimrc
             \ source ~/.vimrc |
