@@ -3,13 +3,13 @@ if has('gui_running')
     "colorscheme Tomorrow-Night-Eighties
     colorscheme badwolf
     "set colorcolumn=85
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%81v.\+/
+    "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    "match OverLength /\%81v.\+/
     if has('gui_macvim')
         "set guifont=Inconsolata-dz\ for\ Powerline:h14
         "set guifont=Inconsolata:h18
         set guifont=Menlo:h14
-        set transparency=6
+        set transparency=10
         "set fullscreen
         set fuopt+=maxhorz
         set fuopt+=maxvert

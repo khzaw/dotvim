@@ -13,7 +13,6 @@ filetype off
   " }}}
   " Coding {{{
       Bundle 'ervandew/supertab'
-      Bundle 'ervandew/supertab'
       Bundle 'sjl/gundo.vim'
       Bundle 'msanders/snipmate.vim'
       Bundle 'Raimondi/delimitMate'
@@ -23,6 +22,9 @@ filetype off
       if executable('ctags')
         Bundle 'majutsushi/tagbar'
       endif
+      Bundle 'mkitt/browser-refresh.vim'
+      Bundle 'tpope/vim-surround'
+      Bundle 'Valloric/YouCompleteMe'
   " }}}
   " python {{{
       Bundle 'kien/ctrlp.vim'
@@ -36,6 +38,7 @@ filetype off
   " }}}
   " python {{{
       Bundle 'othree/html5.vim'
+      "Bundle 'davidhalter/jedi-vim'
   " }}}
   " css, less {{{
       Bundle 'skammer/vim-css-color'
@@ -50,11 +53,15 @@ filetype off
   " }}}
   " git {{{
       Bundle 'tpope/vim-fugitive'
+      Bundle 'airblade/vim-gitgutter'
   " }}}
   " Utilities {{{
       Bundle 'tpope/vim-repeat'
       Bundle 'YankRing.vim'
       Bundle 'bufexplorer.zip'
+      Bundle 'Shougo/vimshell'
+      Bundle 'Shougo/vimproc'
+      Bundle 'godlygeek/tabular'
   " }}}
   " markdown {{{
       Bundle 'tpope/vim-markdown'
@@ -73,7 +80,7 @@ filetype off
     Bundle 'Sift'
     Bundle 'blackboard.vim'
     Bundle 'wombat256.vim'
-    Bundle 'sexy-railscasts'
+    Bundle 'dhruvasagar/vim-railscasts-theme'
     Bundle 'Mustang2'
     Bundle 'xterm16.vim'
   " }}}
@@ -95,6 +102,7 @@ filetype off
     Bundle 'benmills/vimux'
     Bundle 'slim-template/vim-slim'
     Bundle 'vim-scripts/scratch.vim'
+    Bundle 'mips.vim'
   " }}}
 " }}}
 filetype plugin indent on
@@ -300,20 +308,45 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:Powerline_symbols = 'fancy'
     nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
+  " Browser Refresh {{{
+    map <silent><leader>r  :RRB<cr>
+  " }}}
+  " Vim Git Gutter {{{
+    " enable vim-gitgutter by default
+    let g:gitgutter_enabled = 0
+  " }}}
 " }}}
   " Filetype-specific {{{
     " Python {{{
+      augroup ft_python
+        au!
+        if has('gui_running')
+            "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+            "autocmd BufEnter * match OverLength /\%81v.\+/
+        endif
+      augroup END
     " }}}
     " Django {{{
       augroup ft_django
         au!
         au FileType htmldjango setl ts=2 sts=2 sw=2
+        if has('gui_running')
+            "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+            "autocmd BufEnter * match OverLength /\%81v.\+/
+        endif
       augroup END
     " }}}
     " html {{{
       augroup ft_html
         au!
         au FileType html setl ts=2 sts=2 sw=2 syn=htmldjango
+      augroup END
+    " }}}
+    " asm {{{
+      augroup ft_asm
+        au!
+        au BufEnter asm setl syn=mips ts=4
+        au BufEnter asm set noexpandtab
       augroup END
     " }}}
     " Css, Less {{{
@@ -326,6 +359,17 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " }}}
     " Js {{{
       augroup ft_js
+        au!
+        au FileType js setl ts=2 sts=2 sw=2
+        au FileType jquery setl ts=2 sts=2 sw=2
+      augroup END
+    " }}}
+    " java {{{
+      augroup ft_java
+        au!
+        au FileType java setl ts=2 sts=2 sw=2
+        au BufEnter *.java set guifont=Inconsolata:h16
+        au BufLeave *.java set guifont=Menlo:h14
       augroup END
     " }}}
     " php {{{
@@ -338,13 +382,14 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_vim
         au!
         au FileType vim setl foldmethod=marker ts=2 sts=2 sw=2
+        au BufEnter *pentadactylrc setl foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
       augroup END
     " }}}
     " markdown {{{
       augroup ft_markdown
         au!
-        au FileType markdown setl ts=2 sts=2 sw=2
-        au FileType markdown setlocal nowrap
+        au FileType markdown setl ts=2 sts=2 sw=2 fo-=t
+        autocmd BufEnter *.markdown setlocal wrap fo-=t spell cc=""
       augroup END
     " }}}
     " ruby {{{
@@ -365,15 +410,11 @@ syntax on
 if has('gui_running')
     set background=dark
     colorscheme badwolf
+    "colorscheme solarized
     set colorcolumn=85
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%81v.\+/
     if has('gui_macvim')
-        "set guifont=Inconsolata-dz\ for\ Powerline:h14
-        set guifont=Inconsolata:h16
-        "set guifont=CPMono_v07:h16
-        set transparency=6
-        "set fullscreen
+        set guifont=Menlo:h14
+        set transparency=10
         set fuopt+=maxhorz
         set fuopt+=maxvert
         macmenu &Edit.Find.Find\.\.\. key=<nop>
@@ -394,7 +435,6 @@ else
 endif
 " }}}
 " Utlitiy Functions {{{
-
     " Relative Number {{{
     function! g:ToggleRelativeNumber()
         if &relativenumber
@@ -415,8 +455,8 @@ endif
     nmap <C-s> :call <SID>SynStack()<cr>
   " }}}
   " Transparency {{{
-    nnoremap <C-)> :set transp+=10<cr>:set transp<cr>
-    nnoremap <C-(> :set transp-=10<cr>:set transp<cr>
+    nnoremap <F9> :set transp+=5<cr>:set transp<cr>
+    nnoremap <F10> :set transp-=5<cr>:set transp<cr>
   " }}}
   " Toggle Indicators {{{
   " We'll use &number and &relativenumber (mutually eclusive) as proxies for 
@@ -523,15 +563,45 @@ endif
   " }}}
 " Convenience Mappings {{{
   " Toggle CursorColumn  {{{
-  nnoremap <F4> :set invcursorcolumn<cr>
-  inoremap <F4> <esc>:set invcursorcolumn<cr>a
-  vnoremap <F4> <esc>:set invcursorcolumn<cr>
+    nnoremap <F4> :set invcursorcolumn<cr>
+    inoremap <F4> <esc>:set invcursorcolumn<cr>a
+    vnoremap <F4> <esc>:set invcursorcolumn<cr>
+  " }}}
+  " Previous/next buffers {{{
+    map <M-D-Left>  :bp<cr>
+    map <M-D-Right> :bn<cr>
+  " }}}
+  " Fast scrolling {{{
+    nnoremap <C-e>  3<C-e>
+    nnoremap <C-y>  3<C-y>
+    nmap J 5j
+    nmap K 5k
+    xmap J 5j
+    xmap K 5k
+  " }}}
+  " easier moving of code blocks {{{
+    vnoremap < <gv
+    vnoremap > >gv
+  " }}}
+  " Save a keystroke {{{
+    nnoremap ; :
+   " }}}
+  " Stop using the arrow keys {{{
+    nnoremap <up> <nop>
+    nnoremap <down> <nop>
+    nnoremap <left> <nop>
+    nnoremap <right> <nop>
+    inoremap <up> <nop>
+    inoremap <down> <nop>
+    inoremap <left> <nop>
+    inoremap <right> <nop>
   " }}}
 " }}}
   " Quick editing {{{
     nnoremap <leader>rc :vsp $MYVIMRC<cr>
     nnoremap <leader>grc :vsp $MYGVIMRC<cr>
     nnoremap <leader>zsh :vsp ~/.zshrc<cr>
+    nnoremap <leader>prc :vsp ~/.pentadactylrc<cr>
   " }}}
   " Search {{{
     nmap <leader>s  :%s/
@@ -541,29 +611,11 @@ endif
     nnoremap <leader>y  :nohls<cr>
   " }}}
 
-  " Previous/next buffers
-  map <M-D-Left>  :bp<cr>
-  map <M-D-Right> :bn<cr>
-
-  " Fast scrolling
-  nnoremap <C-e>  3<C-e>
-  nnoremap <C-y>  3<C-y>
-  nmap J 5j
-  nmap K 5k
-  xmap J 5j
-  xmap K 5k
-
-  " Search
-
-  " easier moving of code blocks
-  vnoremap < <gv
-  vnoremap > >gv
 
   " Make Y consistent with D and C
   map Y           y$
 
 
-  nnoremap ; :
 
   imap kj <esc>
   imap jj <esc>
@@ -574,24 +626,16 @@ endif
   map <f7> :setlocal spell!<cr>
 
 
-  " Stop using the arrow keys
-  nnoremap <up> <nop>
-  nnoremap <down> <nop>
-  nnoremap <left> <nop>
-  nnoremap <right> <nop>
-  inoremap <up> <nop>
-  inoremap <down> <nop>
-  inoremap <left> <nop>
-  inoremap <right> <nop>
 
   nnoremap j gj
   nnoremap k gk
   xnoremap j gj
   xnoremap k gk
 
-  " Change case
-  nnoremap <C-o> gUiw
-  nnoremap <C-i> gUiwea
+  " Change case {{{
+    nnoremap <C-o> gUiw
+    nnoremap <C-i> gUiwea
+  " }}}
 
   " Send visual selection to gist.github.com as a private filetyped Gist
   " Requires the gist command line tool ( brew install gist )
