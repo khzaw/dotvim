@@ -11,7 +11,8 @@ Then clone the repo into your .vim folder.
 
 	git clone git@github.com:emoosx/dotvim.git ~/.vim  
 	cd ~/.vim  
-	git submodule update --init  
+
+The plugin system is managed by [Vundle](http://github.com/gmarik/vundle). Launch `vim` and run `:BundleInstall!`.
 
 And create a symbolic link so that ~/.vimrc points to the ~/.vim/vimrc file.
 

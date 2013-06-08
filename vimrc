@@ -25,6 +25,8 @@ filetype off
       Bundle 'mkitt/browser-refresh.vim'
       Bundle 'tpope/vim-surround'
       Bundle 'Valloric/YouCompleteMe'
+      Bundle 'Switch'
+      
   " }}}
   " python {{{
       Bundle 'kien/ctrlp.vim'
