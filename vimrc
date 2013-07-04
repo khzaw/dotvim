@@ -12,7 +12,7 @@ filetype off
       let g:vundle_default_git_proto = 'git'
   " }}}
   " Coding {{{
-      Bundle 'ervandew/supertab'
+      "Bundle 'ervandew/supertab'
       Bundle 'sjl/gundo.vim'
       Bundle 'msanders/snipmate.vim'
       Bundle 'Raimondi/delimitMate'
@@ -24,13 +24,12 @@ filetype off
       endif
       Bundle 'mkitt/browser-refresh.vim'
       Bundle 'tpope/vim-surround'
-      Bundle 'Valloric/YouCompleteMe'
+      "Bundle 'Valloric/YouCompleteMe'
       Bundle 'Switch'
-      
+      Bundle 'kshenoy/vim-origami'
   " }}}
   " python {{{
       Bundle 'kien/ctrlp.vim'
-      Bundle 'davidhalter/jedi-vim'
       Bundle 'pfdevilliers/Pretty-Vim-Python'
       Bundle 'jmcantrell/vim-virtualenv'
       Bundle 'klen/python-mode'
@@ -38,9 +37,10 @@ filetype off
   " LaTeX {{{
       Bundle 'jcf/vim-latex'
   " }}}
-  " python {{{
+  " html {{{
+      Bundle 'docunext/closetag.vim'
+      Bundle 'tmhedberg/matchit'
       Bundle 'othree/html5.vim'
-      "Bundle 'davidhalter/jedi-vim'
   " }}}
   " css, less {{{
       Bundle 'skammer/vim-css-color'
@@ -52,6 +52,7 @@ filetype off
       Bundle 'juvenn/mustache.vim'
       Bundle 'kchmck/vim-coffee-script'
       Bundle 'othree/javascript-libraries-syntax.vim'
+      Bundle 'AndrewRadev/inline_edit.vim'
   " }}}
   " git {{{
       Bundle 'tpope/vim-fugitive'
@@ -85,12 +86,18 @@ filetype off
     Bundle 'dhruvasagar/vim-railscasts-theme'
     Bundle 'Mustang2'
     Bundle 'xterm16.vim'
+    Bundle 'Pychimp/vim-luna'
+    Bundle 'burnttoast256'
   " }}}
   " Fancy {{{
       Bundle 'uguu-org/vim-matrix-screensaver'
-      Bundle 'Lokaltog/vim-powerline'
       Bundle 'kien/rainbow_parentheses.vim'
+      Bundle 'bling/vim-airline'
       Bundle 'nathanaelkane/vim-indent-guides'
+      Bundle 'yonchu/accelerated-smooth-scroll'
+      if has('gui_macvim')
+        Bundle 'Dinduks/vim-holylight'
+      endif
   " }}}
   " Others {{{
     Bundle 'tpope/vim-eunuch'
@@ -98,6 +105,9 @@ filetype off
     Bundle 'tpope/vim-unimpaired'
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'Spaceghost/vim-matchit'
+    if executable('ack')
+        Bundle 'mileszs/ack.vim'
+    endif
 
     Bundle 'peterhoeg/vim-tmux'
     Bundle 'zaiste/tmux.vim'
@@ -120,14 +130,14 @@ filetype plugin indent on
   set hidden                  " buffer hidden, not closed, when abandoned
   set noexrc
   set gdefault        " Global searching as default
-  set modelines=0
   set linebreak
   set synmaxcol=800
   set showcmd
+  set lisp
   set nostartofline
   set history=1000
   set visualbell                      " supress audio/visual error
-  set cursorcolumn
+  set invcursorcolumn
   set backspace=indent,eol,start
   set relativenumber
   set lazyredraw
@@ -150,7 +160,6 @@ filetype plugin indent on
   set updatetime=4000
   set complete=.,w,b,u,t
   set completeopt=longest,menuone,preview
-
 " }}}
 " Folding {{{
   set foldlevelstart=0
@@ -180,7 +189,7 @@ filetype plugin indent on
   set textwidth=80
   set smarttab
   set autoindent
-  set smartindent
+  "set smartindent
 " }}}
 " Backups {{{
 
@@ -191,11 +200,10 @@ set autowriteall
 
 " }}}
 " Triggers {{{
-au FocusLost * :wa " auto save when losing focus
+"au FocusLost * :wa " auto save when losing focus
 au VimResized * :wincmd = " resize splits when the window is resized
 " }}}
 " Wildmenu {{{
-
 "set wildchar=<Tab>
 set wildmode=longest:full:list
 set wildignore+=*.o,*.pyc,.DS_Store
@@ -208,12 +216,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 " }}}
 " Navigation {{{
   " Tabs {{{
-    nmap <C-l> gt
-    nmap <C-h> gT
-    nmap gl <C-w>l
+    nnoremap <C-l> gt
+    nnoremap <C-h> gT
+    nnoremap gl <C-w>l
 
     " QQ - quit tab
-    nnoremap QQ :QuitTab<cr>
+    nnoremap qq :QuitTab<cr>
     command! QuitTab call s:QuitTab()
     function! s:QuitTab()
         try
@@ -231,7 +239,13 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 " }}}
 " Plugin settings {{{
   " SuperTab {{{
-    let g:SuperTabDefaultCompletionType = "context"
+    "let g:SuperTabDefaultCompletionType = "context"
+    "let g:SuperTabNoCompleteAfter=['^', ',', '\s']
+    "let g:SuperTabNoCompleteBefore=['^', ',', '\s']
+
+  " }}}
+  " DelimitMate {{{
+    let delimitMate_excluded_regions = "Comment,String" 
   " }}}
   " Gundo {{{
     nnoremap <F5> :GundoToggle<cr>
@@ -247,8 +261,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:syntastic_auto_loc_list =0
   " }}}
   " NERDTree {{{
-    nmap <leader>nt :NERDTree
-    nmap <F2> :NERDTreeToggle<cr>
+    nnoremap <leader>nt :NERDTree
+    nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
     let g:NERDTreeIgnore=['\~$', '.*\pyc$', '.class[[file]]', 'pip-log\.txt$', '.DS_Store']
@@ -257,8 +271,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
-    let g:NERDTreeMapJumpFirstChild = 'gK'
-    map <leader>\ :NERDTreeFind<cr>
+    "let g:NERDTreeMapJumpFirstChild = 'gK'
+    nnoremap <leader>ntf :NERDTreeFind<cr>
     " change the current dir to that of the opening file
     autocmd bufenter * cd %:p:h
   " }}}
@@ -291,13 +305,13 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_syntax_builtin_objs = 1
         let g:pymode_syntax_builtin_funcs = 1
         let g:pymode_rope = 0
-        let g:pymode_rope_extended_complete = 1
+        let g:pymode_rope_extended_complete = 0
         let g:pymode_lint_write = 0
         let g:pymode_run_key = 'R'
         let g:pymode_lint = 1
         let g:pymode_indent = 1
         let g:pymode_rope_vim_completion = 1
-        let g:pymode_rope_always_show_complete_menu = 1
+        let g:pymode_rope_always_show_complete_menu = 0
         let g:pymode_syntax_print_as_function = 1
     " }}}
   " Solarized {{{
@@ -306,8 +320,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           call togglebg#map("<F6>")
       endif
   " }}}
-  " Powerline {{{
-    let g:Powerline_symbols = 'fancy'
+  " RainbowParentheses {{{
     nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
   " Browser Refresh {{{
@@ -316,6 +329,14 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Vim Git Gutter {{{
     " enable vim-gitgutter by default
     let g:gitgutter_enabled = 0
+  " }}}
+  " Jedi-vim {{{
+    let g:jedi#autocompletion_command="<Ctrl-Space>"
+  " }}}
+  " Zencoding {{{
+    let g:use_zen_complete_tag = 1
+  " }}}
+  " IndentGuides {{{
   " }}}
 " }}}
   " Filetype-specific {{{
@@ -341,7 +362,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " html {{{
       augroup ft_html
         au!
-        au FileType html setl ts=2 sts=2 sw=2 syn=htmldjango
+        au FileType html setl ts=2 sts=2 sw=2 syn=htmldjango fdm=indent
       augroup END
     " }}}
     " asm {{{
@@ -383,7 +404,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " vim {{{
       augroup ft_vim
         au!
-        au FileType vim setl foldmethod=marker ts=2 sts=2 sw=2
+        au FileType vim setl foldmethod=marker ts=2 sts=2 sw=2 si ai
         au BufEnter *pentadactylrc setl foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
       augroup END
     " }}}
@@ -412,28 +433,26 @@ syntax on
 if has('gui_running')
     set background=dark
     colorscheme badwolf
-    "colorscheme solarized
     set colorcolumn=85
     if has('gui_macvim')
-        set guifont=Menlo:h14
-        set transparency=10
+        "set guifont=Menlo:h14
+        set guifont=Inconsolata:h16
+        set transparency=5
+        set fullscreen
         set fuopt+=maxhorz
         set fuopt+=maxvert
-        macmenu &Edit.Find.Find\.\.\. key=<nop>
-        map <D-f> :set invfu<cr>
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
     elseif has('gui_win32')
         echo ":("
     endif
     set guioptions-=L
-    set linespace=1
     set guioptions-=M
     set guioptions-=r
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    color wombat256mod
+    "color wombat256mod
 endif
 " }}}
 " Utlitiy Functions {{{
@@ -549,9 +568,6 @@ endif
       au bufwritepost ~/.vimrc
       \ source ~/.vimrc |
       \ source ~/.vim/setcolors.vim |
-      \ if exists('g:Powerline_loaded') |
-      \ silent! call Pl#Load()
-      \ endif
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
@@ -615,13 +631,12 @@ endif
 
 
   " Make Y consistent with D and C
-  map Y           y$
-
-
-
+  map Y y$
+  " Escape {{{
   imap kj <esc>
   imap jj <esc>
-
+  " }}}
+    
   " sorting functions
   vnoremap <leader>S :sort<cr>
   " toggle spell-checking
