@@ -5,116 +5,125 @@
 set nocompatible
 filetype off
 " Bundles installed {{{
-  " Vundle {{{
-    set rtp+=~/.vim/bundle/vundle
-    call vundle#rc()
-    Bundle 'gmairk/vundle'
-      let g:vundle_default_git_proto = 'git'
+  " NeoBundle {{{
+    if has('vim_starting')
+        set rtp+=~/.vim/bundle/neobundle.vim
+    endif
+    call neobundle#rc(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    let g:vundle_default_git_proto = 'git'
   " }}}
   " Coding {{{
-      "Bundle 'ervandew/supertab'
-      Bundle 'sjl/gundo.vim'
-      Bundle 'msanders/snipmate.vim'
-      Bundle 'Raimondi/delimitMate'
-      Bundle 'scrooloose/nerdcommenter'
-      Bundle 'scrooloose/syntastic'
-      Bundle 'scrooloose/nerdtree'
+      "NeoBundle 'ervandew/supertab'
+      NeoBundle 'sjl/gundo.vim'
+      NeoBundle 'msanders/snipmate.vim'
+      NeoBundle 'Raimondi/delimitMate'
+      NeoBundle 'scrooloose/nerdcommenter'
+      NeoBundle 'scrooloose/syntastic'
+      NeoBundle 'scrooloose/nerdtree'
       if executable('ctags')
-        Bundle 'majutsushi/tagbar'
+        NeoBundle 'majutsushi/tagbar'
       endif
-      Bundle 'mkitt/browser-refresh.vim'
-      Bundle 'tpope/vim-surround'
-      "Bundle 'Valloric/YouCompleteMe'
-      Bundle 'Switch'
-      Bundle 'kshenoy/vim-origami'
+      NeoBundle 'mkitt/browser-refresh.vim'
+      NeoBundle 'tpope/vim-surround'
+      "NeoBundle 'Valloric/YouCompleteMe'
+      NeoBundle 'Switch'
+      NeoBundle 'kshenoy/vim-origami'
   " }}}
   " python {{{
-      Bundle 'kien/ctrlp.vim'
-      Bundle 'pfdevilliers/Pretty-Vim-Python'
-      Bundle 'jmcantrell/vim-virtualenv'
-      Bundle 'klen/python-mode'
+      NeoBundle 'kien/ctrlp.vim'
+      NeoBundle 'pfdevilliers/Pretty-Vim-Python'
+      NeoBundle 'jmcantrell/vim-virtualenv'
+      NeoBundle 'klen/python-mode'
   " }}}
   " LaTeX {{{
-      Bundle 'jcf/vim-latex'
+      NeoBundle 'jcf/vim-latex'
+  " }}}
+  " OCaml {{{
+      NeoBundle 'def-lkb/vimbufsync'
   " }}}
   " html {{{
-      Bundle 'docunext/closetag.vim'
-      Bundle 'tmhedberg/matchit'
-      Bundle 'othree/html5.vim'
+      NeoBundle 'docunext/closetag.vim'
+      NeoBundle 'tmhedberg/matchit'
+      NeoBundle 'othree/html5.vim'
   " }}}
   " css, less {{{
-      Bundle 'skammer/vim-css-color'
-      Bundle 'groenewege/vim-less'
-      Bundle 'mattn/zencoding-vim'
-      Bundle 'hail2u/vim-css3-syntax'
+      NeoBundle 'skammer/vim-css-color'
+      NeoBundle 'groenewege/vim-less'
+      NeoBundle 'mattn/zencoding-vim'
+      NeoBundle 'hail2u/vim-css3-syntax'
   " }}}
   " js {{{
-      Bundle 'juvenn/mustache.vim'
-      Bundle 'kchmck/vim-coffee-script'
-      Bundle 'othree/javascript-libraries-syntax.vim'
-      Bundle 'AndrewRadev/inline_edit.vim'
+      NeoBundle 'juvenn/mustache.vim'
+      NeoBundle 'kchmck/vim-coffee-script'
+      NeoBundle 'othree/javascript-libraries-syntax.vim'
+      NeoBundle 'AndrewRadev/inline_edit.vim'
   " }}}
   " git {{{
-      Bundle 'tpope/vim-fugitive'
-      Bundle 'airblade/vim-gitgutter'
+      NeoBundle 'tpope/vim-fugitive'
+      NeoBundle 'airblade/vim-gitgutter'
   " }}}
   " Utilities {{{
-      Bundle 'tpope/vim-repeat'
-      Bundle 'YankRing.vim'
-      Bundle 'bufexplorer.zip'
-      Bundle 'Shougo/vimshell'
-      Bundle 'Shougo/vimproc'
-      Bundle 'godlygeek/tabular'
+      NeoBundle 'tpope/vim-repeat'
+      NeoBundle 'YankRing.vim'
+      NeoBundle 'bufexplorer.zip'
+      NeoBundle 'Shougo/vimshell'
+      NeoBundle 'Shougo/vimproc'
+      NeoBundle 'godlygeek/tabular'
   " }}}
   " markdown {{{
-      Bundle 'tpope/vim-markdown'
-      Bundle 'suan/vim-instant-markdown'
+      NeoBundle 'tpope/vim-markdown'
+      NeoBundle 'suan/vim-instant-markdown'
   " }}}
   " colorschemes {{{
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'Lokaltog/vim-distinguished'
-    Bundle 'sjl/badwolf'
-    Bundle 'chriskempson/tomorrow-theme'
-    Bundle 'w0ng/vim-hybrid'
-    Bundle 'zaiste/Atom'
-    Bundle 'tomasr/molokai'
-    Bundle 'tpope/vim-vividchalk'
-    Bundle 'jellybeans.vim'
-    Bundle 'Sift'
-    Bundle 'blackboard.vim'
-    Bundle 'wombat256.vim'
-    Bundle 'dhruvasagar/vim-railscasts-theme'
-    Bundle 'Mustang2'
-    Bundle 'xterm16.vim'
-    Bundle 'Pychimp/vim-luna'
-    Bundle 'burnttoast256'
+    NeoBundle 'biskark/vim-ultimate-colorscheme-utility'
+    NeoBundle 'flazz/vim-colorschemes'
+    NeoBundle 'altercation/vim-colors-solarized'
+    NeoBundle 'Lokaltog/vim-distinguished'
+    NeoBundle 'sjl/badwolf'
+    NeoBundle 'chriskempson/tomorrow-theme'
+    NeoBundle 'w0ng/vim-hybrid'
+    NeoBundle 'zaiste/Atom'
+    NeoBundle 'tomasr/molokai'
+    NeoBundle 'tpope/vim-vividchalk'
+    NeoBundle 'jellybeans.vim'
+    NeoBundle 'Sift'
+    NeoBundle 'blackboard.vim'
+    NeoBundle 'wombat256.vim'
+    NeoBundle 'dhruvasagar/vim-railscasts-theme'
+    NeoBundle 'Mustang2'
+    NeoBundle 'xterm16.vim'
+    NeoBundle 'Pychimp/vim-luna'
+    NeoBundle 'burnttoast256'
   " }}}
   " Fancy {{{
-      Bundle 'uguu-org/vim-matrix-screensaver'
-      Bundle 'kien/rainbow_parentheses.vim'
-      Bundle 'bling/vim-airline'
-      Bundle 'nathanaelkane/vim-indent-guides'
-      Bundle 'yonchu/accelerated-smooth-scroll'
+      NeoBundle 'uguu-org/vim-matrix-screensaver'
+      NeoBundle 'kien/rainbow_parentheses.vim'
+      NeoBundle 'bling/vim-airline'
+      NeoBundle 'nathanaelkane/vim-indent-guides'
+      NeoBundle 'yonchu/accelerated-smooth-scroll'
       if has('gui_macvim')
-        Bundle 'Dinduks/vim-holylight'
+        "NeoBundle 'Dinduks/vim-holylight'
       endif
   " }}}
   " Others {{{
-    Bundle 'tpope/vim-eunuch'
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'Spaceghost/vim-matchit'
+    NeoBundle 'tpope/vim-eunuch'
+    NeoBundle 'tpope/vim-speeddating'
+    NeoBundle 'tpope/vim-unimpaired'
+    NeoBundle 'Lokaltog/vim-easymotion'
+    NeoBundle 'Spaceghost/vim-matchit'
     if executable('ack')
-        Bundle 'mileszs/ack.vim'
+        NeoBundle 'mileszs/ack.vim'
     endif
 
-    Bundle 'peterhoeg/vim-tmux'
-    Bundle 'zaiste/tmux.vim'
-    Bundle 'benmills/vimux'
-    Bundle 'slim-template/vim-slim'
-    Bundle 'vim-scripts/scratch.vim'
-    Bundle 'mips.vim'
+    NeoBundle 'peterhoeg/vim-tmux'
+    NeoBundle 'zaiste/tmux.vim'
+    NeoBundle 'benmills/vimux'
+    NeoBundle 'slim-template/vim-slim'
+    NeoBundle 'vim-scripts/scratch.vim'
+    NeoBundle 'takac/vim-hardtime'
+    NeoBundle 'mips.vim'
+    NeoBundle 'moll/vim-bbye'
   " }}}
 " }}}
 filetype plugin indent on
@@ -330,6 +339,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " enable vim-gitgutter by default
     let g:gitgutter_enabled = 0
   " }}}
+  " VimShell {{{
+    let g:vimshell_editor_command = "/usr/local/bin/mvim"
+  " }}}
   " Jedi-vim {{{
     let g:jedi#autocompletion_command="<Ctrl-Space>"
   " }}}
@@ -338,8 +350,20 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
   " IndentGuides {{{
   " }}}
+  " Vim Hardtime {{{
+    let g:hardtime_default_on = 1
+  " }}}
 " }}}
   " Filetype-specific {{{
+    " OCaml {{{
+      augroup ft_ocaml
+        au!
+        au FileType ocaml setl ts=2 sts=2 sw=2 ai si
+        if has('gui_macvim')
+          colorscheme hybrid
+        endif
+      augroup END
+    " }}}
     " Python {{{
       augroup ft_python
         au!
@@ -362,7 +386,11 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " html {{{
       augroup ft_html
         au!
-        au FileType html setl ts=2 sts=2 sw=2 syn=htmldjango fdm=indent
+        au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango fdm=indent
+        au FileType html,jinja,htmldjango fold=manual
+        au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>f Vatzf
+        au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
+        au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
       augroup END
     " }}}
     " asm {{{
@@ -391,8 +419,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_java
         au!
         au FileType java setl ts=2 sts=2 sw=2
-        au BufEnter *.java set guifont=Inconsolata:h16
-        au BufLeave *.java set guifont=Menlo:h14
       augroup END
     " }}}
     " php {{{
@@ -432,13 +458,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 syntax on
 if has('gui_running')
     set background=dark
-    colorscheme badwolf
-    set colorcolumn=85
+    colorscheme hybrid
+    set colorcolumn=81
     if has('gui_macvim')
-        "set guifont=Menlo:h14
-        set guifont=Inconsolata:h16
-        set transparency=5
-        set fullscreen
+        set guifont=Inconsolata:h17
+        set transparency=10
+        "set fullscreen
         set fuopt+=maxhorz
         set fuopt+=maxvert
     elseif has('gui_gtk')
@@ -452,7 +477,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    "color wombat256mod
+    color wombat256mod
 endif
 " }}}
 " Utlitiy Functions {{{
@@ -562,12 +587,10 @@ endif
   nnoremap <silent> <leader>pw :call DoWindowSwap()<cr>
   " }}}
   " Auto saving VIMRC {{{
-  source ~/.vim/setcolors.vim
   augroup vimrcs
       au!
       au bufwritepost ~/.vimrc
       \ source ~/.vimrc |
-      \ source ~/.vim/setcolors.vim |
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
@@ -602,7 +625,7 @@ endif
     vnoremap > >gv
   " }}}
   " Save a keystroke {{{
-    nnoremap ; :
+    "nnoremap ; :
    " }}}
   " Stop using the arrow keys {{{
     nnoremap <up> <nop>
