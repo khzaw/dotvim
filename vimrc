@@ -14,7 +14,7 @@ filetype off
     let g:vundle_default_git_proto = 'git'
   " }}}
   " Coding {{{
-      "NeoBundle 'ervandew/supertab'
+      NeoBundle 'Shougo/neocomplete.vim'
       NeoBundle 'sjl/gundo.vim'
       NeoBundle 'msanders/snipmate.vim'
       NeoBundle 'Raimondi/delimitMate'
@@ -24,15 +24,15 @@ filetype off
       if executable('ctags')
         NeoBundle 'majutsushi/tagbar'
       endif
-      NeoBundle 'mkitt/browser-refresh.vim'
       NeoBundle 'tpope/vim-surround'
-      "NeoBundle 'Valloric/YouCompleteMe'
       NeoBundle 'Switch'
       NeoBundle 'kshenoy/vim-origami'
+      NeoBundle 'sheerun/vim-polyglot'
+      NeoBundle 'bilalq/lite-dfm'
   " }}}
   " python {{{
       NeoBundle 'kien/ctrlp.vim'
-      NeoBundle 'pfdevilliers/Pretty-Vim-Python'
+      " NeoBundle 'pfdevilliers/Pretty-Vim-Python'
       NeoBundle 'jmcantrell/vim-virtualenv'
       NeoBundle 'klen/python-mode'
   " }}}
@@ -50,7 +50,7 @@ filetype off
   " css, less {{{
       NeoBundle 'skammer/vim-css-color'
       NeoBundle 'groenewege/vim-less'
-      NeoBundle 'mattn/zencoding-vim'
+      NeoBundle 'mattn/emmet-vim'
       NeoBundle 'hail2u/vim-css3-syntax'
   " }}}
   " js {{{
@@ -68,12 +68,16 @@ filetype off
       NeoBundle 'YankRing.vim'
       NeoBundle 'bufexplorer.zip'
       NeoBundle 'Shougo/vimshell'
-      NeoBundle 'Shougo/vimproc'
+      NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \     'mac' : 'make -f make_mac.mak',
+            \    },
+            \ }
       NeoBundle 'godlygeek/tabular'
+      NeoBundle 'wellle/targets.vim'
   " }}}
   " markdown {{{
       NeoBundle 'tpope/vim-markdown'
-      NeoBundle 'suan/vim-instant-markdown'
   " }}}
   " colorschemes {{{
     NeoBundle 'biskark/vim-ultimate-colorscheme-utility'
@@ -94,7 +98,8 @@ filetype off
     NeoBundle 'Mustang2'
     NeoBundle 'xterm16.vim'
     NeoBundle 'Pychimp/vim-luna'
-    NeoBundle 'burnttoast256'
+    NeoBundle 'junegunn/seoul256.vim'
+    NeoBundle 'baskerville/bubblegum'
   " }}}
   " Fancy {{{
       NeoBundle 'uguu-org/vim-matrix-screensaver'
@@ -102,9 +107,6 @@ filetype off
       NeoBundle 'bling/vim-airline'
       NeoBundle 'nathanaelkane/vim-indent-guides'
       NeoBundle 'yonchu/accelerated-smooth-scroll'
-      if has('gui_macvim')
-        "NeoBundle 'Dinduks/vim-holylight'
-      endif
   " }}}
   " Others {{{
     NeoBundle 'tpope/vim-eunuch'
@@ -115,7 +117,6 @@ filetype off
     if executable('ack')
         NeoBundle 'mileszs/ack.vim'
     endif
-
     NeoBundle 'peterhoeg/vim-tmux'
     NeoBundle 'zaiste/tmux.vim'
     NeoBundle 'benmills/vimux'
@@ -124,6 +125,14 @@ filetype off
     NeoBundle 'takac/vim-hardtime'
     NeoBundle 'mips.vim'
     NeoBundle 'moll/vim-bbye'
+    NeoBundle 'jaxbot/brolink.vim'
+    NeoBundle 'ntpeters/vim-better-whitespace'
+  " }}}
+  " Writing {{{
+    NeoBundle 'reedes/vim-thematic'
+    " NeoBundle 'reedes/vim-pencil'
+    NeoBundle 'reedes/vim-colors-pencil'
+    NeoBundle 'reedes/vim-litecorrect'
   " }}}
 " }}}
 filetype plugin indent on
@@ -141,6 +150,7 @@ filetype plugin indent on
   set gdefault        " Global searching as default
   set linebreak
   set synmaxcol=800
+  set lazyredraw
   set showcmd
   set lisp
   set nostartofline
@@ -185,12 +195,8 @@ filetype plugin indent on
 " }}}
 " Splits {{{
   set splitright
-  "set splitbelow
-
 " }}}
 " Tabs, spaces, wrapping {{{
-  set tabstop=4
-  set shiftwidth=4
   set expandtab
   set wrap
   set wm=4
@@ -198,18 +204,14 @@ filetype plugin indent on
   set textwidth=80
   set smarttab
   set autoindent
-  "set smartindent
 " }}}
 " Backups {{{
-
-set noswapfile
-set nobackup
-set nowritebackup
-set autowriteall
-
+    set noswapfile
+    set nobackup
+    set nowritebackup
+    set autowriteall
 " }}}
 " Triggers {{{
-"au FocusLost * :wa " auto save when losing focus
 au VimResized * :wincmd = " resize splits when the window is resized
 " }}}
 " Wildmenu {{{
@@ -247,6 +249,16 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
 " }}}
 " Plugin settings {{{
+  " LiteDFM {{{
+    nnoremap <leader>z ::LiteDFMToggle<CR>i<Esc>`^
+  " }}}
+  " Neocomplete {{{
+    let g:acp_enableAtStartup = 0
+    let g:neocomplete#enable_at_startup=1
+    let g:neocomplete#enable_smart_case=1
+    let g:neocomplete#sources#syntax#min_keyword_length=3
+    let g:neocomplete#lock_buffer_name_pattern= '\*ku\*'
+  " }}}
   " SuperTab {{{
     "let g:SuperTabDefaultCompletionType = "context"
     "let g:SuperTabNoCompleteAfter=['^', ',', '\s']
@@ -254,13 +266,15 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 
   " }}}
   " DelimitMate {{{
-    let delimitMate_excluded_regions = "Comment,String" 
+    let delimitMate_excluded_regions = "Comment" 
+    au FileType ocaml let b:delimitMate_quotes = "\""
   " }}}
   " Gundo {{{
     nnoremap <F5> :GundoToggle<cr>
   " }}}
   " NERDCommenter {{{
     map <leader>/ <plug>NERDCommenterToggle
+    let g:NERDSpaceDelims=1
   " }}}
   " Syntastic {{{
     nnoremap <leader>e :Errors<cr>
@@ -268,6 +282,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_loc_list =0
+    let g:syntastic_mode_map = { 'mode': 'active',
+                                \ 'active_filetypes': ['python'],
+                                \ 'passive_filetypes': ['html'] }
   " }}}
   " NERDTree {{{
     nnoremap <leader>nt :NERDTree
@@ -280,6 +297,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
+    let g:NERDTreeHijackNetrw=0
     "let g:NERDTreeMapJumpFirstChild = 'gK'
     nnoremap <leader>ntf :NERDTreeFind<cr>
     " change the current dir to that of the opening file
@@ -299,6 +317,15 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           nnoremap <silent> <leader>l :TagbarToggle<cr>
           let g:tagbar_foldlevel = 2
           let g:tagbar_width = 30
+
+          let g:tagbar_type_css = {
+          \ 'ctagstype' : 'Css',
+              \ 'kinds'     : [
+                  \ 'c:classes',
+                  \ 's:selectors',
+                  \ 'i:identities'
+              \ ]
+          \ }
     " }}}
   " Python-Mode {{{
         let g:virtualenv_stl_format = '[%n]'
@@ -329,6 +356,13 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           call togglebg#map("<F6>")
       endif
   " }}}
+  " Badwolf {{{
+    let g:badwolf_darkgutter = 1
+    let g:badwolf_html_link_underline = 0
+  " }}}
+  " Pencil {{{
+    let g:pencil_higher_contrast_ui=1
+  " }}}
   " RainbowParentheses {{{
     nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
@@ -349,12 +383,151 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:use_zen_complete_tag = 1
   " }}}
   " IndentGuides {{{
+    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'tagbar']
+  " }}}
+  " Airline {{{
+      if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+      endif
+
+      " unicode symbols
+      " let g:airline_left_sep = '»'
+      " let g:airline_left_sep = '▶'
+      " let g:airline_right_sep = '«'
+      " let g:airline_right_sep = '◀'
+      " let g:airline_symbols.linenr = '␊'
+      " let g:airline_symbols.linenr = '␤'
+      " let g:airline_symbols.linenr = '¶'
+      " let g:airline_symbols.branch = '⎇'
+      " let g:airline_symbols.paste = 'ρ'
+      " let g:airline_symbols.paste = 'Þ'
+      " let g:airline_symbols.paste = '∥'
+      " let g:airline_symbols.whitespace = 'Ξ'
   " }}}
   " Vim Hardtime {{{
-    let g:hardtime_default_on = 1
+    let g:hardtime_default_on = 0
+    nnoremap <leader>ht :HardTimeToggle<cr>
+  " }}}
+  " Matchit {{{
+    let loaded_matchit=1
+  " }}}
+  " Colorscheme-Utility {{{
+    let g:ulti_color_excluded = ['nerdtree', 'help', 'tagbar', 'minibufexpl']
+  " }}}
+  " Thematic {{{
+    let g:thematic#defaults = {
+          \ 'background': 'dark',
+          \ 'typeface': 'Fira Mono OT',
+          \ 'font-size': 14,
+          \ 'laststatus': 2
+          \ }
+    let g:thematic#themes = {
+          \ 'iawriter': { 'colorscheme': 'pencil',
+          \               'background': 'light',
+          \               'columns': 75,
+          \               'font-size': 20,
+          \               'fullscreen': 1,
+          \               'laststatus': 0,
+          \               'linespace': 8,
+          \               'typeface': 'Cousine',
+          \               'number-column-color-mute': 1
+          \             },
+          \ 'pencil_dark':{ 'colorscheme': 'pencil',
+          \                 'background': 'dark',
+          \                 'airline-theme': 'badwolf',
+          \                 'ruler': 1,
+          \               },
+          \ 'tomorrow_night': { 'colorscheme': 'Tomorrow-Night',
+          \                     'background': 'dark',
+          \                     'airline-theme': 'badwolf'
+          \                   },
+          \ 'solarized_dark': { 'colorscheme': 'solarized',
+          \                     'background': 'dark',
+          \                     'airline-theme': 'murmur'
+          \                   },
+          \ 'wombat256': { 'colorscheme': 'wombat256',
+          \               'background': 'dark',
+          \              },
+          \ 'badwolf': { 'colorscheme': 'badwolf',
+          \               'background': 'dark',
+          \               'airline-theme': 'badwolf'
+          \            },
+          \ 'solarized_light': { 'colorscheme': 'solarized',
+          \                     'background': 'light',
+          \                     'airline-theme': 'solarized'
+          \                   },
+          \ 'python': { 'colorscheme': 'badwolf', 
+          \             'airline-theme': 'badwolf',
+          \             'columns': 80,
+          \             'transparency': 4,
+          \             'typeface': 'Inconsolata',
+          \             'font-size': 16,
+          \             'linespace' : 3
+          \           },
+          \ 'css': { 'colorscheme': 'luna', 
+          \          'background': 'dark',
+          \          'airline-theme': 'badwolf',
+          \          'typeface': 'Cousine',
+          \          'font-size': 14,
+          \          'linespace': 2
+          \        },
+          \ 'php': { 'colorscheme': 'hybrid', 
+          \          'background': 'dark',
+          \          'airline-theme': 'badwolf',
+          \          'typeface': 'Fira\ Mono\ OT',
+          \          'font-size': 14,
+          \          'linespace': 2
+          \        },
+          \ 'html': { 'colorscheme': 'badwolf', 
+          \          'background': 'dark',
+          \          'airline-theme': 'badwolf',
+          \          'typeface': 'Cousine',
+          \          'font-size': 14,
+          \          'linespace': 2
+          \        },
+          \ 'c': {'typeface': 'Inconsolata',
+          \       'linespace': 1,
+          \       'colorscheme': 'Tomorrow-Night-Eighties',
+          \       'font-size': 16
+          \      }
+          \ }
+  " }}}
+  " Vim-Pencil {{{
+    " augroup pencil
+      " autocmd!
+      " autocmd FileType markdown call pencil#init()
+      " autocmd FileType textile call pencil#init()
+      " autocmd FileType text call pencil#init({'wrap': 'hard'})
+    " augroup END
+
+    " nnoremap <silent> <leader>ps: SoftPencil<cr>
+    " nnoremap <silent> <leader>ph: HardPencil<cr>
+    " nnoremap <silent> <leader>np: NoPencil<cr>
+    " nnoremap <silent> <leader>pt: TogglePencil<cr>
+  " }}}
+  " Litecorrect {{{
+    augroup litecorrect
+      autocmd!
+      autocmd FileType markdown call litecorrect#init()
+      autocmd FileType textile call litecorrect#init()
+    augroup END
   " }}}
 " }}}
   " Filetype-specific {{{
+    " General {{{
+      augroup ft_general
+        au!
+        au FileType * setl ts=2 sts=2 sw=2 ai si
+        autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
+      augroup END
+    " }}}
+    " C {{{
+      augroup ft_c
+        au!
+        au FileType c setl ai cindent
+        autocmd BUfNewFile,BufRead *.c set formatprg=astyle\ -T4pb
+      augroup END
+    " }}}
     " OCaml {{{
       augroup ft_ocaml
         au!
@@ -387,7 +560,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_html
         au!
         au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango fdm=indent
-        au FileType html,jinja,htmldjango fold=manual
+        au FileType html,jinja,htmldjango setl foldmethod=manual
         au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>f Vatzf
         au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
         au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
@@ -400,38 +573,57 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         au BufEnter asm set noexpandtab
       augroup END
     " }}}
+    " html {{{
+      augroup ft_html
+        au!
+        let g:html_indent_inctags="head,html,body,p,head,table,tbody,div,script"
+        let g:html_indent_script1="inc"
+        let g:html_indent_style1="inc"
+        nnoremap <leader>ef mfggVG=`fzz 
+
+      augroup END
+    " }}}
     " Css, Less {{{
       augroup ft_css
         au!
+        au FileType css setl foldmethod=marker foldmarker={,}
         au FileType css setl ts=2 sw=2 sts=2
         au FileType less setl ts=2 sw=2 sts=2
-        au FileType *.less setl ts=2 sw=2 sts=2
       augroup END
     " }}}
     " Js {{{
       augroup ft_js
         au!
-        au FileType js setl ts=2 sts=2 sw=2
-        au FileType jquery setl ts=2 sts=2 sw=2
+        au FileType js setl ts=2 sts=2 sw=2 ai si
+        au FileType javascript setl ts=2 sts=2 sw=2 ai si
+        au FileType jquery setl ts=2 sts=2 sw=2 ai si
       augroup END
     " }}}
     " java {{{
       augroup ft_java
         au!
         au FileType java setl ts=2 sts=2 sw=2
+        let java_highlight_functions="style"
+        let java_allow_cpp_keywords=1
       augroup END
     " }}}
     " php {{{
       augroup ft_php
         au!
-        au FileType php setl ts=2 sts=2 sw=2
+        au FileType php setl ts=2 sts=2 sw=2 si ai
+      augroup END
+    " }}}
+    " apache {{{
+      augroup ft_apache
+        au!
+        au FileType apache setl ts=4 sts=4 sw=4 ai si
       augroup END
     " }}}
     " vim {{{
       augroup ft_vim
         au!
-        au FileType vim setl foldmethod=marker ts=2 sts=2 sw=2 si ai
-        au BufEnter *pentadactylrc setl foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
+        au FileType vim setlocal foldmethod=marker ts=2 sts=2 sw=2 si ai
+        au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
       augroup END
     " }}}
     " markdown {{{
@@ -455,29 +647,30 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " }}}
   " }}}
 " Environment (GUI/Console) {{{
-syntax on
+syntax enable
 if has('gui_running')
     set background=dark
-    colorscheme hybrid
     set colorcolumn=81
     if has('gui_macvim')
-        set guifont=Inconsolata:h17
-        set transparency=10
-        "set fullscreen
+        set guifont=Fira\ Mono\ OT:h14
+        set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
+        set lsp=2
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
     elseif has('gui_win32')
         echo ":("
     endif
+    set guicursor+=a:blinkon0     " disable cursor blink
+    set guioptions-=T
     set guioptions-=L
     set guioptions-=M
     set guioptions-=r
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    color wombat256mod
+    colorscheme wombat256mod
 endif
 " }}}
 " Utlitiy Functions {{{
@@ -652,6 +845,7 @@ endif
     nnoremap <leader>y  :nohls<cr>
   " }}}
 
+  hi NonText guifg=bg
 
   " Make Y consistent with D and C
   map Y y$
@@ -683,5 +877,3 @@ endif
   vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
   vnoremap <leader>UG :w !gist -p \| pbcopy<cr>
 " }}}
-
-
