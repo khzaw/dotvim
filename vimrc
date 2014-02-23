@@ -14,7 +14,9 @@ filetype off
     let g:vundle_default_git_proto = 'git'
   " }}}
   " Coding {{{
-      NeoBundle 'Shougo/neocomplete.vim'
+      if executable('lua')
+        NeoBundle 'Shougo/neocomplete.vim'
+      endif
       NeoBundle 'sjl/gundo.vim'
       NeoBundle 'msanders/snipmate.vim'
       NeoBundle 'Raimondi/delimitMate'
@@ -125,7 +127,7 @@ filetype off
     NeoBundle 'takac/vim-hardtime'
     NeoBundle 'mips.vim'
     NeoBundle 'moll/vim-bbye'
-    NeoBundle 'jaxbot/brolink.vim'
+      " NeoBundle 'jaxbot/brolink.vim'
     NeoBundle 'ntpeters/vim-better-whitespace'
   " }}}
   " Writing {{{
@@ -297,7 +299,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
-    let g:NERDTreeHijackNetrw=0
+    let g:NERDTreeHijackNetrw=1
     "let g:NERDTreeMapJumpFirstChild = 'gK'
     nnoremap <leader>ntf :NERDTreeFind<cr>
     " change the current dir to that of the opening file
