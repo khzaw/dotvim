@@ -11,75 +11,60 @@ filetype off
     endif
     call neobundle#rc(expand('~/.vim/bundle/'))
     NeoBundleFetch 'Shougo/neobundle.vim'
-    let g:vundle_default_git_proto = 'git'
   " }}}
   " Coding {{{
       if executable('lua')
         NeoBundle 'Shougo/neocomplete.vim'
       endif
       NeoBundle 'sjl/gundo.vim'
-      NeoBundle 'msanders/snipmate.vim'
-      NeoBundle 'Raimondi/delimitMate'
-      NeoBundle 'scrooloose/nerdcommenter'
-      NeoBundle 'scrooloose/syntastic'
-      NeoBundle 'scrooloose/nerdtree'
+      NeoBundle 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
+      NeoBundle 'scrooloose/nerdcommenter'    "commenting
+      NeoBundle 'scrooloose/syntastic'        "syntax wise error checking
+      NeoBundle 'scrooloose/nerdtree'         "filebrowser
       if executable('ctags')
-        NeoBundle 'majutsushi/tagbar'
+        NeoBundle 'majutsushi/tagbar'         "source code browsing
       endif
-      NeoBundle 'tpope/vim-surround'
-      NeoBundle 'Switch'
-      NeoBundle 'kshenoy/vim-origami'
-      NeoBundle 'sheerun/vim-polyglot'
-      NeoBundle 'bilalq/lite-dfm'
+      NeoBundle 'tpope/vim-surround'          "quoting/parenthizing made simple
+      "NeoBundle 'AndrewRadev/switch.vim'
+      "NeoBundle 'kshenoy/vim-origami'        "handle all folding
+      NeoBundle 'sheerun/vim-polyglot'        "a collection of all syntax
   " }}}
   " python {{{
       NeoBundle 'kien/ctrlp.vim'
-      " NeoBundle 'pfdevilliers/Pretty-Vim-Python'
-      NeoBundle 'jmcantrell/vim-virtualenv'
       NeoBundle 'klen/python-mode'
+      NeoBundle 'jmcantrell/vim-virtualenv'
   " }}}
   " LaTeX {{{
-      NeoBundle 'jcf/vim-latex'
+      "NeoBundle 'jcf/vim-latex'
   " }}}
   " OCaml {{{
-      NeoBundle 'def-lkb/vimbufsync'
+      "NeoBundle 'def-lkb/vimbufsync'
   " }}}
   " html {{{
       NeoBundle 'docunext/closetag.vim'
-      NeoBundle 'tmhedberg/matchit'
-      NeoBundle 'othree/html5.vim'
+      NeoBundle 'tmhedberg/matchit'             "extend % for tags .,etc
   " }}}
   " css, less {{{
-      NeoBundle 'skammer/vim-css-color'
-      NeoBundle 'groenewege/vim-less'
+      NeoBundle 'ap/vim-css-color'
       NeoBundle 'mattn/emmet-vim'
-      NeoBundle 'hail2u/vim-css3-syntax'
   " }}}
   " js {{{
-      NeoBundle 'juvenn/mustache.vim'
-      NeoBundle 'kchmck/vim-coffee-script'
       NeoBundle 'othree/javascript-libraries-syntax.vim'
-      NeoBundle 'AndrewRadev/inline_edit.vim'
   " }}}
   " git {{{
       NeoBundle 'tpope/vim-fugitive'
       NeoBundle 'airblade/vim-gitgutter'
   " }}}
   " Utilities {{{
-      NeoBundle 'tpope/vim-repeat'
-      NeoBundle 'YankRing.vim'
-      NeoBundle 'bufexplorer.zip'
-      NeoBundle 'Shougo/vimshell'
-      NeoBundle 'Shougo/vimproc', {
+      NeoBundle 'tpope/vim-repeat'               " repeating of plugin commands
+      "NeoBundle 'Shougo/vimshell'
+      NeoBundle 'Shougo/vimproc', {              " interactive command exe
             \ 'build' : {
             \     'mac' : 'make -f make_mac.mak',
             \    },
             \ }
-      NeoBundle 'godlygeek/tabular'
-      NeoBundle 'wellle/targets.vim'
-  " }}}
-  " markdown {{{
-      NeoBundle 'tpope/vim-markdown'
+      NeoBundle 'godlygeek/tabular'               " tabular formatting
+      NeoBundle 'wellle/targets.vim'              " additional text obj
   " }}}
   " colorschemes {{{
     NeoBundle 'biskark/vim-ultimate-colorscheme-utility'
@@ -87,21 +72,19 @@ filetype off
     NeoBundle 'altercation/vim-colors-solarized'
     NeoBundle 'Lokaltog/vim-distinguished'
     NeoBundle 'sjl/badwolf'
-    NeoBundle 'chriskempson/tomorrow-theme'
+    NeoBundle 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     NeoBundle 'w0ng/vim-hybrid'
     NeoBundle 'zaiste/Atom'
     NeoBundle 'tomasr/molokai'
     NeoBundle 'tpope/vim-vividchalk'
     NeoBundle 'jellybeans.vim'
-    NeoBundle 'Sift'
     NeoBundle 'blackboard.vim'
     NeoBundle 'wombat256.vim'
-    NeoBundle 'dhruvasagar/vim-railscasts-theme'
     NeoBundle 'Mustang2'
-    NeoBundle 'xterm16.vim'
     NeoBundle 'Pychimp/vim-luna'
     NeoBundle 'junegunn/seoul256.vim'
     NeoBundle 'baskerville/bubblegum'
+    NeoBundle 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
   " }}}
   " Fancy {{{
       NeoBundle 'uguu-org/vim-matrix-screensaver'
@@ -110,12 +93,11 @@ filetype off
       NeoBundle 'nathanaelkane/vim-indent-guides'
       NeoBundle 'yonchu/accelerated-smooth-scroll'
   " }}}
-  " Others {{{
+  " Others {{
     NeoBundle 'tpope/vim-eunuch'
     NeoBundle 'tpope/vim-speeddating'
     NeoBundle 'tpope/vim-unimpaired'
     NeoBundle 'Lokaltog/vim-easymotion'
-    NeoBundle 'Spaceghost/vim-matchit'
     if executable('ack')
         NeoBundle 'mileszs/ack.vim'
     endif
