@@ -10,12 +10,12 @@ filetype off
         set rtp+=~/.vim/bundle/neobundle.vim
     endif
     call neobundle#rc(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-  " }}}
+    NeoBundleFetch 'Shougo/neobundle.vim'  " }}}
   " Coding {{{
       if executable('lua')
-        NeoBundle 'Shougo/neocomplete.vim'
+        NeoBundleFetch 'Shougo/neocomplete.vim'
       endif
+      NeoBundle 'Valloric/YouCompleteMe'
       NeoBundle 'sjl/gundo.vim'
       NeoBundle 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       NeoBundle 'scrooloose/nerdcommenter'    "commenting
@@ -25,7 +25,6 @@ filetype off
         NeoBundle 'majutsushi/tagbar'         "source code browsing
       endif
       NeoBundle 'tpope/vim-surround'          "quoting/parenthizing made simple
-      "NeoBundle 'AndrewRadev/switch.vim'
       "NeoBundle 'kshenoy/vim-origami'        "handle all folding
       NeoBundle 'sheerun/vim-polyglot'        "a collection of all syntax
   " }}}
@@ -340,6 +339,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           call togglebg#map("<F6>")
       endif
   " }}}
+  " Lucius {{{
+    let g:lucius_style = 'light'
+  " }}}
   " Badwolf {{{
     let g:badwolf_darkgutter = 1
     let g:badwolf_html_link_underline = 0
@@ -637,6 +639,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
+        colorscheme peacock
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
