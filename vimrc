@@ -49,6 +49,7 @@ filetype off
   " }}}
   " js {{{
       NeoBundle 'othree/javascript-libraries-syntax.vim'
+      NeoBundle 'pangloss/vim-javascript'
   " }}}
   " git {{{
       NeoBundle 'tpope/vim-fugitive'
@@ -84,6 +85,7 @@ filetype off
     NeoBundle 'junegunn/seoul256.vim'
     NeoBundle 'baskerville/bubblegum'
     NeoBundle 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
+    NeoBundle 'reedes/vim-colors-pencil'
   " }}}
   " Fancy {{{
       NeoBundle 'uguu-org/vim-matrix-screensaver'
@@ -91,8 +93,13 @@ filetype off
       NeoBundle 'bling/vim-airline'
       NeoBundle 'nathanaelkane/vim-indent-guides'
       NeoBundle 'yonchu/accelerated-smooth-scroll'
+
+      NeoBundle 'rizzatti/funcoo.vim'
+      NeoBundle 'rizzatti/dash.vim'
+
+      NeoBundle 'junegunn/goyo.vim'
   " }}}
-  " Others {{
+  " Others {{{
     NeoBundle 'tpope/vim-eunuch'
     NeoBundle 'tpope/vim-speeddating'
     NeoBundle 'tpope/vim-unimpaired'
@@ -110,14 +117,15 @@ filetype off
     NeoBundle 'moll/vim-bbye'
       " NeoBundle 'jaxbot/brolink.vim'
     NeoBundle 'ntpeters/vim-better-whitespace'
-  " }}}
+    " }}}
   " Writing {{{
     NeoBundle 'reedes/vim-thematic'
     " NeoBundle 'reedes/vim-pencil'
-    NeoBundle 'reedes/vim-colors-pencil'
     NeoBundle 'reedes/vim-litecorrect'
+    NeoBundle 'tpope/vim-markdown'
+
+    " }}}
   " }}}
-" }}}
 filetype plugin indent on
 " Leader {{{
   let mapleader = ","
@@ -209,21 +217,10 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 
 " }}}
 " Navigation {{{
-  " Tabs {{{
-    nnoremap <C-l> gt
-    nnoremap <C-h> gT
-    nnoremap gl <C-w>l
-
-    " QQ - quit tab
-    nnoremap qq :QuitTab<cr>
-    command! QuitTab call s:QuitTab()
-    function! s:QuitTab()
-        try
-            tabclose
-        catch /E784/    " can't close last tab
-            qall
-        endtry
-    endfunction
+  " Buffers {{{
+    nnoremap <C-l> :bnext<cr>
+    nnoremap <C-h> :bprev<cr>
+    "nnoremap gl <C-w>l
   " }}}
   " Splits {{{
     nmap gh <C-w>h
@@ -325,12 +322,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_syntax_builtin_funcs = 1
         let g:pymode_rope = 0
         let g:pymode_rope_extended_complete = 0
-        let g:pymode_lint_write = 0
         let g:pymode_run_key = 'R'
-        let g:pymode_lint = 1
+        let g:pymode_lint = 1       " code checking
         let g:pymode_indent = 1
-        let g:pymode_rope_vim_completion = 1
-        let g:pymode_rope_always_show_complete_menu = 0
+        let g:pymode_rope_completion = 1
+        let g:pymode_rope_complete_on_dot = 1
+        let g:pymode_rope_always_show_complete_menu = 1
         let g:pymode_syntax_print_as_function = 1
     " }}}
   " Solarized {{{
@@ -338,9 +335,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       if has('gui_running')
           call togglebg#map("<F6>")
       endif
-  " }}}
-  " Lucius {{{
-    let g:lucius_style = 'light'
   " }}}
   " Badwolf {{{
     let g:badwolf_darkgutter = 1
@@ -376,19 +370,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:airline_symbols = {}
       endif
 
-      " unicode symbols
-      " let g:airline_left_sep = '»'
-      " let g:airline_left_sep = '▶'
-      " let g:airline_right_sep = '«'
-      " let g:airline_right_sep = '◀'
-      " let g:airline_symbols.linenr = '␊'
-      " let g:airline_symbols.linenr = '␤'
-      " let g:airline_symbols.linenr = '¶'
-      " let g:airline_symbols.branch = '⎇'
-      " let g:airline_symbols.paste = 'ρ'
-      " let g:airline_symbols.paste = 'Þ'
-      " let g:airline_symbols.paste = '∥'
-      " let g:airline_symbols.whitespace = 'Ξ'
+      let g:airline#extensions#tabline#enabled = 1
+      let g:airline#extensions#tabline#show_buffers = 1
+      let g:airline#extensions#tabline#fnamemode = ':t'
   " }}}
   " Vim Hardtime {{{
     let g:hardtime_default_on = 0
@@ -403,9 +387,11 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Thematic {{{
     let g:thematic#defaults = {
           \ 'background': 'dark',
+          \ 'colorscheme': 'bubblegum',
           \ 'typeface': 'Fira Mono OT',
           \ 'font-size': 14,
-          \ 'laststatus': 2
+          \ 'laststatus': 2,
+          \ 'fullscreen': 1
           \ }
     let g:thematic#themes = {
           \ 'iawriter': { 'colorscheme': 'pencil',
@@ -419,23 +405,18 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           \               'number-column-color-mute': 1
           \             },
           \ 'pencil_dark':{ 'colorscheme': 'pencil',
-          \                 'background': 'dark',
           \                 'airline-theme': 'badwolf',
           \                 'ruler': 1,
           \               },
           \ 'tomorrow_night': { 'colorscheme': 'Tomorrow-Night',
-          \                     'background': 'dark',
           \                     'airline-theme': 'badwolf'
           \                   },
           \ 'solarized_dark': { 'colorscheme': 'solarized',
-          \                     'background': 'dark',
           \                     'airline-theme': 'murmur'
           \                   },
           \ 'wombat256': { 'colorscheme': 'wombat256',
-          \               'background': 'dark',
           \              },
           \ 'badwolf': { 'colorscheme': 'badwolf',
-          \               'background': 'dark',
           \               'airline-theme': 'badwolf'
           \            },
           \ 'solarized_light': { 'colorscheme': 'solarized',
@@ -443,8 +424,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           \                     'airline-theme': 'solarized'
           \                   },
           \ 'python': { 'colorscheme': 'badwolf', 
-          \             'airline-theme': 'badwolf',
-          \             'columns': 80,
+          \             'airline-theme': 'ubaryd',
           \             'transparency': 4,
           \             'typeface': 'Inconsolata',
           \             'font-size': 16,
@@ -472,7 +452,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
           \          'linespace': 2
           \        },
           \ 'c': {'typeface': 'Inconsolata',
-          \       'linespace': 1,
+          \       'linespace': 2,
           \       'colorscheme': 'Tomorrow-Night-Eighties',
           \       'font-size': 16
           \      }
@@ -526,6 +506,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " Python {{{
       augroup ft_python
         au!
+        au FileType python setl ts=4 sts=4 sw=4 ai ci
         if has('gui_running')
             "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
             "autocmd BufEnter * match OverLength /\%81v.\+/
@@ -639,8 +620,8 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme peacock
-        set transparency=5
+        colorscheme bubblegum
+        set transparency=3
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set lsp=2
