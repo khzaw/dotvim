@@ -117,6 +117,7 @@ filetype off
     NeoBundle 'moll/vim-bbye'
       " NeoBundle 'jaxbot/brolink.vim'
     NeoBundle 'ntpeters/vim-better-whitespace'
+    NeoBundle 'noerrmsg.vim'
     " }}}
   " Writing {{{
     NeoBundle 'reedes/vim-thematic'
