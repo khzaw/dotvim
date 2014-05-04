@@ -32,6 +32,8 @@ filetype off
       NeoBundle 'kien/ctrlp.vim'
       NeoBundle 'klen/python-mode'
       NeoBundle 'jmcantrell/vim-virtualenv'
+      NeoBundle 'emoosx/vim-conceal'
+      let g:no_vim_conceal=1
   " }}}
   " LaTeX {{{
       "NeoBundle 'jcf/vim-latex'
@@ -98,6 +100,7 @@ filetype off
       NeoBundle 'rizzatti/dash.vim'
 
       NeoBundle 'junegunn/goyo.vim'
+      NeoBundle 'mhinz/vim-startify'
   " }}}
   " Others {{{
     NeoBundle 'tpope/vim-eunuch'
@@ -118,6 +121,7 @@ filetype off
       " NeoBundle 'jaxbot/brolink.vim'
     NeoBundle 'ntpeters/vim-better-whitespace'
     NeoBundle 'noerrmsg.vim'
+    NeoBundle 'itchyny/calendar.vim'
     " }}}
   " Writing {{{
     NeoBundle 'reedes/vim-thematic'
@@ -227,6 +231,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nmap gh <C-w>h
     nmap gk <C-w>k
     nmap gj <C-w>j
+    nmap gl <C-w>l
   " }}}
 " }}}
 " Plugin settings {{{
@@ -285,7 +290,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     autocmd bufenter * cd %:p:h
   " }}}
   " CtrlP {{{
-        map <leader>p :CtrlP<cr>
+        map <leader>p :CtrlP
         let g:ctrlp_map = '<c-p>'
         let g:ctrlp_cmd = 'CtrlP'
         let g:ctrlp_custom_ignore = {
@@ -621,8 +626,8 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme bubblegum
-        set transparency=3
+        colorscheme laravel
+        set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set lsp=2
@@ -814,7 +819,7 @@ endif
     nnoremap <leader>y  :nohls<cr>
   " }}}
 
-  hi NonText guifg=bg
+  :hi NonText guifg=bg
 
   " Make Y consistent with D and C
   map Y y$
