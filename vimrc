@@ -10,7 +10,8 @@ filetype off
         set rtp+=~/.vim/bundle/neobundle.vim
     endif
     call neobundle#rc(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'  " }}}
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    " }}}
   " Coding {{{
       if executable('lua')
         NeoBundleFetch 'Shougo/neocomplete.vim'
@@ -25,15 +26,14 @@ filetype off
         NeoBundle 'majutsushi/tagbar'         "source code browsing
       endif
       NeoBundle 'tpope/vim-surround'          "quoting/parenthizing made simple
-      "NeoBundle 'kshenoy/vim-origami'        "handle all folding
-      NeoBundle 'sheerun/vim-polyglot'        "a collection of all syntax
+      NeoBundle 'sheerun/vim-polyglot'        " a collection of syntax
+      " NeoBundle 'kshenoy/vim-origami'        "handle all folding
   " }}}
   " python {{{
       NeoBundle 'kien/ctrlp.vim'
       NeoBundle 'klen/python-mode'
       NeoBundle 'jmcantrell/vim-virtualenv'
       NeoBundle 'emoosx/vim-conceal'
-      let g:no_vim_conceal=1
   " }}}
   " LaTeX {{{
       "NeoBundle 'jcf/vim-latex'
@@ -94,7 +94,6 @@ filetype off
       NeoBundle 'kien/rainbow_parentheses.vim'
       NeoBundle 'bling/vim-airline'
       NeoBundle 'nathanaelkane/vim-indent-guides'
-      NeoBundle 'yonchu/accelerated-smooth-scroll'
 
       NeoBundle 'rizzatti/funcoo.vim'
       NeoBundle 'rizzatti/dash.vim'
@@ -113,7 +112,7 @@ filetype off
     NeoBundle 'peterhoeg/vim-tmux'
     NeoBundle 'zaiste/tmux.vim'
     NeoBundle 'benmills/vimux'
-    NeoBundle 'slim-template/vim-slim'
+    " NeoBundle 'slim-template/vim-slim'
     NeoBundle 'vim-scripts/scratch.vim'
     NeoBundle 'takac/vim-hardtime'
     NeoBundle 'mips.vim'
@@ -137,13 +136,13 @@ filetype plugin indent on
   let maplocalleader = "\\"
 " }}}
 " Configs {{{
-  set nocompatible 			" leave vi-compatibility mode
-  set encoding=utf-8 			" unicode encoding by default
-  set title                   " show title in terminal
+  set nocompatible        " leave vi-compatibility mode
+  set encoding=utf-8      " unicode encoding by default
+  set title               " show title in terminal
   set ttyfast
-  set hidden                  " buffer hidden, not closed, when abandoned
+  set hidden              " buffer hidden, not closed, when abandoned
   set noexrc
-  set gdefault        " Global searching as default
+  set gdefault            " Global searching as default
   set linebreak
   set synmaxcol=800
   set lazyredraw
@@ -151,7 +150,7 @@ filetype plugin indent on
   set lisp
   set nostartofline
   set history=1000
-  set visualbell                      " supress audio/visual error
+  set visualbell          " supress audio/visual error
   set invcursorcolumn
   set backspace=indent,eol,start
   set relativenumber
@@ -290,7 +289,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     autocmd bufenter * cd %:p:h
   " }}}
   " CtrlP {{{
-        map <leader>p :CtrlP
+        map <leader>p :CtrlP<cr>
         let g:ctrlp_map = '<c-p>'
         let g:ctrlp_cmd = 'CtrlP'
         let g:ctrlp_custom_ignore = {
@@ -324,6 +323,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_rope_goto_def_newwin = "vnew"
         let g:pymode_breakpoint = 1
         let g:pymode_syntax = 1
+        let g:pymode_doc_bind = '<C-k>'
         let g:pymode_syntax_builtin_objs = 1
         let g:pymode_syntax_builtin_funcs = 1
         let g:pymode_rope = 0
@@ -626,7 +626,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme laravel
+        colorscheme bubblegum
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
@@ -755,7 +755,7 @@ endif
   " }}}
   " Auto saving VIMRC {{{
   augroup vimrcs
-      au!
+      au
       au bufwritepost ~/.vimrc
       \ source ~/.vimrc |
   augroup END
@@ -782,10 +782,10 @@ endif
   " Fast scrolling {{{
     nnoremap <C-e>  3<C-e>
     nnoremap <C-y>  3<C-y>
-    nmap J 5j
-    nmap K 5k
-    xmap J 5j
-    xmap K 5k
+    nnoremap J 5j
+    nnoremap K 5k
+    xnoremap J 5j
+    xnoremap K 5k
   " }}}
   " easier moving of code blocks {{{
     vnoremap < <gv
