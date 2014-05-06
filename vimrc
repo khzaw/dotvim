@@ -99,7 +99,6 @@ filetype off
       NeoBundle 'rizzatti/dash.vim'
 
       NeoBundle 'junegunn/goyo.vim'
-      NeoBundle 'mhinz/vim-startify'
   " }}}
   " Others {{{
     NeoBundle 'tpope/vim-eunuch'
@@ -755,9 +754,8 @@ endif
   " }}}
   " Auto saving VIMRC {{{
   augroup vimrcs
-      au
-      au bufwritepost ~/.vimrc
-      \ source ~/.vimrc |
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
