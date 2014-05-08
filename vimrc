@@ -14,9 +14,9 @@ filetype off
     " }}}
   " Coding {{{
       if executable('lua')
-        NeoBundleFetch 'Shougo/neocomplete.vim'
+        NeoBundle 'Shougo/neocomplete.vim'
       endif
-      NeoBundle 'Valloric/YouCompleteMe'
+      " NeoBundleFetch 'Valloric/YouCompleteMe'
       NeoBundle 'sjl/gundo.vim'
       NeoBundle 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       NeoBundle 'scrooloose/nerdcommenter'    "commenting
@@ -233,6 +233,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
 " }}}
 " Plugin settings {{{
+  " YouCompleteMe {{{
+    let g:ycm_filetype_specific_completion_to_disable = {"vim": "xx"}
+  " }}}
   " LiteDFM {{{
     nnoremap <leader>z ::LiteDFMToggle<CR>i<Esc>`^
   " }}}
@@ -355,8 +358,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     map <silent><leader>r  :RRB<cr>
   " }}}
   " Vim Git Gutter {{{
-    " enable vim-gitgutter by default
-    let g:gitgutter_enabled = 0
+    let g:gitgutter_enabled = 0 " disable git gutter by default
+    nnoremap <leader>gg :GitGutterToggle<cr>
   " }}}
   " VimShell {{{
     let g:vimshell_editor_command = "/usr/local/bin/mvim"
@@ -392,7 +395,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Thematic {{{
     let g:thematic#defaults = {
           \ 'background': 'dark',
-          \ 'colorscheme': 'bubblegum',
+          \ 'colorscheme': 'badwolf',
           \ 'typeface': 'Fira Mono OT',
           \ 'font-size': 14,
           \ 'laststatus': 2,
@@ -483,6 +486,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       autocmd FileType textile call litecorrect#init()
     augroup END
   " }}}
+  " Emmet {{{
+    let g:use_emmet_complete_tag = 1
 " }}}
   " Filetype-specific {{{
     " General {{{
@@ -625,7 +630,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme bubblegum
+        colorscheme badwolf
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
@@ -770,8 +775,6 @@ endif
 " Convenience Mappings {{{
   " Toggle CursorColumn  {{{
     nnoremap <F4> :set invcursorcolumn<cr>
-    inoremap <F4> <esc>:set invcursorcolumn<cr>a
-    vnoremap <F4> <esc>:set invcursorcolumn<cr>
   " }}}
   " Previous/next buffers {{{
     map <M-D-Left>  :bp<cr>
