@@ -266,12 +266,13 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Syntastic {{{
     nnoremap <leader>e :Errors<cr>
     let g:syntastic_check_on_open = 0
-    let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+    " let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_loc_list =0
     let g:syntastic_mode_map = { 'mode': 'active',
                                 \ 'active_filetypes': ['python'],
                                 \ 'passive_filetypes': ['html'] }
+    let g:syntastic_javascript_checkers=['jshint']
   " }}}
   " NERDTree {{{
     nnoremap <leader>nt :NERDTree
@@ -356,6 +357,11 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
   " Browser Refresh {{{
     map <silent><leader>r  :RRB<cr>
+  " }}}
+  " Fugitive {{{
+    nnoremap <leader>gs :Gstatus<cr>
+    nnoremap <leader>gw :Gwrite<cr>
+    nnoremap <leader>gp :Git push<cr>
   " }}}
   " Vim Git Gutter {{{
     let g:gitgutter_enabled = 0 " disable git gutter by default
