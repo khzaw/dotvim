@@ -67,6 +67,7 @@ filetype off
             \ }
       NeoBundle 'godlygeek/tabular'               " tabular formatting
       NeoBundle 'wellle/targets.vim'              " additional text obj
+      NeoBundle 'kana/vim-submode'                " resizing splits
   " }}}
   " colorschemes {{{
     NeoBundle 'biskark/vim-ultimate-colorscheme-utility'
@@ -499,8 +500,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " General {{{
       augroup ft_general
         au!
-        au FileType * setl ts=2 sts=2 sw=2 ai si
-        autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
+        " au FileType * setl ts=2 sts=2 sw=2 ai si
+        " autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
       augroup END
     " }}}
     " C {{{
@@ -542,9 +543,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " html {{{
       augroup ft_html
         au!
-        au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango fdm=indent
-        au FileType html,jinja,htmldjango setl foldmethod=manual
-        au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>f Vatzf
+        au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango ft=htmldjango fdm=manual nnoremap <buffer> <localleader>f Vatzf
         au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
         au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
       augroup END
