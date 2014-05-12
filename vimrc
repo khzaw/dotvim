@@ -52,6 +52,7 @@ filetype off
   " js {{{
       NeoBundle 'othree/javascript-libraries-syntax.vim'
       NeoBundle 'pangloss/vim-javascript'
+      NeoBundle 'mklabs/grunt.vim'
   " }}}
   " git {{{
       NeoBundle 'tpope/vim-fugitive'
