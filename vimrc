@@ -122,6 +122,7 @@ filetype off
     NeoBundle 'ntpeters/vim-better-whitespace'
     NeoBundle 'noerrmsg.vim'
     NeoBundle 'itchyny/calendar.vim'
+    NeoBundle 'MarcWeber/vim-addon-local-vimrc'
     " }}}
   " Writing {{{
     NeoBundle 'reedes/vim-thematic'
@@ -298,7 +299,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:ctrlp_map = '<c-p>'
         let g:ctrlp_cmd = 'CtrlP'
         let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/](\.git|\.hg|\.svn)$',
+            \ 'dir': '\v[\/](\.git|\.hg|\.svn|build)$',
             \ 'file': '\.exe$\|\.so$\|\.javac$\|\.pyc$'
             \ }
 
@@ -496,7 +497,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
   " Emmet {{{
     let g:use_emmet_complete_tag = 1
-" }}}
+  " }}}
   " Filetype-specific {{{
     " General {{{
       augroup ft_general
