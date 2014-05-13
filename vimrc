@@ -90,6 +90,7 @@ filetype off
     NeoBundle 'baskerville/bubblegum'
     NeoBundle 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
     NeoBundle 'reedes/vim-colors-pencil'
+    NeoBundle 'chriskempson/base16-vim'
   " }}}
   " Fancy {{{
       NeoBundle 'uguu-org/vim-matrix-screensaver'
@@ -639,7 +640,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme badwolf
+        colorscheme base16-eighties
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
