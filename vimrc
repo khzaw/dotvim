@@ -564,8 +564,10 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:html_indent_script1="inc"
         let g:html_indent_style1="inc"
         nnoremap <leader>ef mfggVG=`fzz 
+				au FileType html setl ts=2 sw=2 sts=2
 
       augroup END
+      nnoremap <leader>hd = :set ft=htmldjango<cr>
     " }}}
     " Css, Less {{{
       augroup ft_css
