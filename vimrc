@@ -5,134 +5,140 @@
 set nocompatible
 filetype off
 " Bundles installed {{{
-  " NeoBundle {{{
+  " Vundle {{{
     if has('vim_starting')
-        set rtp+=~/.vim/bundle/neobundle.vim
+        set rtp+=~/.vim/bundle/Vundle.vim
     endif
-    call neobundle#rc(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
+    call vundle#begin()
+    " Let Vundle manage itself
+    Plugin 'gmarik/Vundle.vim'
+    let g:vundle_default_git_proto = 'git'
     " }}}
   " Coding {{{
       if executable('lua')
-        NeoBundle 'Shougo/neocomplete.vim'
+        Plugin 'Shougo/neocomplete.vim'
+        Plugin 'Shougo/neosnippet'
+        Plugin 'Shougo/neosnippet-snippets'
       endif
       " NeoBundleFetch 'Valloric/YouCompleteMe'
-      NeoBundle 'sjl/gundo.vim'
-      NeoBundle 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
-      NeoBundle 'scrooloose/nerdcommenter'    "commenting
-      NeoBundle 'scrooloose/syntastic'        "syntax wise error checking
-      NeoBundle 'scrooloose/nerdtree'         "filebrowser
+      Plugin 'sjl/gundo.vim'
+      Plugin 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
+      Plugin 'scrooloose/nerdcommenter'    "commenting
+      Plugin 'scrooloose/syntastic'        "syntax wise error checking
+      Plugin 'scrooloose/nerdtree'         "filebrowser
       if executable('ctags')
-        NeoBundle 'majutsushi/tagbar'         "source code browsing
+        Plugin 'majutsushi/tagbar'         "source code browsing
       endif
-      NeoBundle 'tpope/vim-surround'          "quoting/parenthizing made simple
-      NeoBundle 'sheerun/vim-polyglot'        " a collection of syntax
-      " NeoBundle 'kshenoy/vim-origami'        "handle all folding
+      Plugin 'tpope/vim-surround'          "quoting/parenthizing made simple
+      Plugin 'sheerun/vim-polyglot'        " a collection of syntax
+      " Plugin 'kshenoy/vim-origami'        "handle all folding
   " }}}
   " python {{{
-      NeoBundle 'kien/ctrlp.vim'
-      NeoBundle 'klen/python-mode'
-      NeoBundle 'jmcantrell/vim-virtualenv'
-      NeoBundle 'emoosx/vim-conceal'
+      Plugin 'kien/ctrlp.vim'
+      Plugin 'klen/python-mode'
+      Plugin 'jmcantrell/vim-virtualenv'
+      Plugin 'emoosx/vim-conceal'
   " }}}
   " LaTeX {{{
-      "NeoBundle 'jcf/vim-latex'
+      "Plugin 'jcf/vim-latex'
+  " }}}
+  " Scala {{{
+      Plugin 'derekwyatt/vim-scala'
   " }}}
   " OCaml {{{
-      "NeoBundle 'def-lkb/vimbufsync'
+      "Plugin 'def-lkb/vimbufsync'
   " }}}
   " html {{{
-      NeoBundle 'docunext/closetag.vim'
-      NeoBundle 'tmhedberg/matchit'             "extend % for tags .,etc
+      Plugin 'docunext/closetag.vim'
+      Plugin 'tmhedberg/matchit'             "extend % for tags .,etc
   " }}}
   " css, less {{{
-      NeoBundle 'ap/vim-css-color'
-      NeoBundle 'mattn/emmet-vim'
+      Plugin 'ap/vim-css-color'
+      Plugin 'mattn/emmet-vim'
   " }}}
   " js {{{
-      NeoBundle 'othree/javascript-libraries-syntax.vim'
-      NeoBundle 'pangloss/vim-javascript'
-      NeoBundle 'mklabs/grunt.vim'
+      Plugin 'othree/javascript-libraries-syntax.vim'
+      Plugin 'pangloss/vim-javascript'
+      let g:used_javascript_libs = 'jquery'
+      Plugin 'mklabs/grunt.vim'
+      Plugin 'greatghoul/vim-web-indent'
   " }}}
   " git {{{
-      NeoBundle 'tpope/vim-fugitive'
-      NeoBundle 'airblade/vim-gitgutter'
+      Plugin 'tpope/vim-fugitive'
+      Plugin 'airblade/vim-gitgutter'
   " }}}
   " Utilities {{{
-      NeoBundle 'tpope/vim-repeat'               " repeating of plugin commands
-      "NeoBundle 'Shougo/vimshell'
-      NeoBundle 'Shougo/vimproc', {              " interactive command exe
-            \ 'build' : {
-            \     'mac' : 'make -f make_mac.mak',
-            \    },
-            \ }
-      NeoBundle 'godlygeek/tabular'               " tabular formatting
-      NeoBundle 'wellle/targets.vim'              " additional text obj
-      NeoBundle 'kana/vim-submode'                " resizing splits
+      Plugin 'tpope/vim-repeat'               " repeating of plugin commands
+      "Plugin 'Shougo/vimshell'
+      " Plugin 'Shougo/vimproc', {              " interactive command exe
+            " \ 'build' : {
+            " \     'mac' : 'make -f make_mac.mak',
+            " \    },
+            " \ }
+      Plugin 'godlygeek/tabular'               " tabular formatting
+      Plugin 'wellle/targets.vim'              " additional text obj
+      Plugin 'kana/vim-submode'                " resizing splits
   " }}}
   " colorschemes {{{
-    NeoBundle 'biskark/vim-ultimate-colorscheme-utility'
-    NeoBundle 'flazz/vim-colorschemes'
-    NeoBundle 'altercation/vim-colors-solarized'
-    NeoBundle 'Lokaltog/vim-distinguished'
-    NeoBundle 'sjl/badwolf'
-    NeoBundle 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
-    NeoBundle 'w0ng/vim-hybrid'
-    NeoBundle 'zaiste/Atom'
-    NeoBundle 'tomasr/molokai'
-    NeoBundle 'tpope/vim-vividchalk'
-    NeoBundle 'jellybeans.vim'
-    NeoBundle 'blackboard.vim'
-    NeoBundle 'wombat256.vim'
-    NeoBundle 'Mustang2'
-    NeoBundle 'Pychimp/vim-luna'
-    NeoBundle 'junegunn/seoul256.vim'
-    NeoBundle 'baskerville/bubblegum'
-    NeoBundle 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
-    NeoBundle 'reedes/vim-colors-pencil'
-    NeoBundle 'chriskempson/base16-vim'
+    Plugin 'biskark/vim-ultimate-colorscheme-utility'
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'Lokaltog/vim-distinguished'
+    Plugin 'sjl/badwolf'
+    Plugin 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
+    Plugin 'w0ng/vim-hybrid'
+    Plugin 'zaiste/Atom'
+    Plugin 'tomasr/molokai'
+    Plugin 'tpope/vim-vividchalk'
+    Plugin 'jellybeans.vim'
+    Plugin 'blackboard.vim'
+    Plugin 'wombat256.vim'
+    Plugin 'Mustang2'
+    Plugin 'Pychimp/vim-luna'
+    Plugin 'junegunn/seoul256.vim'
+    Plugin 'baskerville/bubblegum'
+    Plugin 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
+    Plugin 'reedes/vim-colors-pencil'
+    Plugin 'chriskempson/base16-vim'
   " }}}
   " Fancy {{{
-      NeoBundle 'uguu-org/vim-matrix-screensaver'
-      NeoBundle 'kien/rainbow_parentheses.vim'
-      NeoBundle 'bling/vim-airline'
-      NeoBundle 'nathanaelkane/vim-indent-guides'
+      Plugin 'uguu-org/vim-matrix-screensaver'
+      Plugin 'kien/rainbow_parentheses.vim'
+      Plugin 'bling/vim-airline'
+      Plugin 'nathanaelkane/vim-indent-guides'
 
-      NeoBundle 'rizzatti/funcoo.vim'
-      NeoBundle 'rizzatti/dash.vim'
+      Plugin 'rizzatti/funcoo.vim'
+      Plugin 'rizzatti/dash.vim'
 
-      NeoBundle 'junegunn/goyo.vim'
+      Plugin 'junegunn/goyo.vim'
   " }}}
   " Others {{{
-    NeoBundle 'tpope/vim-eunuch'
-    NeoBundle 'tpope/vim-speeddating'
-    NeoBundle 'tpope/vim-unimpaired'
-    NeoBundle 'Lokaltog/vim-easymotion'
+    Plugin 'tpope/vim-eunuch'
+    Plugin 'tpope/vim-speeddating'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'Lokaltog/vim-easymotion'
     if executable('ack')
-        NeoBundle 'mileszs/ack.vim'
+        Plugin 'mileszs/ack.vim'
     endif
-    NeoBundle 'peterhoeg/vim-tmux'
-    NeoBundle 'zaiste/tmux.vim'
-    NeoBundle 'benmills/vimux'
-    " NeoBundle 'slim-template/vim-slim'
-    NeoBundle 'vim-scripts/scratch.vim'
-    NeoBundle 'takac/vim-hardtime'
-    NeoBundle 'mips.vim'
-    NeoBundle 'moll/vim-bbye'
-      " NeoBundle 'jaxbot/brolink.vim'
-    NeoBundle 'ntpeters/vim-better-whitespace'
-    NeoBundle 'noerrmsg.vim'
-    NeoBundle 'itchyny/calendar.vim'
-    NeoBundle 'MarcWeber/vim-addon-local-vimrc'
+    " Plugin 'slim-template/vim-slim'
+    Plugin 'vim-scripts/scratch.vim'
+    Plugin 'takac/vim-hardtime'
+    Plugin 'mips.vim'
+    Plugin 'moll/vim-bbye'
+      " Plugin 'jaxbot/brolink.vim'
+    Plugin 'ntpeters/vim-better-whitespace'
+    Plugin 'itchyny/calendar.vim'
+    Plugin 'MarcWeber/vim-addon-local-vimrc'
     " }}}
   " Writing {{{
-    NeoBundle 'reedes/vim-thematic'
-    " NeoBundle 'reedes/vim-pencil'
-    NeoBundle 'reedes/vim-litecorrect'
-    NeoBundle 'tpope/vim-markdown'
+    Plugin 'reedes/vim-thematic'
+    " Plugin 'reedes/vim-pencil'
+    Plugin 'reedes/vim-litecorrect'
+    Plugin 'tpope/vim-markdown'
 
     " }}}
   " }}}
+call vundle#end()
 filetype plugin indent on
 " Leader {{{
   let mapleader = ","
@@ -157,7 +163,8 @@ filetype plugin indent on
   set invcursorcolumn
   set backspace=indent,eol,start
   set relativenumber
-  set lazyredraw
+  set showmode            " show the current mode
+  set mousehide           " hide the mouse pointer while typing
   set hlsearch
   set autowrite
   set autoread
@@ -279,7 +286,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:syntastic_javascript_checkers=['jshint']
   " }}}
   " NERDTree {{{
-    nnoremap <leader>nt :NERDTree
+    nnoremap <leader>nt :NERDTree<cr>
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
@@ -342,6 +349,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_rope_complete_on_dot = 1
         let g:pymode_rope_always_show_complete_menu = 1
         let g:pymode_syntax_print_as_function = 1
+
+        nnoremap <leader>pr :PymodeRun<cr>
     " }}}
   " Solarized {{{
       let g:solarized_menu = 1
@@ -368,7 +377,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nnoremap <leader>gp :Git push<cr>
   " }}}
   " Vim Git Gutter {{{
-    let g:gitgutter_enabled = 0 " disable git gutter by default
+    let g:gitgutter_enabled = 1 " enable git gutter by default
     nnoremap <leader>gg :GitGutterToggle<cr>
   " }}}
   " VimShell {{{
@@ -499,6 +508,10 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Emmet {{{
     let g:use_emmet_complete_tag = 1
   " }}}
+  " vim-javascript {{{
+    let b:javascript_fold = 1
+    let javascript_enable_domhtmlcss = 1
+  " }}}
   " Filetype-specific {{{
     " General {{{
       augroup ft_general
@@ -528,8 +541,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         au!
         au FileType python setl ts=4 sts=4 sw=4 ai ci
         if has('gui_running')
-            "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-            "autocmd BufEnter * match OverLength /\%81v.\+/
         endif
       augroup END
     " }}}
@@ -554,19 +565,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " asm {{{
       augroup ft_asm
         au!
-        au BufEnter asm setl syn=mips ts=4
-        au BufEnter asm set noexpandtab
       augroup END
     " }}}
     " html {{{
       augroup ft_html
         au!
-        let g:html_indent_inctags="head,html,body,p,head,table,tbody,div,script"
-        let g:html_indent_script1="inc"
-        let g:html_indent_style1="inc"
-        nnoremap <leader>ef mfggVG=`fzz 
-				au FileType html setl ts=2 sw=2 sts=2
-
+        au FileType html setl ts=2 sw=2 sts=2 si ai
       augroup END
       nnoremap <leader>hd = :set ft=htmldjango<cr>
     " }}}
@@ -610,14 +614,14 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_vim
         au!
         au FileType vim setlocal foldmethod=marker ts=2 sts=2 sw=2 si ai
-        au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
+        " au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
       augroup END
     " }}}
     " markdown {{{
       augroup ft_markdown
         au!
         au FileType markdown setl ts=2 sts=2 sw=2 fo-=t
-        autocmd BufEnter *.markdown setlocal wrap fo-=t spell cc=""
+        " autocmd BufEnter *.markdown setlocal wrap fo-=t spell cc=""
       augroup END
     " }}}
     " ruby {{{
@@ -640,7 +644,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme base16-eighties
+        colorscheme base16-default
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
