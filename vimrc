@@ -644,11 +644,11 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme base16-default
+        colorscheme gruvbox
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
-        set lsp=2
+        set lsp=1
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
     elseif has('gui_win32')
