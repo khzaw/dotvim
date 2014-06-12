@@ -47,6 +47,9 @@ filetype off
   " OCaml {{{
       "Plugin 'def-lkb/vimbufsync'
   " }}}
+  " web {{{
+    Plugin 'zoeesilcock/vim-caniuse'
+  " }}}
   " html {{{
       Plugin 'docunext/closetag.vim'
       Plugin 'tmhedberg/matchit'             "extend % for tags .,etc
@@ -65,6 +68,7 @@ filetype off
   " git {{{
       Plugin 'tpope/vim-fugitive'
       Plugin 'airblade/vim-gitgutter'
+      Plugin 'idanarye/vim-merginal'
   " }}}
   " Utilities {{{
       Plugin 'tpope/vim-repeat'               " repeating of plugin commands
