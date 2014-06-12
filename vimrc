@@ -512,6 +512,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let b:javascript_fold = 1
     let javascript_enable_domhtmlcss = 1
   " }}}
+" }}}
   " Filetype-specific {{{
     " General {{{
       augroup ft_general
@@ -552,6 +553,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
             "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
             "autocmd BufEnter * match OverLength /\%81v.\+/
         endif
+      augroup END
+    " }}}
+    " ruby {{{
+      augroup ft_ruby
+        au!
+        au FileType ruby setl ts=2 sts=2 sw=2 ai ci
       augroup END
     " }}}
     " html {{{
@@ -644,7 +651,7 @@ if has('gui_running')
     set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme gruvbox
+        colorscheme base16-default
         set transparency=5
         set fuopt+=maxhorz
         set fuopt+=maxvert
