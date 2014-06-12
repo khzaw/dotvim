@@ -536,16 +536,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         endif
       augroup END
     " }}}
-    " Django {{{
-      augroup ft_django
-        au!
-        au FileType htmldjango setl ts=2 sts=2 sw=2
-        if has('gui_running')
-            "autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-            "autocmd BufEnter * match OverLength /\%81v.\+/
-        endif
-      augroup END
-    " }}}
     " ruby {{{
       augroup ft_ruby
         au!
@@ -558,24 +548,13 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango ft=htmldjango fdm=manual nnoremap <buffer> <localleader>f Vatzf
         au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
         au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
+        au FileType html nnoremap <buffer> <localleader>hd = :set ft=htmldjango<cr>
       augroup END
-    " }}}
-    " asm {{{
-      augroup ft_asm
-        au!
-      augroup END
-    " }}}
-    " html {{{
-      augroup ft_html
-        au!
-        au FileType html setl ts=2 sw=2 sts=2 si ai
-      augroup END
-      nnoremap <leader>hd = :set ft=htmldjango<cr>
     " }}}
     " Css, Less {{{
       augroup ft_css
         au!
-        au FileType css setl foldmethod=marker foldmarker={,}
+        au FileType css,less setl foldmethod=marker foldmarker={,}
         au FileType css setl ts=2 sw=2 sts=2
         au FileType less setl ts=2 sw=2 sts=2
       augroup END
