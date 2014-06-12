@@ -10,8 +10,7 @@ filetype off
         set rtp+=~/.vim/bundle/Vundle.vim
     endif
     call vundle#begin()
-    " Let Vundle manage itself
-    Plugin 'gmarik/Vundle.vim'
+    Plugin 'gmarik/Vundle.vim'      " Let Vundle manage itself
     let g:vundle_default_git_proto = 'git'
     " }}}
   " Coding {{{
@@ -40,7 +39,7 @@ filetype off
       Plugin 'emoosx/vim-conceal'
   " }}}
   " LaTeX {{{
-      "Plugin 'jcf/vim-latex'
+      " Plugin 'jcf/vim-latex'
   " }}}
   " Scala {{{
       Plugin 'derekwyatt/vim-scala'
@@ -135,7 +134,6 @@ filetype off
     " Plugin 'reedes/vim-pencil'
     Plugin 'reedes/vim-litecorrect'
     Plugin 'tpope/vim-markdown'
-
     " }}}
   " }}}
 call vundle#end()
@@ -150,8 +148,8 @@ filetype plugin indent on
   set title               " show title in terminal
   set ttyfast
   set hidden              " buffer hidden, not closed, when abandoned
-  set noexrc
-  set gdefault            " Global searching as default
+  set noexrc              " enables reading of .vimrc in the current directory
+  set gdefault            " global searching as default
   set linebreak
   set synmaxcol=800
   set lazyredraw
@@ -378,7 +376,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
   " Vim Git Gutter {{{
     let g:gitgutter_enabled = 1 " enable git gutter by default
-    nnoremap <leader>gg :GitGutterToggle<cr>
+    nnoremap <leader>gg :GitGutterLineHighlightsToggle<cr>
   " }}}
   " VimShell {{{
     let g:vimshell_editor_command = "/usr/local/bin/mvim"
@@ -497,13 +495,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " nnoremap <silent> <leader>ph: HardPencil<cr>
     " nnoremap <silent> <leader>np: NoPencil<cr>
     " nnoremap <silent> <leader>pt: TogglePencil<cr>
-  " }}}
-  " Litecorrect {{{
-    augroup litecorrect
-      autocmd!
-      autocmd FileType markdown call litecorrect#init()
-      autocmd FileType textile call litecorrect#init()
-    augroup END
   " }}}
   " Emmet {{{
     let g:use_emmet_complete_tag = 1
@@ -813,9 +804,6 @@ endif
     vnoremap < <gv
     vnoremap > >gv
   " }}}
-  " Save a keystroke {{{
-    "nnoremap ; :
-   " }}}
   " Stop using the arrow keys {{{
     nnoremap <up> <nop>
     nnoremap <down> <nop>
