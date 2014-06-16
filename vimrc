@@ -65,6 +65,9 @@ filetype off
       Plugin 'mklabs/grunt.vim'
       Plugin 'greatghoul/vim-web-indent'
   " }}}
+  " go {{{
+      Plugin 'fatih/vim-go'
+  " }}}
   " git {{{
       Plugin 'tpope/vim-fugitive'
       Plugin 'airblade/vim-gitgutter'
