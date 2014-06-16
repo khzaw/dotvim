@@ -103,6 +103,7 @@ filetype off
     Plugin 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
     Plugin 'reedes/vim-colors-pencil'
     Plugin 'chriskempson/base16-vim'
+    Plugin 'jeetsukumaran/vim-mochalatte'
   " }}}
   " Fancy {{{
       Plugin 'uguu-org/vim-matrix-screensaver'
@@ -134,7 +135,6 @@ filetype off
     Plugin 'MarcWeber/vim-addon-local-vimrc'
     " }}}
   " Writing {{{
-    Plugin 'reedes/vim-thematic'
     " Plugin 'reedes/vim-pencil'
     Plugin 'reedes/vim-litecorrect'
     Plugin 'tpope/vim-markdown'
@@ -147,6 +147,8 @@ filetype plugin indent on
   let maplocalleader = "\\"
 " }}}
 " Configs {{{
+  set regexpengine=1
+  syntax enable
   set nocompatible        " leave vi-compatibility mode
   set encoding=utf-8      " unicode encoding by default
   set title               " show title in terminal
@@ -413,80 +415,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Colorscheme-Utility {{{
     let g:ulti_color_excluded = ['nerdtree', 'help', 'tagbar', 'minibufexpl']
   " }}}
-  " Thematic {{{
-    let g:thematic#defaults = {
-          \ 'background': 'dark',
-          \ 'colorscheme': 'badwolf',
-          \ 'typeface': 'Fira Mono OT',
-          \ 'font-size': 14,
-          \ 'laststatus': 2,
-          \ 'fullscreen': 1
-          \ }
-    let g:thematic#themes = {
-          \ 'iawriter': { 'colorscheme': 'pencil',
-          \               'background': 'light',
-          \               'columns': 75,
-          \               'font-size': 20,
-          \               'fullscreen': 1,
-          \               'laststatus': 0,
-          \               'linespace': 8,
-          \               'typeface': 'Cousine',
-          \               'number-column-color-mute': 1
-          \             },
-          \ 'pencil_dark':{ 'colorscheme': 'pencil',
-          \                 'airline-theme': 'badwolf',
-          \                 'ruler': 1,
-          \               },
-          \ 'tomorrow_night': { 'colorscheme': 'Tomorrow-Night',
-          \                     'airline-theme': 'badwolf'
-          \                   },
-          \ 'solarized_dark': { 'colorscheme': 'solarized',
-          \                     'airline-theme': 'murmur'
-          \                   },
-          \ 'wombat256': { 'colorscheme': 'wombat256',
-          \              },
-          \ 'badwolf': { 'colorscheme': 'badwolf',
-          \               'airline-theme': 'badwolf'
-          \            },
-          \ 'solarized_light': { 'colorscheme': 'solarized',
-          \                     'background': 'light',
-          \                     'airline-theme': 'solarized'
-          \                   },
-          \ 'python': { 'colorscheme': 'badwolf', 
-          \             'airline-theme': 'ubaryd',
-          \             'transparency': 4,
-          \             'typeface': 'Inconsolata',
-          \             'font-size': 16,
-          \             'linespace' : 3
-          \           },
-          \ 'css': { 'colorscheme': 'luna', 
-          \          'background': 'dark',
-          \          'airline-theme': 'badwolf',
-          \          'typeface': 'Cousine',
-          \          'font-size': 14,
-          \          'linespace': 2
-          \        },
-          \ 'php': { 'colorscheme': 'hybrid', 
-          \          'background': 'dark',
-          \          'airline-theme': 'badwolf',
-          \          'typeface': 'Fira\ Mono\ OT',
-          \          'font-size': 14,
-          \          'linespace': 2
-          \        },
-          \ 'html': { 'colorscheme': 'badwolf', 
-          \          'background': 'dark',
-          \          'airline-theme': 'badwolf',
-          \          'typeface': 'Cousine',
-          \          'font-size': 14,
-          \          'linespace': 2
-          \        },
-          \ 'c': {'typeface': 'Inconsolata',
-          \       'linespace': 2,
-          \       'colorscheme': 'Tomorrow-Night-Eighties',
-          \       'font-size': 16
-          \      }
-          \ }
-  " }}}
   " Vim-Pencil {{{
     " augroup pencil
       " autocmd!
@@ -504,7 +432,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:use_emmet_complete_tag = 1
   " }}}
   " vim-javascript {{{
-    let b:javascript_fold = 1
     let javascript_enable_domhtmlcss = 1
   " }}}
 " }}}
@@ -620,15 +547,16 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
 " Environment (GUI/Console) {{{
 syntax enable
+set background=dark
+set colorcolumn=81
 if has('gui_running')
-    set background=dark
-    set colorcolumn=81
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
         colorscheme base16-default
-        set transparency=5
+        set transparency=1
         set fuopt+=maxhorz
         set fuopt+=maxvert
+        set fu
         set lsp=1
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
@@ -643,7 +571,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    colorscheme wombat256mod
+    colorscheme gruvbox
 endif
 " }}}
 " Utlitiy Functions {{{
