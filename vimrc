@@ -209,10 +209,15 @@ filetype plugin indent on
   set expandtab
   set wrap
   set wm=4
+  set ts=2
+  set sts=2
+  set sw=2
+  set smartindent
+  set autoindent
+  set ci
   set formatoptions=qrn1
   set textwidth=80
   set smarttab
-  set autoindent
 " }}}
 " Backups {{{
     set noswapfile
@@ -474,13 +479,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup END
     " }}}
     " html {{{
-      augroup ft_html
-        au!
-        au FileType html,jinja,htmldjango setl ts=2 sts=2 sw=2 syn=htmldjango ft=htmldjango fdm=manual nnoremap <buffer> <localleader>f Vatzf
-        au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
-        au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
-        au FileType html nnoremap <buffer> <localleader>hd = :set ft=htmldjango<cr>
-      augroup END
+      " augroup ft_html
+        " au!
+        " au FileType html,jinja,htmldjango setl ts=2 si ai sts=2 sw=2 syn=htmldjango ft=htmldjango fdm=manual nnoremap <buffer> <localleader>f Vatzf
+        " au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
+        " au FileType html,jinja,htmldjango nmap <buffer> <localleader>= Vat=
+      " augroup END
     " }}}
     " Css, Less {{{
       augroup ft_css
