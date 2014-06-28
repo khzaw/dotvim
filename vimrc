@@ -31,6 +31,7 @@ filetype off
       Plugin 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plugin 'sheerun/vim-polyglot'        " a collection of syntax
       " Plugin 'kshenoy/vim-origami'        "handle all folding
+      Plugin 'editorconfig/editorconfig-vim'
   " }}}
   " python {{{
       Plugin 'kien/ctrlp.vim'
