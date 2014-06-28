@@ -245,8 +245,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 " }}}
 " Navigation {{{
   " Buffers {{{
-    nnoremap <C-l> :bnext<cr>
-    nnoremap <C-h> :bprev<cr>
+    nnoremap <C-l> gt
+    nnoremap <C-h> gT
     "nnoremap gl <C-w>l
   " }}}
   " Splits {{{
@@ -564,7 +564,7 @@ if has('gui_running')
         set transparency=1
         set fuopt+=maxhorz
         set fuopt+=maxvert
-        set fu
+        set nofu
         set lsp=1
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
