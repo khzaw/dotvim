@@ -90,6 +90,7 @@ filetype off
     Plugin 'biskark/vim-ultimate-colorscheme-utility'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'altercation/vim-colors-solarized'
+    Plugin 'itchyny/landscape.vim'
     Plugin 'Lokaltog/vim-distinguished'
     Plugin 'sjl/badwolf'
     Plugin 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
