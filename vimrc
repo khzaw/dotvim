@@ -48,6 +48,9 @@ filetype off
   " OCaml {{{
       "Plugin 'def-lkb/vimbufsync'
   " }}}
+  " Haskell {{{
+    Plugin "dag/vim2hs"
+  " }}}
   " web {{{
     Plugin 'zoeesilcock/vim-caniuse'
   " }}}
@@ -120,6 +123,7 @@ filetype off
       Plugin 'rizzatti/dash.vim'
 
       Plugin 'junegunn/goyo.vim'
+      Plugin 'jaxbot/semantic-highlight.vim'
   " }}}
   " Others {{{
     Plugin 'tpope/vim-eunuch'
@@ -213,7 +217,7 @@ filetype plugin indent on
 " Tabs, spaces, wrapping {{{
   set expandtab
   set wrap
-  set wm=4
+  set wm=2
   set ts=2
   set sts=2
   set sw=2
