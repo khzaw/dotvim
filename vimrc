@@ -49,10 +49,10 @@ filetype off
       "Plugin 'def-lkb/vimbufsync'
   " }}}
   " Haskell {{{
-    Plugin "dag/vim2hs"
+      Plugin 'dag/vim2hs'
   " }}}
   " web {{{
-    Plugin 'zoeesilcock/vim-caniuse'
+      Plugin 'zoeesilcock/vim-caniuse'
   " }}}
   " html {{{
       Plugin 'docunext/closetag.vim'
