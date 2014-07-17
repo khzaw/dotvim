@@ -557,6 +557,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         autocmd BufRead,BufNewFile *.json set ft=javascript
       augroup END
     " }}}
+    " make {{{
+			augroup ft_make
+				au!
+				au FileType make setl noexpandtab
+			augroup END
+    " }}}
   " }}}
 " Environment (GUI/Console) {{{
 syntax enable
@@ -731,8 +737,8 @@ endif
   " Stop using the arrow keys {{{
     nnoremap <up> <nop>
     nnoremap <down> <nop>
-    nnoremap <left> <nop>
-    nnoremap <right> <nop>
+    nnoremap <left> :bprev
+    nnoremap <right> :bnext
     inoremap <up> <nop>
     inoremap <down> <nop>
     inoremap <left> <nop>
