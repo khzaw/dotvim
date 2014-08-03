@@ -453,8 +453,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " General {{{
       augroup ft_general
         au!
-        " au FileType * setl ts=2 sts=2 sw=2 ai si
-        " autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
+        au FileType * setl ts=2 sts=2 sw=2 ai si
+        autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
       augroup END
     " }}}
     " C {{{
@@ -488,12 +488,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup END
     " }}}
     " html {{{
-      " augroup ft_html
-        " au!
-        " au FileType html,jinja,htmldjango setl ts=2 si ai sts=2 sw=2 syn=htmldjango ft=htmldjango fdm=manual nnoremap <buffer> <localleader>f Vatzf
-        " au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
-        " au FileType html,jinja,htmldjango nmap <buffer> <localleader>= Vat=
-      " augroup END
+      augroup ft_html
+        au!
+        au FileType html,jinja,htmldjango setl ts=2 si ai sts=2 sw=2 fdm=manual
+        au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
+        au FileType html,jinja,htmldjango nmap <buffer> <localleader>= Vat=
+      augroup END
     " }}}
     " Css, Less {{{
       augroup ft_css
@@ -571,12 +571,11 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono\ OT:h14
-        colorscheme base16-default
+        colorscheme base16-paraiso
         set transparency=1
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set nofu
-        set lsp=1
     elseif has('gui_gtk')
         set guifont=Monospace\ 11
     elseif has('gui_win32')
@@ -737,8 +736,8 @@ endif
   " Stop using the arrow keys {{{
     nnoremap <up> <nop>
     nnoremap <down> <nop>
-    nnoremap <left> :bprev
-    nnoremap <right> :bnext
+    nnoremap <left> :bprev<cr>
+    nnoremap <right> :bnext<cr>
     inoremap <up> <nop>
     inoremap <down> <nop>
     inoremap <left> <nop>
