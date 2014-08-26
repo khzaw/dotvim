@@ -70,7 +70,7 @@ filetype off
       Plugin 'greatghoul/vim-web-indent'
   " }}}
   " go {{{
-      Plugin 'fatih/vim-go'
+      " Plugin 'fatih/vim-go'
   " }}}
   " git {{{
       Plugin 'tpope/vim-fugitive'
@@ -156,7 +156,11 @@ filetype plugin indent on
   let maplocalleader = "\\"
 " }}}
 " Configs {{{
-  set regexpengine=1
+  if executable('lua')
+    if has('gui_running')
+      set regexpengine=1
+    endif
+  endif
   syntax enable
   set nocompatible        " leave vi-compatibility mode
   set encoding=utf-8      " unicode encoding by default
@@ -476,7 +480,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " Python {{{
       augroup ft_python
         au!
-        au FileType python setl ts=4 sts=4 sw=4 ai ci
+        au FileType python setl ts=4 sts=4 sw=4 ai ci et
         if has('gui_running')
         endif
       augroup END
@@ -570,7 +574,7 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-        set guifont=Fira\ Mono\ OT:h14
+        set guifont=Fira\ Mono:h14
         colorscheme base16-paraiso
         set transparency=1
         set fuopt+=maxhorz
