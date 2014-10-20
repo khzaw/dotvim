@@ -124,8 +124,12 @@ filetype off
 
       Plugin 'junegunn/goyo.vim'
       Plugin 'jaxbot/semantic-highlight.vim'
+
+      Plugin 'esneider/YUNOcommit.vim'
+      let g:YUNOcommit_after=30
   " }}}
   " Others {{{
+    Plugin 'justinmk/vim-gtfo'
     Plugin 'tpope/vim-eunuch'
     Plugin 'tpope/vim-speeddating'
     Plugin 'tpope/vim-unimpaired'
@@ -312,7 +316,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
-    let g:NERDTreeIgnore=['\~$', '.*\pyc$', '.class[[file]]', 'pip-log\.txt$', '.DS_Store']
+    let g:NERDTreeIgnore=['\~$', '.*\pyc$', '.class[[file]]', 'pip-log\.txt$', '.DS_Store', '.*\cmi$', '.*\cmx$', '.*\o$']
     let g:NERDTreeShowHidden=1
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
@@ -575,7 +579,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono:h14
-        colorscheme base16-paraiso
+        colorscheme base16-atelierheath
         set transparency=1
         set fuopt+=maxhorz
         set fuopt+=maxvert
