@@ -146,6 +146,7 @@ filetype off
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'itchyny/calendar.vim'
     Plugin 'MarcWeber/vim-addon-local-vimrc'
+    Plugin 'gelguy/snapshot.vim'
     " }}}
   " Writing {{{
     " Plugin 'reedes/vim-pencil'
