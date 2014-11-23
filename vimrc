@@ -400,7 +400,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
     nnoremap <leader>gw :Gwrite<cr>
-    nnoremap <leader>gp :Git push<cr>
+    nnoremap <leader>gp :Git pull --rebase && git push<cr>
   " }}}
   " Vim Git Gutter {{{
     let g:gitgutter_enabled = 1 " enable git gutter by default
