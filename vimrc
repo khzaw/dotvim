@@ -485,8 +485,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_python
         au!
         au FileType python setl ts=4 sts=4 sw=4 ai ci et
-        if has('gui_running')
-        endif
       augroup END
     " }}}
     " ruby {{{
@@ -604,9 +602,9 @@ endif
     " Relative Number {{{
     function! g:ToggleRelativeNumber()
         if &relativenumber
-            setlocal number
-        else
             setlocal relativenumber
+        else
+            setlocal number
         endif
     endfunction
     nnoremap <silent> <f1> :call g:ToggleRelativeNumber()<cr>
