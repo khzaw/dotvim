@@ -577,7 +577,8 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono:h14
-        colorscheme base16-atelierheath
+        colorscheme base16-eighties
+        set bg=dark
         set transparency=1
         set fuopt+=maxhorz
         set fuopt+=maxvert
