@@ -120,6 +120,8 @@ filetype off
 
       Plug 'esneider/YUNOcommit.vim'
       let g:YUNOcommit_after=30
+
+      Plug 'calebsmith/vim-lambdify'
   " }}}
   " Others {{{
     Plug 'justinmk/vim-gtfo'
@@ -145,8 +147,8 @@ filetype off
     Plug 'reedes/vim-litecorrect'
     Plug 'tpope/vim-markdown'
     " }}}
+    call plug#end()
   " }}}
-call plug#end()
 filetype plugin indent on
 " Leader {{{
   let mapleader = ","
