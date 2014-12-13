@@ -4,24 +4,19 @@
 
 set nocompatible
 filetype off
-" Bundles installed {{{
-  " Vim-Plug {{{
+" Plugins installed {{{
     call plug#begin('~/.vim/plugged')
-    Plug 'gmarik/Vundle.vim'      " Let Vundle manage itself
-    let g:vundle_default_git_proto = 'git'
-    " }}}
   " Coding {{{
       if executable('lua')
         Plug 'Shougo/neocomplete.vim'
         Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
       endif
-      " NeoBundleFetch 'Valloric/YouCompleteMe'
       Plug 'sjl/gundo.vim'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
       Plug 'scrooloose/syntastic'        "syntax wise error checking
-      Plug 'scrooloose/nerdtree'         "filebrowser
+      Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}         "filebrowser
       if executable('ctags')
         Plug 'majutsushi/tagbar'         "source code browsing
       endif
@@ -30,10 +25,10 @@ filetype off
       " Plug 'kshenoy/vim-origami'       "handle all folding
       Plug 'editorconfig/editorconfig-vim'
       Plug 'jpalardy/vim-slime'          "REPL
+      Plug 'kien/ctrlp.vim'
   " }}}
   " python {{{
-      Plug 'kien/ctrlp.vim'
-      Plug 'klen/python-mode'
+      Plug 'klen/python-mode', {'for' : 'python'}
       Plug 'jmcantrell/vim-virtualenv'
       Plug 'emoosx/vim-conceal'
   " }}}
@@ -41,13 +36,13 @@ filetype off
       " Plug 'jcf/vim-latex'
   " }}}
   " Scala {{{
-      Plug 'derekwyatt/vim-scala'
+      Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
   " }}}
   " OCaml {{{
       "Plug 'def-lkb/vimbufsync'
   " }}}
   " Haskell {{{
-      Plug 'dag/vim2hs'
+      Plug 'dag/vim2hs', {'for': 'haskell'}
   " }}}
   " web {{{
       Plug 'zoeesilcock/vim-caniuse'
@@ -57,12 +52,12 @@ filetype off
       Plug 'tmhedberg/matchit'             "extend % for tags .,etc
   " }}}
   " css, less {{{
-      Plug 'ap/vim-css-color'
-      Plug 'mattn/emmet-vim'
+      Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
+      Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid']}
   " }}}
   " js {{{
-      Plug 'othree/javascript-libraries-syntax.vim'
-      Plug 'pangloss/vim-javascript'
+      Plug 'othree/javascript-libraries-syntax.vim', {'for' : ['javascript', 'js']}
+      Plug 'pangloss/vim-javascript', {'for': ['javascript', 'js']}
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
       Plug 'greatghoul/vim-web-indent'
@@ -147,7 +142,6 @@ filetype off
     Plug 'gelguy/snapshot.vim'
     " }}}
   " Writing {{{
-    " Plug 'reedes/vim-pencil'
     Plug 'reedes/vim-litecorrect'
     Plug 'tpope/vim-markdown'
     " }}}
