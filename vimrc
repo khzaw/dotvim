@@ -308,17 +308,14 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
-    let g:NERDTreeIgnore=['\~$', '.*\pyc$', '.class[[file]]', 'pip-log\.txt$', '.DS_Store', '.*\cmi$', '.*\cmx$', '.*\o$']
+    let g:NERDTreeIgnore=['\~$', '*\.pyc$', '.class[[file]]', 'pip-log\.txt$', '\.DS_Store$', '*\.cmi$', '*\.cmx$', '*\.o$']
     let g:NERDTreeShowHidden=1
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
     let g:NERDTreeHijackNetrw=1
-    "let g:NERDTreeMapJumpFirstChild = 'gK'
     nnoremap <leader>ntf :NERDTreeFind<cr>
-    " change the current dir to that of the opening file
-    autocmd bufenter * cd %:p:h
   " }}}
   " CtrlP {{{
         map <leader>p :CtrlP<cr>
@@ -429,18 +426,9 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Colorscheme-Utility {{{
     let g:ulti_color_excluded = ['nerdtree', 'help', 'tagbar', 'minibufexpl']
   " }}}
-  " Vim-Pencil {{{
-    " augroup pencil
-      " autocmd!
-      " autocmd FileType markdown call pencil#init()
-      " autocmd FileType textile call pencil#init()
-      " autocmd FileType text call pencil#init({'wrap': 'hard'})
-    " augroup END
-
-    " nnoremap <silent> <leader>ps: SoftPencil<cr>
-    " nnoremap <silent> <leader>ph: HardPencil<cr>
-    " nnoremap <silent> <leader>np: NoPencil<cr>
-    " nnoremap <silent> <leader>pt: TogglePencil<cr>
+  " vim-slime {{{
+    let g:slime_target = "tmux"
+    let g:slime_default_config = {"socket": "default", "target_pane": "1"}
   " }}}
   " Emmet {{{
     let g:use_emmet_complete_tag = 1
