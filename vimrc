@@ -147,7 +147,7 @@ filetype off
     " }}}
   " }}}
 call plug#end()
-filetype Plug indent on
+filetype plugin indent on
 " Leader {{{
   let mapleader = ","
   let maplocalleader = "\\"
