@@ -5,157 +5,155 @@
 set nocompatible
 filetype off
 " Bundles installed {{{
-  " Vundle {{{
-    if has('vim_starting')
-        set rtp+=~/.vim/bundle/Vundle.vim
-    endif
-    call vundle#begin()
-    Plugin 'gmarik/Vundle.vim'      " Let Vundle manage itself
+  " Vim-Plug {{{
+    call plug#begin('~/.vim/plugged')
+    Plug 'gmarik/Vundle.vim'      " Let Vundle manage itself
     let g:vundle_default_git_proto = 'git'
     " }}}
   " Coding {{{
       if executable('lua')
-        Plugin 'Shougo/neocomplete.vim'
-        Plugin 'Shougo/neosnippet'
-        Plugin 'Shougo/neosnippet-snippets'
+        Plug 'Shougo/neocomplete.vim'
+        Plug 'Shougo/neosnippet'
+        Plug 'Shougo/neosnippet-snippets'
       endif
       " NeoBundleFetch 'Valloric/YouCompleteMe'
-      Plugin 'sjl/gundo.vim'
-      Plugin 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
-      Plugin 'scrooloose/nerdcommenter'    "commenting
-      Plugin 'scrooloose/syntastic'        "syntax wise error checking
-      Plugin 'scrooloose/nerdtree'         "filebrowser
+      Plug 'sjl/gundo.vim'
+      Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
+      Plug 'scrooloose/nerdcommenter'    "commenting
+      Plug 'scrooloose/syntastic'        "syntax wise error checking
+      Plug 'scrooloose/nerdtree'         "filebrowser
       if executable('ctags')
-        Plugin 'majutsushi/tagbar'         "source code browsing
+        Plug 'majutsushi/tagbar'         "source code browsing
       endif
-      Plugin 'tpope/vim-surround'          "quoting/parenthizing made simple
-      Plugin 'sheerun/vim-polyglot'        " a collection of syntax
-      " Plugin 'kshenoy/vim-origami'        "handle all folding
-      Plugin 'editorconfig/editorconfig-vim'
+      Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
+      Plug 'sheerun/vim-polyglot'        "a collection of syntax
+      " Plug 'kshenoy/vim-origami'       "handle all folding
+      Plug 'editorconfig/editorconfig-vim'
+      Plug 'jpalardy/vim-slime'          "REPL
   " }}}
   " python {{{
-      Plugin 'kien/ctrlp.vim'
-      Plugin 'klen/python-mode'
-      Plugin 'jmcantrell/vim-virtualenv'
-      Plugin 'emoosx/vim-conceal'
+      Plug 'kien/ctrlp.vim'
+      Plug 'klen/python-mode'
+      Plug 'jmcantrell/vim-virtualenv'
+      Plug 'emoosx/vim-conceal'
   " }}}
   " LaTeX {{{
-      " Plugin 'jcf/vim-latex'
+      " Plug 'jcf/vim-latex'
   " }}}
   " Scala {{{
-      Plugin 'derekwyatt/vim-scala'
+      Plug 'derekwyatt/vim-scala'
   " }}}
   " OCaml {{{
-      "Plugin 'def-lkb/vimbufsync'
+      "Plug 'def-lkb/vimbufsync'
   " }}}
   " Haskell {{{
-      Plugin 'dag/vim2hs'
+      Plug 'dag/vim2hs'
   " }}}
   " web {{{
-      Plugin 'zoeesilcock/vim-caniuse'
+      Plug 'zoeesilcock/vim-caniuse'
   " }}}
   " html {{{
-      Plugin 'docunext/closetag.vim'
-      Plugin 'tmhedberg/matchit'             "extend % for tags .,etc
+      Plug 'docunext/closetag.vim'
+      Plug 'tmhedberg/matchit'             "extend % for tags .,etc
   " }}}
   " css, less {{{
-      Plugin 'ap/vim-css-color'
-      Plugin 'mattn/emmet-vim'
+      Plug 'ap/vim-css-color'
+      Plug 'mattn/emmet-vim'
   " }}}
   " js {{{
-      Plugin 'othree/javascript-libraries-syntax.vim'
-      Plugin 'pangloss/vim-javascript'
+      Plug 'othree/javascript-libraries-syntax.vim'
+      Plug 'pangloss/vim-javascript'
       let g:used_javascript_libs = 'jquery'
-      Plugin 'mklabs/grunt.vim'
-      Plugin 'greatghoul/vim-web-indent'
+      Plug 'mklabs/grunt.vim'
+      Plug 'greatghoul/vim-web-indent'
   " }}}
   " go {{{
-      " Plugin 'fatih/vim-go'
+      " Plug 'fatih/vim-go'
   " }}}
   " git {{{
-      Plugin 'tpope/vim-fugitive'
-      Plugin 'airblade/vim-gitgutter'
-      Plugin 'idanarye/vim-merginal'
+      Plug 'tpope/vim-fugitive'
+      Plug 'airblade/vim-gitgutter'
+      Plug 'idanarye/vim-merginal'
   " }}}
   " Utilities {{{
-      Plugin 'tpope/vim-repeat'               " repeating of plugin commands
-      "Plugin 'Shougo/vimshell'
-      " Plugin 'Shougo/vimproc', {              " interactive command exe
+      Plug 'tpope/vim-repeat'               " repeating of plugin commands
+      "Plug 'Shougo/vimshell'
+      " Plug 'Shougo/vimproc', {              " interactive command exe
             " \ 'build' : {
             " \     'mac' : 'make -f make_mac.mak',
             " \    },
             " \ }
-      Plugin 'godlygeek/tabular'               " tabular formatting
-      Plugin 'wellle/targets.vim'              " additional text obj
-      Plugin 'kana/vim-submode'                " resizing splits
+      Plug 'godlygeek/tabular'               " tabular formatting
+      Plug 'wellle/targets.vim'              " additional text obj
+      Plug 'kana/vim-submode'                " resizing splits
   " }}}
   " colorschemes {{{
-    Plugin 'biskark/vim-ultimate-colorscheme-utility'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'itchyny/landscape.vim'
-    Plugin 'Lokaltog/vim-distinguished'
-    Plugin 'sjl/badwolf'
-    Plugin 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
-    Plugin 'w0ng/vim-hybrid'
-    Plugin 'zaiste/Atom'
-    Plugin 'tomasr/molokai'
-    Plugin 'tpope/vim-vividchalk'
-    Plugin 'jellybeans.vim'
-    Plugin 'blackboard.vim'
-    Plugin 'wombat256.vim'
-    Plugin 'Mustang2'
-    Plugin 'Pychimp/vim-luna'
-    Plugin 'junegunn/seoul256.vim'
-    Plugin 'baskerville/bubblegum'
-    Plugin 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
-    Plugin 'reedes/vim-colors-pencil'
-    Plugin 'chriskempson/base16-vim'
-    Plugin 'jeetsukumaran/vim-mochalatte'
+    Plug 'biskark/vim-ultimate-colorscheme-utility'
+    Plug 'flazz/vim-colorschemes'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'itchyny/landscape.vim'
+    Plug 'Lokaltog/vim-distinguished'
+    Plug 'sjl/badwolf'
+    Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
+    Plug 'w0ng/vim-hybrid'
+    Plug 'zaiste/Atom'
+    Plug 'tomasr/molokai'
+    Plug 'tpope/vim-vividchalk'
+    Plug 'jellybeans.vim'
+    Plug 'blackboard.vim'
+    Plug 'wombat256.vim'
+    Plug 'Mustang2'
+    Plug 'Pychimp/vim-luna'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'baskerville/bubblegum'
+    Plug 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
+    Plug 'reedes/vim-colors-pencil'
+    Plug 'chriskempson/base16-vim'
+    Plug 'jeetsukumaran/vim-mochalatte'
   " }}}
   " Fancy {{{
-      Plugin 'uguu-org/vim-matrix-screensaver'
-      Plugin 'kien/rainbow_parentheses.vim'
-      Plugin 'bling/vim-airline'
-      Plugin 'nathanaelkane/vim-indent-guides'
+      Plug 'uguu-org/vim-matrix-screensaver'
+      Plug 'kien/rainbow_parentheses.vim'
+      Plug 'bling/vim-airline'
+      Plug 'nathanaelkane/vim-indent-guides'
 
-      Plugin 'rizzatti/funcoo.vim'
-      Plugin 'rizzatti/dash.vim'
+      Plug 'rizzatti/funcoo.vim'
+      Plug 'rizzatti/dash.vim'
 
-      Plugin 'junegunn/goyo.vim'
-      Plugin 'jaxbot/semantic-highlight.vim'
+      Plug 'junegunn/goyo.vim'
+      Plug 'jaxbot/semantic-highlight.vim'
 
-      Plugin 'esneider/YUNOcommit.vim'
+      Plug 'esneider/YUNOcommit.vim'
       let g:YUNOcommit_after=30
   " }}}
   " Others {{{
-    Plugin 'justinmk/vim-gtfo'
-    Plugin 'tpope/vim-eunuch'
-    Plugin 'tpope/vim-speeddating'
-    Plugin 'tpope/vim-unimpaired'
-    Plugin 'Lokaltog/vim-easymotion'
+    Plug 'justinmk/vim-gtfo'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-speeddating'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'Lokaltog/vim-easymotion'
     if executable('ack')
-        Plugin 'mileszs/ack.vim'
+        Plug 'mileszs/ack.vim'
     endif
-    " Plugin 'slim-template/vim-slim'
-    Plugin 'vim-scripts/scratch.vim'
-    Plugin 'takac/vim-hardtime'
-    Plugin 'mips.vim'
-    Plugin 'moll/vim-bbye'
-      " Plugin 'jaxbot/brolink.vim'
-    Plugin 'ntpeters/vim-better-whitespace'
-    Plugin 'itchyny/calendar.vim'
-    Plugin 'MarcWeber/vim-addon-local-vimrc'
-    Plugin 'gelguy/snapshot.vim'
+    " Plug 'slim-template/vim-slim'
+    Plug 'vim-scripts/scratch.vim'
+    Plug 'takac/vim-hardtime'
+    Plug 'mips.vim'
+    Plug 'moll/vim-bbye'
+      " Plug 'jaxbot/brolink.vim'
+    Plug 'ntpeters/vim-better-whitespace'
+    Plug 'itchyny/calendar.vim'
+    Plug 'MarcWeber/vim-addon-local-vimrc'
+    Plug 'gelguy/snapshot.vim'
     " }}}
   " Writing {{{
-    " Plugin 'reedes/vim-pencil'
-    Plugin 'reedes/vim-litecorrect'
-    Plugin 'tpope/vim-markdown'
+    " Plug 'reedes/vim-pencil'
+    Plug 'reedes/vim-litecorrect'
+    Plug 'tpope/vim-markdown'
     " }}}
   " }}}
-call vundle#end()
-filetype plugin indent on
+call plug#end()
+filetype Plug indent on
 " Leader {{{
   let mapleader = ","
   let maplocalleader = "\\"
@@ -270,7 +268,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nmap gl <C-w>l
   " }}}
 " }}}
-" Plugin settings {{{
+" Plug settings {{{
   " YouCompleteMe {{{
     let g:ycm_filetype_specific_completion_to_disable = {"vim": "xx"}
   " }}}
@@ -476,9 +474,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_ocaml
         au!
         au FileType ocaml setl ts=2 sts=2 sw=2 ai si
-        if has('gui_macvim')
-          colorscheme hybrid
-        endif
       augroup END
     " }}}
     " Python {{{
@@ -577,9 +572,9 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono:h14
-        colorscheme base16-eighties
+        colorscheme base16-bespin
         set bg=dark
-        set transparency=1
+        set transparency=2
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set nofu
@@ -794,6 +789,6 @@ endif
   " Send visual selection to gist.github.com as a private filetyped Gist
   " Requires the gist command line tool ( brew install gist )
   " thanks Steve Losh!
-  vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
-  vnoremap <leader>UG :w !gist -p \| pbcopy<cr>
+  vnoremap <leader>G :w !gist -f %:e -c<cr>
+  vnoremap <leader>UG :w !gist -c<cr>
 " }}}

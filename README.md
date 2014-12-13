@@ -12,9 +12,8 @@ Then clone the repo into your .vim folder.
 	git clone git@github.com:emoosx/dotvim.git ~/.vim  
 	cd ~/.vim  
 
-The plugin system is managed by [NeoBundle](http://github.com/Shougo/neobundle.vim). Launch `vim` and run `:NeoBundleInstall!`.
+The plugin system is managed by [Vim-Plug](https://github.com/junegunn/vim-plug). Launch `vim` and run `:PlugInstall`.
 
 And create a symbolic link so that ~/.vimrc points to the ~/.vim/vimrc file.
 
 	ln -s ~/.vim/vimrc ~/.vimrc
-    
