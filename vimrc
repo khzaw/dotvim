@@ -39,7 +39,10 @@ filetype off
       Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
   " }}}
   " OCaml {{{
-      "Plug 'def-lkb/vimbufsync'
+      Plug 'def-lkb/vimbufsync'
+      Plug 'def-lkb/ocp-indent-vim', { 'rtp' : 'ocp-indent-vim/' }
+      let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+      execute "set rtp+=" . g:opamshare . "/merlin/vim"
   " }}}
   " Haskell {{{
       Plug 'dag/vim2hs', {'for': 'haskell'}
@@ -116,7 +119,7 @@ filetype off
       Plug 'rizzatti/dash.vim'
 
       Plug 'junegunn/goyo.vim'
-      Plug 'jaxbot/semantic-highlight.vim'
+      " Plug 'jaxbot/semantic-highlight.vim'
 
       Plug 'esneider/YUNOcommit.vim'
       let g:YUNOcommit_after=30
@@ -556,7 +559,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono:h14
-        colorscheme base16-bespin
+        colorscheme base16-mocha
         set bg=dark
         set transparency=2
         set fuopt+=maxhorz
