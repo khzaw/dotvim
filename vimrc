@@ -16,30 +16,28 @@ filetype off
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
       Plug 'scrooloose/syntastic'        "syntax wise error checking
-      Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}         "filebrowser
+      Plug 'scrooloose/nerdtree'          "filebrowser
       if executable('ctags')
         Plug 'majutsushi/tagbar'         "source code browsing
       endif
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'sheerun/vim-polyglot'        "a collection of syntax
-      " Plug 'kshenoy/vim-origami'       "handle all folding
       Plug 'editorconfig/editorconfig-vim'
       Plug 'jpalardy/vim-slime'          "REPL
       Plug 'kien/ctrlp.vim'
+      Plug 'jbgutierrez/vim-partial'
   " }}}
   " python {{{
       Plug 'klen/python-mode', {'for' : 'python'}
-      Plug 'jmcantrell/vim-virtualenv'
-      Plug 'emoosx/vim-conceal'
+      Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
+      Plug 'emoosx/vim-conceal', {'for': 'python'}
   " }}}
   " LaTeX {{{
-      " Plug 'jcf/vim-latex'
   " }}}
   " Scala {{{
       Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
   " }}}
   " OCaml {{{
-      Plug 'def-lkb/vimbufsync'
       Plug 'def-lkb/ocp-indent-vim', { 'rtp' : 'ocp-indent-vim/' }
       let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
       execute "set rtp+=" . g:opamshare . "/merlin/vim"
@@ -64,9 +62,6 @@ filetype off
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
       Plug 'greatghoul/vim-web-indent'
-  " }}}
-  " go {{{
-      " Plug 'fatih/vim-go'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
@@ -114,16 +109,11 @@ filetype off
       Plug 'kien/rainbow_parentheses.vim'
       Plug 'bling/vim-airline'
       Plug 'nathanaelkane/vim-indent-guides'
-
-      Plug 'rizzatti/funcoo.vim'
-      Plug 'rizzatti/dash.vim'
-
-      Plug 'junegunn/goyo.vim'
-      " Plug 'jaxbot/semantic-highlight.vim'
-
-      Plug 'esneider/YUNOcommit.vim'
-      let g:YUNOcommit_after=30
-
+      Plug 'junegunn/goyo.vim'  "distraction free writing
+      Plug 'junegunn/limelight'
+      autocmd User GoyoEnter Limelight
+      autocmd User GoyoLeave Limelight!
+      Plug 'jaxbot/semantic-highlight.vim'
       Plug 'calebsmith/vim-lambdify'
   " }}}
   " Others {{{
@@ -131,23 +121,19 @@ filetype off
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-unimpaired'
-    Plug 'Lokaltog/vim-easymotion'
     if executable('ack')
         Plug 'mileszs/ack.vim'
     endif
     " Plug 'slim-template/vim-slim'
     Plug 'vim-scripts/scratch.vim'
-    Plug 'takac/vim-hardtime'
     Plug 'mips.vim'
-    Plug 'moll/vim-bbye'
-      " Plug 'jaxbot/brolink.vim'
+    Plug 'moll/vim-bbye'      ":Bdelete
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'itchyny/calendar.vim'
     Plug 'MarcWeber/vim-addon-local-vimrc'
     Plug 'gelguy/snapshot.vim'
     " }}}
-  " Writing {{{
-    Plug 'reedes/vim-litecorrect'
+  " Markdown {{{
     Plug 'tpope/vim-markdown'
     " }}}
     call plug#end()
@@ -181,7 +167,7 @@ filetype plugin indent on
   set visualbell          " supress audio/visual error
   set invcursorcolumn
   set backspace=indent,eol,start
-  set relativenumber
+  set number
   set showmode            " show the current mode
   set mousehide           " hide the mouse pointer while typing
   set hlsearch
@@ -353,6 +339,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         " :VirtualEnvActivate spam
         " :VirtualEnvActivate <tab>
       
+        let g:pymode_lint_window = 0
         let g:ropevim_enable_shortcuts = 1
         let g:pymode_rope_goto_def_newwin = "vnew"
         let g:pymode_breakpoint = 1
@@ -559,9 +546,10 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
         set guifont=Fira\ Mono:h14
-        colorscheme base16-mocha
+        colorscheme base16-paraiso
+        set linespace=1
         set bg=dark
-        set transparency=2
+        set transparency=3
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set nofu
