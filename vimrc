@@ -38,9 +38,12 @@ filetype off
       Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
   " }}}
   " OCaml {{{
+      Plug 'rgrinberg/vim-ocaml'
+      Plug 'def-lkb/vimbufsync'
       Plug 'def-lkb/ocp-indent-vim', { 'rtp' : 'ocp-indent-vim/' }
       let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
       execute "set rtp+=" . g:opamshare . "/merlin/vim"
+      execute "helptags " . g:opamshare . "/merlin/vim/doc"
   " }}}
   " Haskell {{{
       Plug 'dag/vim2hs', {'for': 'haskell'}
@@ -267,7 +270,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:neocomplete#enable_smart_case=1
     let g:neocomplete#sources#syntax#min_keyword_length=3
     let g:neocomplete#lock_buffer_name_pattern= '\*ku\*'
-  " }}}
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplete#close_popup()
+    inoremap <expr><C-e>  neocomplete#cancel_popup()
+    " }}}
   " SuperTab {{{
     "let g:SuperTabDefaultCompletionType = "context"
     "let g:SuperTabNoCompleteAfter=['^', ',', '\s']
@@ -294,6 +302,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:syntastic_mode_map = { 'mode': 'passive',
                                 \ 'passive_filetypes': ['python', 'html'] }
     let g:syntastic_javascript_checkers=['jshint']
+    let g:syntastic_ocaml_checkers=['merlin']
   " }}}
   " NERDTree {{{
     nnoremap <leader>nt :NERDTree<cr>
