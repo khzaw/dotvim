@@ -88,6 +88,7 @@ filetype off
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
     Plug 'itchyny/landscape.vim'
+    let g:landscape_highlight_todo = 1
     Plug 'Lokaltog/vim-distinguished'
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
@@ -107,6 +108,8 @@ filetype off
     Plug 'chriskempson/base16-vim'
     Plug 'jeetsukumaran/vim-mochalatte'
     Plug 'andrwb/vim-lapis256'
+    Plug 'jeetsukumaran/vim-nefertiti'
+    Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -114,7 +117,7 @@ filetype off
       Plug 'bling/vim-airline'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'junegunn/goyo.vim'  "distraction free writing
-      Plug 'junegunn/limelight'
+      Plug 'junegunn/limelight.vim'
       autocmd User GoyoEnter Limelight
       autocmd User GoyoLeave Limelight!
       Plug 'jaxbot/semantic-highlight.vim'
@@ -558,13 +561,14 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h13
-      colorscheme base16-bespin
+      colorscheme badwolf
       set linespace=0
       set bg=dark
       set transparency=0
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
+      set macmeta
     elseif has('gui_gtk')
       set guifont=Monospace\ 11
     elseif has('gui_win32')
