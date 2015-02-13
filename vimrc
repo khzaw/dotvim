@@ -288,10 +288,10 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Syntastic {{{
     nnoremap <leader>e :Errors<cr>
     let g:syntastic_check_on_open = 0
+    let g:syntastic_check_on_wq = 0
     let g:syntastic_enable_signs=1
     let g:syntastic_loc_list_height=3
     let g:syntastic_mode_map = { 'mode': 'passive',
-                                \ 'active_filetypes': [''],
                                 \ 'passive_filetypes': ['python', 'html'] }
     let g:syntastic_javascript_checkers=['jshint']
   " }}}
@@ -357,6 +357,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_rope_complete_on_dot = 1
         let g:pymode_rope_always_show_complete_menu = 1
         let g:pymode_syntax_print_as_function = 1
+        let g:pymode_lint_write = 0
 
         nnoremap <leader>pr :PymodeRun<cr>
     " }}}
@@ -546,11 +547,12 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-        set guifont=Fira\ Mono:h14
-        colorscheme base16-paraiso
+        set guifont=Fira\ Code:h14
+        colorscheme base16-bespin
+        colorscheme badwolf
         set linespace=1
         set bg=dark
-        set transparency=3
+        set transparency=0
         set fuopt+=maxhorz
         set fuopt+=maxvert
         set nofu
