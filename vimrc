@@ -547,21 +547,20 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-        set guifont=Fira\ Code:h14
-        colorscheme base16-bespin
-        colorscheme badwolf
-        set linespace=1
-        set bg=dark
-        set transparency=0
-        set fuopt+=maxhorz
-        set fuopt+=maxvert
-        set nofu
+      set guifont=Fira\ Code:h14
+      colorscheme base16-bespin
+      colorscheme badwolf
+      set linespace=0
+      set bg=dark
+      set transparency=0
+      set fuopt+=maxhorz
+      set fuopt+=maxvert
+      set nofu
     elseif has('gui_gtk')
-        set guifont=Monospace\ 11
+      set guifont=Monospace\ 11
     elseif has('gui_win32')
-        echo ":("
+      echo ":("
     endif
-    set guicursor+=a:blinkon0     " disable cursor blink
     set guioptions-=T
     set guioptions-=L
     set guioptions-=M
