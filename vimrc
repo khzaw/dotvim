@@ -30,7 +30,7 @@ filetype off
   " python {{{
       Plug 'klen/python-mode', {'for' : 'python'}
       Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
-      Plug 'emoosx/vim-conceal', {'for': 'python'}
+      Plug 'emoosx/vim-conceal'
   " }}}
   " LaTeX {{{
   " }}}
@@ -556,9 +556,8 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h14
+      set guifont=Fira\ Code:h13
       colorscheme base16-bespin
-      colorscheme badwolf
       set linespace=0
       set bg=dark
       set transparency=0
