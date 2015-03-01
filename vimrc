@@ -106,6 +106,7 @@ filetype off
     Plug 'reedes/vim-colors-pencil'
     Plug 'chriskempson/base16-vim'
     Plug 'jeetsukumaran/vim-mochalatte'
+    Plug 'andrwb/vim-lapis256'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -199,7 +200,7 @@ filetype plugin indent on
   nnoremap <Space> za
   vnoremap <Space> za
   " Make z0 recursively open whatever top level fold we're in
-  nnoremap z0 zCz0 
+  nnoremap z0 zCz0
   " Use ,z to "focus" the current fold
   nnoremap <leader>z zMzvzz
 " }}}
@@ -283,7 +284,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 
   " }}}
   " DelimitMate {{{
-    let delimitMate_excluded_regions = "Comment" 
+    let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
   " }}}
   " Gundo {{{
@@ -348,7 +349,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         " :VirtualEnvList
         " :VirtualEnvActivate spam
         " :VirtualEnvActivate <tab>
-      
+
         let g:pymode_lint_window = 0
         let g:ropevim_enable_shortcuts = 1
         let g:pymode_rope_goto_def_newwin = "vnew"
@@ -521,7 +522,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup ft_vim
         au!
         au FileType vim setlocal foldmethod=marker ts=2 sts=2 sw=2 si ai
-        " au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim 
+        " au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim
       augroup END
     " }}}
     " markdown {{{
@@ -604,7 +605,7 @@ endif
     nnoremap <F10> :set transp-=5<cr>:set transp<cr>
   " }}}
   " Toggle Indicators {{{
-  " We'll use &number and &relativenumber (mutually eclusive) as proxies for 
+  " We'll use &number and &relativenumber (mutually eclusive) as proxies for
   " the toggle state of all our preferred indicator UI
   function! ToggleIndicators()
       if (&number || &relativenumber) " turn off indicators
@@ -679,7 +680,7 @@ endif
       "Switch to dest and shuffle source->dest
       exe curNum . "wincmd w"
       "Hide and open so that we aren't prompted and keep history
-      exe 'hide buf' markedBuf 
+      exe 'hide buf' markedBuf
   endfunction
 
   nnoremap <silent> <leader>mw :call MarkWindowSwap()<cr>
@@ -698,7 +699,7 @@ endif
                   \ if line("'\"") > 0 && line("'\"") <= line("$") |
                   \   execute 'normal! g`"zvzz"' |
                   \ endif
-  augroup END    
+  augroup END
   " }}}
 " Convenience Mappings {{{
   " Toggle CursorColumn  {{{
@@ -753,7 +754,7 @@ endif
   imap kj <esc>
   imap jj <esc>
   " }}}
-    
+
   " sorting functions
   vnoremap <leader>S :sort<cr>
   " toggle spell-checking
