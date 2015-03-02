@@ -109,7 +109,11 @@ filetype off
     Plug 'jeetsukumaran/vim-mochalatte'
     Plug 'andrwb/vim-lapis256'
     Plug 'jeetsukumaran/vim-nefertiti'
+<<<<<<< HEAD
     Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+=======
+    Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
+>>>>>>> Fix typo
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
