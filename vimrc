@@ -110,6 +110,7 @@ filetype off
     Plug 'andrwb/vim-lapis256'
     Plug 'jeetsukumaran/vim-nefertiti'
     Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
+    Plug 'emoosx/vim-ariana'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
