@@ -92,7 +92,7 @@ filetype off
     Plug 'Lokaltog/vim-distinguished'
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
-    Plug 'w0ng/vim-hybrid'
+    Plug 'scwood/vim-hybrid'
     Plug 'zaiste/Atom'
     Plug 'tomasr/molokai'
     Plug 'tpope/vim-vividchalk'
@@ -102,6 +102,7 @@ filetype off
     Plug 'Mustang2'
     Plug 'Pychimp/vim-luna'
     Plug 'junegunn/seoul256.vim'
+    let g:seoul256_background = 234
     Plug 'baskerville/bubblegum'
     Plug 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
     Plug 'reedes/vim-colors-pencil'
@@ -111,6 +112,8 @@ filetype off
     Plug 'jeetsukumaran/vim-nefertiti'
     Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
     Plug 'emoosx/vim-ariana'
+    Plug 'ajh17/Spacegray.vim'
+    Plug  'toupeira/vim-desertink'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -384,6 +387,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Badwolf {{{
     let g:badwolf_darkgutter = 1
     let g:badwolf_html_link_underline = 0
+    let g:badwolf_css_props_highlight = 1
   " }}}
   " Pencil {{{
     let g:pencil_higher_contrast_ui=1
@@ -561,7 +565,7 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h13
+      set guifont=Fira\ Code:h14
       colorscheme badwolf
       set linespace=0
       set bg=dark
@@ -582,7 +586,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    colorscheme gruvbox
+    colorscheme ariana
 endif
 " }}}
 " Utlitiy Functions {{{
