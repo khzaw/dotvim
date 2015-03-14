@@ -33,6 +33,7 @@ filetype off
       Plug 'emoosx/vim-conceal'
   " }}}
   " LaTeX {{{
+      Plug 'lervag/vimtex'
   " }}}
   " Scala {{{
       Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
