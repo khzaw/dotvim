@@ -756,7 +756,7 @@ endif
   " }}}
 " }}}
   " Quick editing {{{
-    nnoremap <leader>rc :vsp $MYVIMRC<cr>
+    nnoremap <leader>rc :vsp ~/code/dotvim/vimrc<cr>
     nnoremap <leader>grc :vsp $MYGVIMRC<cr>
     nnoremap <leader>zsh :vsp ~/.zshrc<cr>
     nnoremap <leader>prc :vsp ~/.pentadactylrc<cr>
