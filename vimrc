@@ -126,7 +126,8 @@ filetype off
     Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
     Plug 'emoosx/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
-    Plug  'toupeira/vim-desertink'
+    Plug 'toupeira/vim-desertink'
+    Plug 'stulzer/heroku-colorscheme'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
