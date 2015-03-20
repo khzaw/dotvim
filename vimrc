@@ -567,10 +567,10 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       augroup END
     " }}}
     " make {{{
-			augroup ft_make
-				au!
-				au FileType make setl noexpandtab
-			augroup END
+      augroup ft_make
+        au!
+        au FileType make setl noexpandtab
+      augroup END
     " }}}
   " }}}
 " Environment (GUI/Console) {{{
