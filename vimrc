@@ -11,6 +11,18 @@ filetype off
         Plug 'Shougo/neocomplete.vim'
         Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
+        imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: pumvisible() ? "\<C-n>" : "\<TAB>"
+        smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+
+        " For snippet_complete marker.
+        if has('conceal')
+          set conceallevel=2 concealcursor=i
+        endif
+
       endif
       Plug 'sjl/gundo.vim'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
