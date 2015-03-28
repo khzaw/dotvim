@@ -162,6 +162,9 @@ filetype off
   " Markdown {{{
     Plug 'tpope/vim-markdown'
     " }}}
+  " Vimdiff {{{
+    Plug 'chrisbra/vim-diff-enhanced'
+  " }}}
     call plug#end()
   " }}}
 filetype plugin indent on
