@@ -580,7 +580,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme badwolf
+      colorscheme gruvbox
       set linespace=0
       set bg=dark
       set transparency=0
@@ -728,6 +728,10 @@ endif
   " Toggle CursorColumn  {{{
     nnoremap <F4> :set invcursorcolumn<cr>
   " }}}
+  " Escape {{{
+  imap kj <esc>
+  imap jj <esc>
+  " }}}
   " Previous/next buffers {{{
     map <M-D-Left>  :bp<cr>
     map <M-D-Right> :bn<cr>
@@ -754,7 +758,6 @@ endif
     inoremap <left> <nop>
     inoremap <right> <nop>
   " }}}
-" }}}
   " Quick editing {{{
     nnoremap <leader>rc :vsp ~/code/dotvim/vimrc<cr>
     nnoremap <leader>grc :vsp $MYGVIMRC<cr>
@@ -768,15 +771,12 @@ endif
     vnoremap / /\v
     nnoremap <leader>y  :nohls<cr>
   " }}}
+" }}}
 
   :hi NonText guifg=bg
 
   " Make Y consistent with D and C
   map Y y$
-  " Escape {{{
-  imap kj <esc>
-  imap jj <esc>
-  " }}}
 
   " sorting functions
   vnoremap <leader>S :sort<cr>
