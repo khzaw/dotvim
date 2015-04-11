@@ -212,8 +212,8 @@ filetype plugin indent on
   set laststatus=2
   set report=0
   set ruler               " always show current positions along the bottom
-  set list
-  set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+  " set list
+  " set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
   set showbreak=↪
   set updatetime=4000
   set complete=.,w,b,u,t
@@ -323,7 +323,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
     let g:syntastic_enable_signs=1
-    let g:syntastic_loc_list_height=3
+    let g:syntastic_loc_list_height=1
     let g:syntastic_mode_map = { 'mode': 'passive',
                                 \ 'passive_filetypes': ['python', 'html'] }
     let g:syntastic_javascript_checkers=['jshint']
@@ -334,7 +334,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
-    let g:NERDTreeIgnore=['\~$', '*.pyc$', '.class[[file]]', 'pip-log\.txt$', '\.DS_Store$', '*\.cmi$', '*\.cmx$', '*\.o$']
+    let g:NERDTreeIgnore=['\~$', '*.pyc$[[file]]', '.class[[file]]', '\.DS_Store$', '*.cmi$[[file]]', '*.cmx$[[file]]']
     let g:NERDTreeShowHidden=1
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
@@ -583,7 +583,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme gruvbox
+      colorscheme base16-default
       set linespace=0
       set bg=dark
       set transparency=0
