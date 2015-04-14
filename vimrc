@@ -583,7 +583,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme base16-default
+      colorscheme badwolf
       set linespace=0
       set bg=dark
       set transparency=0
