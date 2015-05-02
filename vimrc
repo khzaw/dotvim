@@ -336,11 +336,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
     let g:NERDTreeWinSize=30
-<<<<<<< HEAD
-    let g:NERDTreeIgnore=['\~$', '*.pyc$[[file]]', '.class[[file]]', '\.DS_Store$', '*.cmi$[[file]]', '*.cmx$[[file]]']
-=======
-    let g:NERDTreeIgnore=['\~$', '.pyc$[[file]]', '.class[[file]]', 'pip-log.txt$', '.DS_Store$[[file]]', '*\.cmi$', '*\.cmx$', '*\.o$']
->>>>>>> Add changes
     let g:NERDTreeShowHidden=1
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
