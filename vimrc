@@ -129,6 +129,7 @@ filetype off
     Plug 'toupeira/vim-desertink'
     Plug 'stulzer/heroku-colorscheme'
     Plug 'google/vim-colorscheme-primary'
+    Plug 'jordwalke/flatlandia'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -141,7 +142,6 @@ filetype off
       autocmd User GoyoLeave Limelight!
       Plug 'jaxbot/semantic-highlight.vim'
       Plug 'calebsmith/vim-lambdify'
-      Plug 'ryanoasis/vim-webdevicons'
   " }}}
   " Others {{{
     Plug 'justinmk/vim-gtfo'
@@ -584,7 +584,7 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme badwolf
+      colorscheme flatlandia
       set linespace=1
       set bg=dark
       set transparency=0
