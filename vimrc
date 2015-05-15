@@ -78,6 +78,7 @@ filetype off
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
       Plug 'greatghoul/vim-web-indent'
+      Plug 'othree/yajs.vim'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
