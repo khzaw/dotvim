@@ -65,7 +65,6 @@ filetype off
       Plug 'zoeesilcock/vim-caniuse'
   " }}}
   " html {{{
-      Plug 'docunext/closetag.vim'
       Plug 'tmhedberg/matchit'             "extend % for tags .,etc
   " }}}
   " css, less {{{
@@ -77,7 +76,6 @@ filetype off
       Plug 'pangloss/vim-javascript', {'for': ['javascript', 'js']}
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
-      Plug 'greatghoul/vim-web-indent'
       Plug 'othree/yajs.vim'
   " }}}
   " git {{{
@@ -131,6 +129,7 @@ filetype off
     Plug 'stulzer/heroku-colorscheme'
     Plug 'google/vim-colorscheme-primary'
     Plug 'jordwalke/flatlandia'
+    Plug 'NLKNguyen/papercolor-theme'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -585,10 +584,10 @@ set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme flatlandia
+      colorscheme molokai
       set linespace=1
       set bg=dark
-      set transparency=0
+      set transparency=5
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
