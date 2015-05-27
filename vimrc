@@ -158,7 +158,6 @@ filetype off
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'itchyny/calendar.vim'
     Plug 'MarcWeber/vim-addon-local-vimrc'
-    Plug 'gelguy/snapshot.vim'
     Plug 'ryanss/vim-hackernews'
     " }}}
   " Markdown {{{
