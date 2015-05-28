@@ -374,7 +374,8 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         " :VirtualEnvActivate spam
         " :VirtualEnvActivate <tab>
 
-        let g:pymode_lint_window = 0
+        let g:pymode_lint_cwindow = 0
+        let g:pymode_lint_on_write = 1
         let g:ropevim_enable_shortcuts = 1
         let g:pymode_rope_goto_def_newwin = "vnew"
         let g:pymode_breakpoint = 1
@@ -392,6 +393,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         let g:pymode_rope_always_show_complete_menu = 1
         let g:pymode_syntax_print_as_function = 1
         let g:pymode_lint_write = 0
+        let g:pymode_syntax_all = 1
 
         nnoremap <leader>pr :PymodeRun<cr>
     " }}}
@@ -586,7 +588,7 @@ if has('gui_running')
       colorscheme molokai
       set linespace=1
       set bg=dark
-      set transparency=5
+      set transparency=10
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
