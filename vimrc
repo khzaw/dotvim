@@ -44,6 +44,9 @@ filetype off
       Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
       Plug 'emoosx/vim-conceal'
   " }}}
+  " Ansible-yaml {{{
+      Plug 'chase/vim-ansible-yaml'
+  " }}}
   " LaTeX {{{
       Plug 'lervag/vimtex'
   " }}}
