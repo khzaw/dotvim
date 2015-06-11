@@ -342,7 +342,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
-    let g:NERDTreeChDirMode=2
+    let g:NERDTreeChDirMode=1
     let g:NERDTreeHijackNetrw=1
     nnoremap <leader>ntf :NERDTreeFind<cr>
   " }}}
@@ -591,7 +591,7 @@ if has('gui_running')
       colorscheme molokai
       set linespace=1
       set bg=dark
-      set transparency=10
+      set transparency=15
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
