@@ -1,4 +1,4 @@
 .DS_Store
 .netrwhist
 plugged/
-autoload/plug.old.vim
+autoload/plug.vim.old

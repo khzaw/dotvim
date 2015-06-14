@@ -43,6 +43,7 @@ filetype off
       Plug 'klen/python-mode', {'for' : 'python'}
       Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
       Plug 'emoosx/vim-conceal'
+      Plug 'hdima/python-syntax', {'for': 'python'}
   " }}}
   " Ansible-yaml {{{
       Plug 'chase/vim-ansible-yaml'
