@@ -378,6 +378,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
         " :VirtualEnvActivate spam
         " :VirtualEnvActivate <tab>
 
+        let g:pymode_lint_ignore = "E302,E231"
         let g:pymode_lint_cwindow = 0
         let g:pymode_lint_on_write = 1
         let g:ropevim_enable_shortcuts = 1
