@@ -73,7 +73,7 @@ filetype off
   " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
-      Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid']}
+      Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
   " }}}
   " js {{{
       Plug 'othree/javascript-libraries-syntax.vim', {'for' : ['javascript', 'js']}
@@ -343,7 +343,7 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
-    let g:NERDTreeChDirMode=1
+    let g:NERDTreeChDirMode=2
     let g:NERDTreeHijackNetrw=1
     nnoremap <leader>ntf :NERDTreeFind<cr>
   " }}}
@@ -589,11 +589,11 @@ set background=dark
 set colorcolumn=81
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h14
-      colorscheme molokai
-      set linespace=1
+      set guifont=Input\ Mono\ Narrow:h15
+      colorscheme base16-summerfruit
+      set linespace=3
       set bg=dark
-      set transparency=15
+      set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
@@ -610,7 +610,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    colorscheme ariana
+    colorscheme papercolor
 endif
 " }}}
 " Utlitiy Functions {{{
@@ -722,7 +722,7 @@ endif
   " Auto saving VIMRC {{{
   augroup vimrcs
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost .vimrc source %
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
