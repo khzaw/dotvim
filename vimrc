@@ -33,7 +33,7 @@ filetype off
         Plug 'majutsushi/tagbar'         "source code browsing
       endif
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
-      Plug 'sheerun/vim-polyglot'        "a collection of syntax
+      " Plug 'sheerun/vim-polyglot'        "a collection of syntax
       Plug 'editorconfig/editorconfig-vim'
       Plug 'jpalardy/vim-slime'          "REPL
       Plug 'kien/ctrlp.vim'
@@ -80,7 +80,8 @@ filetype off
       Plug 'pangloss/vim-javascript', {'for': ['javascript', 'js']}
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
-      Plug 'othree/yajs.vim'
+      " Plug 'othree/yajs.vim'
+      Plug 'isRuslan/vim-es6'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
@@ -134,6 +135,7 @@ filetype off
     Plug 'google/vim-colorscheme-primary'
     Plug 'jordwalke/flatlandia'
     Plug 'NLKNguyen/papercolor-theme'
+    Plug 'zeis/vim-kolor'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -192,14 +194,11 @@ filetype plugin indent on
   set noexrc              " enables reading of .vimrc in the current directory
   set gdefault            " global searching as default
   set linebreak
-  set synmaxcol=800
-  set lazyredraw
   set showcmd
   set lisp
   set nostartofline
   set history=1000
   set visualbell          " supress audio/visual error
-  set invcursorcolumn
   set backspace=indent,eol,start
   set number
   set showmode            " show the current mode
@@ -584,15 +583,18 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     " }}}
   " }}}
 " Environment (GUI/Console) {{{
+au BufWritePre * :set binary | set noeol
+au BufWritePost * :set nobinary | set eol
+
 syntax enable
 set background=dark
-set colorcolumn=81
+set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Input\ Mono\ Narrow:h15
-      colorscheme base16-summerfruit
-      set linespace=3
+      set guifont=Fira\ Code:h16
+      colorscheme kolor
       set bg=dark
+      set lsp=0
       set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
@@ -722,7 +724,7 @@ endif
   " Auto saving VIMRC {{{
   augroup vimrcs
     autocmd!
-    autocmd BufWritePost .vimrc source %
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
