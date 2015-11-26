@@ -24,11 +24,14 @@
 "   " Using git URL
 "   Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 "
+"   " Using a non-master branch
+"   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
 "   " Plugin options
 "   Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 "
 "   " Plugin outside ~/.vim/plugged with post-update hook
-"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "
 "   " Unmanaged plugin (manually installed and updated)
 "   Plug '~/my-prototype-plugin'
@@ -172,11 +175,14 @@ function! plug#end()
             call s:assoc(lod.map, cmd, name)
           endif
           call add(s:triggers[name].map, cmd)
-        elseif cmd =~ '^[A-Z]'
+        elseif cmd =~# '^[A-Z]'
           if exists(':'.cmd) != 2
             call s:assoc(lod.cmd, cmd, name)
           endif
           call add(s:triggers[name].cmd, cmd)
+        else
+          call s:err('Invalid `on` option: '.cmd.
+          \ '. Should start with an uppercase letter or `<Plug>`.')
         endif
       endfor
     endif
@@ -294,7 +300,7 @@ endif
 
 function! s:err(msg)
   echohl ErrorMsg
-  echom a:msg
+  echom '[vim-plug] '.a:msg
   echohl None
   return 0
 endfunction
@@ -646,10 +652,11 @@ function! s:do(pull, force, todo)
     endif
     let installed = has_key(s:update.new, name)
     let updated = installed ? 0 :
-      \ (a:pull && !empty(s:system_chomp('git log --pretty=format:"%h" "HEAD...HEAD@{1}"', spec.dir)))
+      \ (a:pull && index(s:update.errors, name) < 0 && !empty(s:system_chomp('git log --pretty=format:"%h" "HEAD...HEAD@{1}"', spec.dir)))
     if a:force || installed || updated
       execute 'cd' s:esc(spec.dir)
       call append(3, '- Post-update hook for '. name .' ... ')
+      let error = ''
       let type = type(spec.do)
       if type == s:TYPE.string
         try
@@ -658,21 +665,23 @@ function! s:do(pull, force, todo)
           let g:_plug_do = '!'.escape(spec.do, '#!%')
           execute "normal! :execute g:_plug_do\<cr>\<cr>"
         finally
-          let result = v:shell_error ? ('Exit status: '.v:shell_error) : 'Done!'
+          if v:shell_error
+            let error = 'Exit status: ' . v:shell_error
+          endif
           unlet g:_plug_do
         endtry
       elseif type == s:TYPE.funcref
         try
           let status = installed ? 'installed' : (updated ? 'updated' : 'unchanged')
           call spec.do({ 'name': name, 'status': status, 'force': a:force })
-          let result = 'Done!'
         catch
-          let result = 'Error: ' . v:exception
+          let error = v:exception
         endtry
       else
-        let result = 'Error: Invalid type!'
+        let error = 'Invalid hook type'
       endif
-      call setline(4, getline(4) . result)
+      call setline(4, empty(error) ? (getline(4) . 'OK')
+                                 \ : ('x' . getline(4)[1:] . error))
       cd -
     endif
   endfor
