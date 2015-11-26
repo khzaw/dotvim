@@ -136,6 +136,7 @@ filetype off
     Plug 'jordwalke/flatlandia'
     Plug 'NLKNguyen/papercolor-theme'
     Plug 'zeis/vim-kolor'
+    Plug 'joshdick/onedark.vim'
   " }}}
   " Fancy {{{
       Plug 'uguu-org/vim-matrix-screensaver'
@@ -591,10 +592,10 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h16
-      colorscheme kolor
+      set guifont=Fira\ Code:h15
+      colorscheme onedark
       set bg=dark
-      set lsp=0
+      set lsp=1
       set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
