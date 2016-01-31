@@ -38,6 +38,9 @@ filetype off
       Plug 'jpalardy/vim-slime'          "REPL
       Plug 'kien/ctrlp.vim'
       Plug 'jbgutierrez/vim-partial'
+      Plug 'junegunn/vim-easy-align'
+      xmap ga <Plug>(EasyAlign)
+      nmap ga <Plug>(EasyAlign)
   " }}}
   " python {{{
       Plug 'klen/python-mode', {'for' : 'python'}
