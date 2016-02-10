@@ -127,18 +127,14 @@ filetype off
     Plug 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
     Plug 'reedes/vim-colors-pencil'
     Plug 'chriskempson/base16-vim'
-    Plug 'jeetsukumaran/vim-mochalatte'
     Plug 'andrwb/vim-lapis256'
-    Plug 'jeetsukumaran/vim-nefertiti'
     Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
     Plug 'emoosx/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
     Plug 'toupeira/vim-desertink'
-    Plug 'stulzer/heroku-colorscheme'
     Plug 'google/vim-colorscheme-primary'
     Plug 'jordwalke/flatlandia'
     Plug 'NLKNguyen/papercolor-theme'
-    Plug 'zeis/vim-kolor'
     Plug 'joshdick/onedark.vim'
   " }}}
   " Fancy {{{
@@ -163,12 +159,9 @@ filetype off
     endif
     " Plug 'slim-template/vim-slim'
     Plug 'vim-scripts/scratch.vim'
-    Plug 'mips.vim'
     Plug 'moll/vim-bbye'      ":Bdelete
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'itchyny/calendar.vim'
     Plug 'MarcWeber/vim-addon-local-vimrc'
-    Plug 'ryanss/vim-hackernews'
     " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
