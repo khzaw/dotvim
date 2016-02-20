@@ -79,12 +79,11 @@ filetype off
       Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
   " }}}
   " js {{{
-      Plug 'othree/javascript-libraries-syntax.vim', {'for' : ['javascript', 'js']}
       Plug 'pangloss/vim-javascript', {'for': ['javascript', 'js']}
       let g:used_javascript_libs = 'jquery'
       Plug 'mklabs/grunt.vim'
-      " Plug 'othree/yajs.vim'
       Plug 'isRuslan/vim-es6'
+      Plug 'mxw/vim-jsx'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
