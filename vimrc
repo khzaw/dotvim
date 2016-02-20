@@ -532,7 +532,7 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h15
+      set guifont=Inconsolata:h15
       colorscheme hybrid
       set bg=dark
       set lsp=1
@@ -712,8 +712,8 @@ endif
     inoremap <right> <nop>
   " }}}
   " Quick editing {{{
-    nnoremap <leader>rc :vsp ~/code/dotvim/vimrc<cr>
-    nnoremap <leader>zsh :vsp ~/.zshrc<cr>
+    nnoremap <leader>rc :tabnew ~/code/dotvim/vimrc<cr>
+    nnoremap <leader>zsh :tabnew ~/.zshrc<cr>
   " }}}
   " Search {{{
     nmap <leader>s  :%s/
