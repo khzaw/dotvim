@@ -13,10 +13,10 @@ filetype off
         Plug 'Shougo/neosnippet-snippets'
         imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: pumvisible() ? "\<C-n>" : "\<TAB>"
+        \: pumvisible() ? "\<C-n>" : "\<tab>"
         smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
+        \: "\<tab>"
 
         " For snippet_complete marker.
         if has('conceal')
@@ -68,19 +68,12 @@ filetype off
   " Haskell {{{
       Plug 'dag/vim2hs', {'for': 'haskell'}
   " }}}
-  " web {{{
-      Plug 'zoeesilcock/vim-caniuse'
-  " }}}
-  " html {{{
-      Plug 'tmhedberg/matchit'             "extend % for tags .,etc
-  " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
       Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
   " }}}
   " js {{{
-      Plug 'pangloss/vim-javascript', {'for': ['javascript', 'js']}
-      let g:used_javascript_libs = 'jquery'
+      Plug 'pangloss/vim-javascript' 
       Plug 'mklabs/grunt.vim'
       Plug 'isRuslan/vim-es6'
       Plug 'mxw/vim-jsx'
@@ -92,15 +85,7 @@ filetype off
   " }}}
   " Utilities {{{
       Plug 'tpope/vim-repeat'               " repeating of plugin commands
-      "Plug 'Shougo/vimshell'
-      " Plug 'Shougo/vimproc', {              " interactive command exe
-            " \ 'build' : {
-            " \     'mac' : 'make -f make_mac.mak',
-            " \    },
-            " \ }
       Plug 'godlygeek/tabular'               " tabular formatting
-      Plug 'wellle/targets.vim'              " additional text obj
-      Plug 'kana/vim-submode'                " resizing splits
   " }}}
   " colorschemes {{{
     Plug 'biskark/vim-ultimate-colorscheme-utility'
@@ -114,7 +99,6 @@ filetype off
     Plug 'scwood/vim-hybrid'
     Plug 'zaiste/Atom'
     Plug 'tomasr/molokai'
-    Plug 'tpope/vim-vividchalk'
     Plug 'jellybeans.vim'
     Plug 'blackboard.vim'
     Plug 'wombat256.vim'
@@ -133,11 +117,9 @@ filetype off
     Plug 'toupeira/vim-desertink'
     Plug 'google/vim-colorscheme-primary'
     Plug 'jordwalke/flatlandia'
-    Plug 'NLKNguyen/papercolor-theme'
     Plug 'joshdick/onedark.vim'
   " }}}
   " Fancy {{{
-      Plug 'uguu-org/vim-matrix-screensaver'
       Plug 'kien/rainbow_parentheses.vim'
       Plug 'bling/vim-airline'
       Plug 'nathanaelkane/vim-indent-guides'
@@ -156,11 +138,9 @@ filetype off
     if executable('ack')
         Plug 'mileszs/ack.vim'
     endif
-    " Plug 'slim-template/vim-slim'
     Plug 'vim-scripts/scratch.vim'
     Plug 'moll/vim-bbye'      ":Bdelete
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'MarcWeber/vim-addon-local-vimrc'
     " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
@@ -250,24 +230,23 @@ filetype plugin indent on
   set smarttab
 " }}}
 " Backups {{{
-    set noswapfile
-    set nobackup
-    set nowritebackup
-    set autowriteall
+  set noswapfile
+  set nobackup
+  set nowritebackup
+  set autowriteall
 " }}}
 " Triggers {{{
-au VimResized * :wincmd = " resize splits when the window is resized
+  au VimResized * :wincmd = " resize splits when the window is resized
 " }}}
 " Wildmenu {{{
-"set wildchar=<Tab>
-set wildmode=longest:full:list
-set wildignore+=*.o,*.pyc,.DS_Store
-set wildignore+=*.orig
-set wildignore+=*.javac,*.aux,*.out,*.toc
-set wildignore+=*.sw?,*.exe,*.dll,*.manifest
-set wildignore+=migrations
-set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
-
+  set wildchar=<Tab>
+  set wildmode=longest:full:list
+  set wildignore+=*.o,*.pyc,.DS_Store
+  set wildignore+=*.orig
+  set wildignore+=*.javac,*.aux,*.out,*.toc
+  set wildignore+=*.sw?,*.exe,*.dll,*.manifest
+  set wildignore+=migrations
+  set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
 " }}}
 " Navigation {{{
   " Buffers {{{
@@ -283,12 +262,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " }}}
 " }}}
 " Plug settings {{{
-  " YouCompleteMe {{{
-    let g:ycm_filetype_specific_completion_to_disable = {"vim": "xx"}
-  " }}}
-  " LiteDFM {{{
-    nnoremap <leader>z ::LiteDFMToggle<CR>i<Esc>`^
-  " }}}
   " Neocomplete {{{
     let g:acp_enableAtStartup = 0
     let g:neocomplete#enable_at_startup=1
@@ -301,12 +274,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
     inoremap <expr><C-y>  neocomplete#close_popup()
     inoremap <expr><C-e>  neocomplete#cancel_popup()
     " }}}
-  " SuperTab {{{
-    "let g:SuperTabDefaultCompletionType = "context"
-    "let g:SuperTabNoCompleteAfter=['^', ',', '\s']
-    "let g:SuperTabNoCompleteBefore=['^', ',', '\s']
-
-  " }}}
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -350,13 +317,11 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
             \ 'dir': '\v[\/](\.git|\.hg|\.svn|build)$',
             \ 'file': '\.exe$\|\.so$\|\.javac$\|\.pyc$'
             \ }
-
     " }}}
   " Tagbar {{{
           nnoremap <silent> <leader>l :TagbarToggle<cr>
           let g:tagbar_foldlevel = 2
           let g:tagbar_width = 30
-
           let g:tagbar_type_css = {
           \ 'ctagstype' : 'Css',
               \ 'kinds'     : [
@@ -404,7 +369,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       endif
   " }}}
   " Badwolf {{{
-    let g:badwolf_darkgutter = 1
     let g:badwolf_html_link_underline = 0
     let g:badwolf_css_props_highlight = 1
   " }}}
@@ -414,9 +378,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " RainbowParentheses {{{
     nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
-  " Browser Refresh {{{
-    map <silent><leader>r  :RRB<cr>
-  " }}}
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
     nnoremap <leader>gw :Gwrite<cr>
@@ -425,15 +386,6 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
   " Vim Git Gutter {{{
     let g:gitgutter_enabled = 1 " enable git gutter by default
     nnoremap <leader>gg :GitGutterLineHighlightsToggle<cr>
-  " }}}
-  " VimShell {{{
-    let g:vimshell_editor_command = "/usr/local/bin/mvim"
-  " }}}
-  " Jedi-vim {{{
-    let g:jedi#autocompletion_command="<Ctrl-Space>"
-  " }}}
-  " Zencoding {{{
-    let g:use_zen_complete_tag = 1
   " }}}
   " IndentGuides {{{
     let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'tagbar']
@@ -447,19 +399,12 @@ set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
       let g:airline#extensions#tabline#show_buffers = 1
       let g:airline#extensions#tabline#fnamemode = ':t'
   " }}}
-  " Vim Hardtime {{{
-    let g:hardtime_default_on = 0
-    nnoremap <leader>ht :HardTimeToggle<cr>
-  " }}}
   " Matchit {{{
     let loaded_matchit=1
   " }}}
   " Colorscheme-Utility {{{
     let g:ulti_color_excluded = ['nerdtree', 'help', 'tagbar', 'minibufexpl']
   " }}}
-  " vim-slime {{{
-    let g:slime_target = "tmux"
-    let g:slime_default_config = {"socket": "default", "target_pane": "1"}
   " }}}
   " Emmet {{{
     let g:use_emmet_complete_tag = 1
@@ -588,7 +533,7 @@ set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h15
-      colorscheme onedark
+      colorscheme hybrid
       set bg=dark
       set lsp=1
       set transparency=3
@@ -720,7 +665,7 @@ endif
   " Auto saving VIMRC {{{
   augroup vimrcs
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost ~/Code/dotvim/vimrc source %
   augroup END
   " }}}
   " Make sure Vim returns to the same line when you reopen a file {{{
@@ -737,8 +682,8 @@ endif
     nnoremap <F4> :set invcursorcolumn<cr>
   " }}}
   " Escape {{{
-  imap kj <esc>
-  imap jj <esc>
+    imap kj <esc>
+    imap jj <esc>
   " }}}
   " Previous/next buffers {{{
     map <M-D-Left>  :bp<cr>
@@ -768,9 +713,7 @@ endif
   " }}}
   " Quick editing {{{
     nnoremap <leader>rc :vsp ~/code/dotvim/vimrc<cr>
-    nnoremap <leader>grc :vsp $MYGVIMRC<cr>
     nnoremap <leader>zsh :vsp ~/.zshrc<cr>
-    nnoremap <leader>prc :vsp ~/.pentadactylrc<cr>
   " }}}
   " Search {{{
     nmap <leader>s  :%s/
@@ -781,31 +724,14 @@ endif
   " }}}
 " }}}
 
-  :hi NonText guifg=bg
-
   " Make Y consistent with D and C
   map Y y$
 
-  " sorting functions
-  vnoremap <leader>S :sort<cr>
   " toggle spell-checking
   map <f7> :setlocal spell!<cr>
-
-
 
   nnoremap j gj
   nnoremap k gk
   xnoremap j gj
   xnoremap k gk
-
-  " Change case {{{
-    nnoremap <C-o> gUiw
-    nnoremap <C-i> gUiwea
-  " }}}
-
-  " Send visual selection to gist.github.com as a private filetyped Gist
-  " Requires the gist command line tool ( brew install gist )
-  " thanks Steve Losh!
-  vnoremap <leader>G :w !gist -f %:e -c<cr>
-  vnoremap <leader>UG :w !gist -c<cr>
 " }}}
