@@ -88,34 +88,22 @@ filetype off
       Plug 'godlygeek/tabular'               " tabular formatting
   " }}}
   " colorschemes {{{
-    Plug 'biskark/vim-ultimate-colorscheme-utility'
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'itchyny/landscape.vim'
-    let g:landscape_highlight_todo = 1
     Plug 'Lokaltog/vim-distinguished'
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     Plug 'scwood/vim-hybrid'
-    Plug 'zaiste/Atom'
     Plug 'tomasr/molokai'
     Plug 'jellybeans.vim'
-    Plug 'blackboard.vim'
     Plug 'wombat256.vim'
     Plug 'Mustang2'
     Plug 'Pychimp/vim-luna'
-    Plug 'junegunn/seoul256.vim'
-    let g:seoul256_background = 234
     Plug 'baskerville/bubblegum'
-    Plug 'daylerees/colour-schemes', { 'rtp' : 'vim/' }
-    Plug 'reedes/vim-colors-pencil'
     Plug 'chriskempson/base16-vim'
-    Plug 'andrwb/vim-lapis256'
-    Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
     Plug 'emoosx/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
     Plug 'toupeira/vim-desertink'
-    Plug 'google/vim-colorscheme-primary'
     Plug 'jordwalke/flatlandia'
     Plug 'joshdick/onedark.vim'
   " }}}
@@ -372,9 +360,6 @@ filetype plugin indent on
     let g:badwolf_html_link_underline = 0
     let g:badwolf_css_props_highlight = 1
   " }}}
-  " Pencil {{{
-    let g:pencil_higher_contrast_ui=1
-  " }}}
   " RainbowParentheses {{{
     nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
@@ -397,12 +382,6 @@ filetype plugin indent on
       let g:airline#extensions#tabline#enabled = 1
       let g:airline#extensions#tabline#show_buffers = 1
       let g:airline#extensions#tabline#fnamemode = ':t'
-  " }}}
-  " Matchit {{{
-    let loaded_matchit=1
-  " }}}
-  " Colorscheme-Utility {{{
-    let g:ulti_color_excluded = ['nerdtree', 'help', 'tagbar', 'minibufexpl']
   " }}}
   " }}}
   " Emmet {{{
@@ -531,11 +510,11 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Inconsolata:h15
-      colorscheme hybrid
+      set guifont=Input\ Mono\ Condensed:h14
+      colorscheme spacegray
       set bg=dark
-      set lsp=1
-      set transparency=3
+      set lsp=3
+      set transparency=5
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
@@ -552,7 +531,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    colorscheme papercolor
+    colorscheme solarized
 endif
 " }}}
 " Utlitiy Functions {{{
@@ -566,19 +545,6 @@ endif
     endfunction
     nnoremap <silent> <f1> :call g:ToggleRelativeNumber()<cr>
     " }}}
-  " Show syntax highlighting groups for word under cursor {{{
-    function! <SID>SynStack()
-        if !exists("*synstack")
-            return
-        endif
-        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-    endfunc
-    nmap <C-s> :call <SID>SynStack()<cr>
-  " }}}
-  " Transparency {{{
-    nnoremap <F9> :set transp+=5<cr>:set transp<cr>
-    nnoremap <F10> :set transp-=5<cr>:set transp<cr>
-  " }}}
   " Toggle Indicators {{{
   " We'll use &number and &relativenumber (mutually eclusive) as proxies for
   " the toggle state of all our preferred indicator UI
