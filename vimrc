@@ -65,9 +65,6 @@ filetype off
       execute "set rtp+=" . g:opamshare . "/merlin/vim"
       execute "helptags " . g:opamshare . "/merlin/vim/doc"
   " }}}
-  " Haskell {{{
-      Plug 'dag/vim2hs', {'for': 'haskell'}
-  " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
       Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
@@ -90,12 +87,9 @@ filetype off
   " colorschemes {{{
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'Lokaltog/vim-distinguished'
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     Plug 'scwood/vim-hybrid'
-    Plug 'tomasr/molokai'
-    Plug 'jellybeans.vim'
     Plug 'wombat256.vim'
     Plug 'Mustang2'
     Plug 'Pychimp/vim-luna'
@@ -119,7 +113,6 @@ filetype off
       Plug 'calebsmith/vim-lambdify'
   " }}}
   " Others {{{
-    Plug 'justinmk/vim-gtfo'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-unimpaired'
