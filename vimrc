@@ -281,13 +281,14 @@ filetype plugin indent on
     nnoremap <leader>nt :NERDTree<cr>
     nnoremap <F2> :NERDTreeToggle<cr>
     let g:NERDTreeHighlightCursorline=1
-    let g:NERDTreeWinSize=30
+    let g:NERDTreeWinSize=25
     let g:NERDTreeShowHidden=1
     let g:NERDTreeDirArrows=1
     let g:NERDTreeMinimalUI=1
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
     let g:NERDTreeHijackNetrw=1
+    let g:NERDTreeIgnore=['\.pyc$']
     nnoremap <leader>ntf :NERDTreeFind<cr>
   " }}}
   " CtrlP {{{
@@ -504,10 +505,10 @@ set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Input\ Mono\ Condensed:h14
-      colorscheme spacegray
+      colorscheme base16-paraiso
       set bg=dark
       set lsp=3
-      set transparency=5
+      set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
