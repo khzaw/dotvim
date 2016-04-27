@@ -504,11 +504,12 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Input\ Mono\ Condensed:h15
-      colorscheme base16-paraiso
+      set guifont=Fira\ Code:h15
+      set macligatures
+      colorscheme onedark
       set bg=dark
-      set lsp=3
-      set transparency=3
+      set lsp=1
+      set transparency=5
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
