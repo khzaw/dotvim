@@ -100,6 +100,7 @@ filetype off
     Plug 'toupeira/vim-desertink'
     Plug 'jordwalke/flatlandia'
     Plug 'joshdick/onedark.vim'
+    Plug 'aereal/vim-colors-japanesque'
   " }}}
   " Fancy {{{
       Plug 'kien/rainbow_parentheses.vim'
@@ -242,7 +243,7 @@ filetype plugin indent on
     nmap gl <C-w>l
   " }}}
 " }}}
-" Plug settings {{{
+" Plug settings {{{"{{{
   " Neocomplete {{{
     let g:acp_enableAtStartup = 0
     let g:neocomplete#enable_at_startup=1
@@ -378,13 +379,12 @@ filetype plugin indent on
       let g:airline#extensions#tabline#fnamemode = ':t'
   " }}}
   " }}}
-  " Emmet {{{
+  " Emmet {{{"{{{
     let g:use_emmet_complete_tag = 1
   " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
-  " }}}
-" }}}
+  " }}}"}}}"}}}
   " Filetype-specific {{{
     " General {{{
       augroup ft_general
@@ -482,7 +482,7 @@ filetype plugin indent on
         au BufRead,BufNewFile Vagrantfile set filetype=ruby
       augroup END
     " }}}
-    " json {{{
+    " json {{{"{{{
       augroup ft_json
         au!
         autocmd BufRead,BufNewFile *.json set ft=javascript
@@ -493,7 +493,7 @@ filetype plugin indent on
         au!
         au FileType make setl noexpandtab
       augroup END
-    " }}}
+    " }}}"}}}
   " }}}
 " Environment (GUI/Console) {{{
 au BufWritePre * :set binary | set noeol
@@ -504,7 +504,7 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Input\ Mono\ Condensed:h14
+      set guifont=Input\ Mono\ Condensed:h15
       colorscheme base16-paraiso
       set bg=dark
       set lsp=3
