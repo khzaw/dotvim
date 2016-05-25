@@ -1,5 +1,3 @@
-" vimrc
-" Author: Kaung Htet Zaw <emoosx@gmail.com>
 " Source: http://github.com/emoosx/dotvim
 
 set nocompatible
@@ -11,10 +9,10 @@ filetype off
         Plug 'Shougo/neocomplete.vim'
         Plug 'Shougo/neosnippet'
         Plug 'Shougo/neosnippet-snippets'
-        imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        imap <expr><C-n> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: pumvisible() ? "\<C-n>" : "\<tab>"
-        smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        smap <expr><C-n> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<tab>"
 
@@ -35,7 +33,7 @@ filetype off
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       " Plug 'sheerun/vim-polyglot'        "a collection of syntax
       Plug 'editorconfig/editorconfig-vim'
-      Plug 'jpalardy/vim-slime'          "REPL
+      let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
       Plug 'kien/ctrlp.vim'
       Plug 'jbgutierrez/vim-partial'
       Plug 'junegunn/vim-easy-align'
@@ -95,7 +93,7 @@ filetype off
     Plug 'Pychimp/vim-luna'
     Plug 'baskerville/bubblegum'
     Plug 'chriskempson/base16-vim'
-    Plug 'emoosx/vim-ariana'
+    Plug 'khzaw/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
     Plug 'toupeira/vim-desertink'
     Plug 'jordwalke/flatlandia'
@@ -104,7 +102,6 @@ filetype off
   " }}}
   " Fancy {{{
       Plug 'kien/rainbow_parentheses.vim'
-      Plug 'bling/vim-airline'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'junegunn/goyo.vim'  "distraction free writing
       Plug 'junegunn/limelight.vim'
@@ -121,8 +118,6 @@ filetype off
         Plug 'mileszs/ack.vim'
     endif
     Plug 'vim-scripts/scratch.vim'
-    Plug 'moll/vim-bbye'      ":Bdelete
-    Plug 'ntpeters/vim-better-whitespace'
     " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
@@ -174,8 +169,6 @@ filetype plugin indent on
   set laststatus=2
   set report=0
   set ruler               " always show current positions along the bottom
-  " set list
-  " set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
   set showbreak=↪
   set updatetime=4000
   set complete=.,w,b,u,t
@@ -234,13 +227,14 @@ filetype plugin indent on
   " Buffers {{{
     nnoremap <C-l> gt
     nnoremap <C-h> gT
-    "nnoremap gl <C-w>l
   " }}}
   " Splits {{{
     nmap gh <C-w>h
     nmap gk <C-w>k
     nmap gj <C-w>j
     nmap gl <C-w>l
+    nnoremap <Tab> <C-w>w
+    nnoremap <Tab> <C-w>W
   " }}}
 " }}}
 " Plug settings {{{"{{{
@@ -369,15 +363,6 @@ filetype plugin indent on
   " IndentGuides {{{
     let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'tagbar']
   " }}}
-  " Airline {{{
-      if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-      endif
-
-      let g:airline#extensions#tabline#enabled = 1
-      let g:airline#extensions#tabline#show_buffers = 1
-      let g:airline#extensions#tabline#fnamemode = ':t'
-  " }}}
   " }}}
   " Emmet {{{"{{{
     let g:use_emmet_complete_tag = 1
@@ -504,12 +489,12 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h15
+      set guifont=Fira\ Code:h14
       set macligatures
-      colorscheme onedark
+      colorscheme desertink
       set bg=dark
-      set lsp=1
-      set transparency=5
+      set lsp=-2
+      set transparency=0
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
