@@ -5,23 +5,6 @@ filetype off
 " Plugins installed {{{
     call plug#begin('~/.vim/plugged')
   " Coding {{{
-      if executable('lua')
-        Plug 'Shougo/neocomplete.vim'
-        Plug 'Shougo/neosnippet'
-        Plug 'Shougo/neosnippet-snippets'
-        imap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: pumvisible() ? "\<C-n>" : "\<tab>"
-        smap <expr><C-n> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<tab>"
-
-        " For snippet_complete marker.
-        if has('conceal')
-          set conceallevel=2 concealcursor=i
-        endif
-
-      endif
       Plug 'sjl/gundo.vim'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
@@ -31,7 +14,6 @@ filetype off
         Plug 'majutsushi/tagbar'         "source code browsing
       endif
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
-      " Plug 'sheerun/vim-polyglot'        "a collection of syntax
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
       Plug 'kien/ctrlp.vim'
@@ -43,7 +25,6 @@ filetype off
   " python {{{
       Plug 'klen/python-mode', {'for' : 'python'}
       Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
-      Plug 'emoosx/vim-conceal'
       Plug 'hdima/python-syntax', {'for': 'python'}
   " }}}
   " Ansible-yaml {{{
@@ -54,14 +35,6 @@ filetype off
   " }}}
   " Scala {{{
       Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
-  " }}}
-  " OCaml {{{
-      Plug 'rgrinberg/vim-ocaml'
-      Plug 'def-lkb/vimbufsync'
-      Plug 'def-lkb/ocp-indent-vim', { 'rtp' : 'ocp-indent-vim/' }
-      let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-      execute "set rtp+=" . g:opamshare . "/merlin/vim"
-      execute "helptags " . g:opamshare . "/merlin/vim/doc"
   " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
@@ -88,20 +61,14 @@ filetype off
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     Plug 'scwood/vim-hybrid'
-    Plug 'wombat256.vim'
-    Plug 'Mustang2'
-    Plug 'Pychimp/vim-luna'
-    Plug 'baskerville/bubblegum'
     Plug 'chriskempson/base16-vim'
     Plug 'khzaw/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
     Plug 'toupeira/vim-desertink'
     Plug 'jordwalke/flatlandia'
     Plug 'joshdick/onedark.vim'
-    Plug 'aereal/vim-colors-japanesque'
   " }}}
   " Fancy {{{
-      Plug 'kien/rainbow_parentheses.vim'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'junegunn/goyo.vim'  "distraction free writing
       Plug 'junegunn/limelight.vim'
@@ -121,7 +88,7 @@ filetype off
     " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
-    " }}}
+  " }}}
   " Vimdiff {{{
     Plug 'chrisbra/vim-diff-enhanced'
   " }}}
@@ -143,11 +110,11 @@ filetype plugin indent on
   set encoding=utf-8      " unicode encoding by default
   set title               " show title in terminal
   set ttyfast
-  set hidden              " buffer hidden, not closed, when abandoned
   set noexrc              " enables reading of .vimrc in the current directory
   set gdefault            " global searching as default
   set linebreak
   set showcmd
+  set confirm
   set lisp
   set nostartofline
   set history=1000
@@ -237,19 +204,7 @@ filetype plugin indent on
     nnoremap <Tab> <C-w>W
   " }}}
 " }}}
-" Plug settings {{{"{{{
-  " Neocomplete {{{
-    let g:acp_enableAtStartup = 0
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#enable_smart_case=1
-    let g:neocomplete#sources#syntax#min_keyword_length=3
-    let g:neocomplete#lock_buffer_name_pattern= '\*ku\*'
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
-    " }}}
+" Plug settings {{{
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -490,10 +445,9 @@ set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      set macligatures
-      colorscheme desertink
+      colorscheme Tomorrow-Night-Eighties
       set bg=dark
-      set lsp=-2
+      set lsp=0
       set transparency=0
       set fuopt+=maxhorz
       set fuopt+=maxvert
