@@ -10,31 +10,11 @@ filetype off
       Plug 'scrooloose/nerdcommenter'    "commenting
       Plug 'scrooloose/syntastic'        "syntax wise error checking
       Plug 'scrooloose/nerdtree'          "filebrowser
-      if executable('ctags')
-        Plug 'majutsushi/tagbar'         "source code browsing
-      endif
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
-      Plug 'kien/ctrlp.vim'
-      Plug 'jbgutierrez/vim-partial'
-      Plug 'junegunn/vim-easy-align'
-      xmap ga <Plug>(EasyAlign)
-      nmap ga <Plug>(EasyAlign)
   " }}}
   " python {{{
-      Plug 'klen/python-mode', {'for' : 'python'}
-      Plug 'jmcantrell/vim-virtualenv' , {'for': 'python'}
-      Plug 'hdima/python-syntax', {'for': 'python'}
-  " }}}
-  " Ansible-yaml {{{
-      Plug 'chase/vim-ansible-yaml'
-  " }}}
-  " LaTeX {{{
-      Plug 'lervag/vimtex'
-  " }}}
-  " Scala {{{
-      Plug 'derekwyatt/vim-scala', {'for' : 'scala'}
   " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
@@ -42,7 +22,6 @@ filetype off
   " }}}
   " js {{{
       Plug 'pangloss/vim-javascript' 
-      Plug 'mklabs/grunt.vim'
       Plug 'isRuslan/vim-es6'
       Plug 'mxw/vim-jsx'
   " }}}
@@ -53,16 +32,13 @@ filetype off
   " }}}
   " Utilities {{{
       Plug 'tpope/vim-repeat'               " repeating of plugin commands
-      Plug 'godlygeek/tabular'               " tabular formatting
   " }}}
   " colorschemes {{{
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
     Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
-    Plug 'scwood/vim-hybrid'
     Plug 'chriskempson/base16-vim'
-    Plug 'khzaw/vim-ariana'
     Plug 'ajh17/Spacegray.vim'
     Plug 'toupeira/vim-desertink'
     Plug 'jordwalke/flatlandia'
@@ -70,10 +46,6 @@ filetype off
   " }}}
   " Fancy {{{
       Plug 'nathanaelkane/vim-indent-guides'
-      Plug 'junegunn/goyo.vim'  "distraction free writing
-      Plug 'junegunn/limelight.vim'
-      autocmd User GoyoEnter Limelight
-      autocmd User GoyoLeave Limelight!
       Plug 'jaxbot/semantic-highlight.vim'
       Plug 'calebsmith/vim-lambdify'
   " }}}
@@ -81,16 +53,10 @@ filetype off
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-unimpaired'
-    if executable('ack')
-        Plug 'mileszs/ack.vim'
-    endif
     Plug 'vim-scripts/scratch.vim'
     " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
-  " }}}
-  " Vimdiff {{{
-    Plug 'chrisbra/vim-diff-enhanced'
   " }}}
     call plug#end()
   " }}}
@@ -114,7 +80,6 @@ filetype plugin indent on
   set gdefault            " global searching as default
   set linebreak
   set showcmd
-  set confirm
   set lisp
   set nostartofline
   set history=1000
@@ -263,37 +228,6 @@ filetype plugin indent on
               \ ]
           \ }
     " }}}
-  " Python-Mode {{{
-        let g:virtualenv_stl_format = '[%n]'
-        " :VirtualEnvDeactivate
-        " :VirtualEnvList
-        " :VirtualEnvActivate spam
-        " :VirtualEnvActivate <tab>
-
-        let g:pymode_lint_ignore = "E302,E231"
-        let g:pymode_lint_cwindow = 0
-        let g:pymode_lint_on_write = 1
-        let g:ropevim_enable_shortcuts = 1
-        let g:pymode_rope_goto_def_newwin = "vnew"
-        let g:pymode_breakpoint = 1
-        let g:pymode_syntax = 1
-        let g:pymode_doc_bind = '<C-k>'
-        let g:pymode_syntax_builtin_objs = 1
-        let g:pymode_syntax_builtin_funcs = 1
-        let g:pymode_rope = 0
-        let g:pymode_rope_extended_complete = 0
-        let g:pymode_run_key = 'R'
-        let g:pymode_lint = 1       " code checking
-        let g:pymode_indent = 1
-        let g:pymode_rope_completion = 1
-        let g:pymode_rope_complete_on_dot = 1
-        let g:pymode_rope_always_show_complete_menu = 1
-        let g:pymode_syntax_print_as_function = 1
-        let g:pymode_lint_write = 0
-        let g:pymode_syntax_all = 1
-
-        nnoremap <leader>pr :PymodeRun<cr>
-    " }}}
   " Solarized {{{
       let g:solarized_menu = 1
       if has('gui_running')
@@ -309,7 +243,6 @@ filetype plugin indent on
   " }}}
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
-    nnoremap <leader>gw :Gwrite<cr>
   " }}}
   " Vim Git Gutter {{{
     let g:gitgutter_enabled = 1 " enable git gutter by default
@@ -319,126 +252,13 @@ filetype plugin indent on
     let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'tagbar']
   " }}}
   " }}}
-  " Emmet {{{"{{{
+  " Emmet {{{
     let g:use_emmet_complete_tag = 1
   " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
-  " }}}"}}}"}}}
-  " Filetype-specific {{{
-    " General {{{
-      augroup ft_general
-        au!
-        au FileType * setl ts=2 sts=2 sw=2 ai si
-        autocmd BufWritePost * syntax enable | doautocmd filetypedetect BufRead "%"
-      augroup END
-    " }}}
-    " C {{{
-      augroup ft_c
-        au!
-        au FileType c setl ai cindent
-        autocmd BUfNewFile,BufRead *.c set formatprg=astyle\ -T4pb
-      augroup END
-    " }}}
-    " OCaml {{{
-      augroup ft_ocaml
-        au!
-        au FileType ocaml setl ts=2 sts=2 sw=2 ai si
-      augroup END
-    " }}}
-    " Python {{{
-      augroup ft_python
-        au!
-        au FileType python setl ts=4 sts=4 sw=4 ai ci et
-      augroup END
-    " }}}
-    " ruby {{{
-      augroup ft_ruby
-        au!
-        au FileType ruby setl ts=2 sts=2 sw=2 ai ci
-      augroup END
-    " }}}
-    " html {{{
-      augroup ft_html
-        au!
-        au FileType html,jinja,htmldjango setl ts=2 si ai sts=2 sw=2 fdm=manual
-        au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
-        au FileType html,jinja,htmldjango nmap <buffer> <localleader>= Vat=
-      augroup END
-    " }}}
-    " Css, Less {{{
-      augroup ft_css
-        au!
-        au FileType css,less setl foldmethod=marker foldmarker={,}
-        au FileType css setl ts=2 sw=2 sts=2
-        au FileType less setl ts=2 sw=2 sts=2
-      augroup END
-    " }}}
-    " Js {{{
-      augroup ft_js
-        au!
-        au FileType js setl ts=2 sts=2 sw=2 ai si
-        au FileType javascript setl ts=2 sts=2 sw=2 ai si
-        au FileType jquery setl ts=2 sts=2 sw=2 ai si
-      augroup END
-    " }}}
-    " java {{{
-      augroup ft_java
-        au!
-        au FileType java setl ts=2 sts=2 sw=2
-        let java_highlight_functions="style"
-        let java_allow_cpp_keywords=1
-      augroup END
-    " }}}
-    " php {{{
-      augroup ft_php
-        au!
-        au FileType php setl ts=2 sts=2 sw=2 si ai
-      augroup END
-    " }}}
-    " apache {{{
-      augroup ft_apache
-        au!
-        au FileType apache setl ts=4 sts=4 sw=4 ai si
-      augroup END
-    " }}}
-    " vim {{{
-      augroup ft_vim
-        au!
-        au FileType vim setlocal foldmethod=marker ts=2 sts=2 sw=2 si ai
-        " au BufEnter *pentadactylrc set foldmethod=marker ts=2 sts=2 sw=2 syn=vim ft=vim
-      augroup END
-    " }}}
-    " markdown {{{
-      augroup ft_markdown
-        au!
-        au FileType markdown setl ts=2 sts=2 sw=2 fo-=t
-        " autocmd BufEnter *.markdown setlocal wrap fo-=t spell cc=""
-      augroup END
-    " }}}
-    " ruby {{{
-      augroup ft_ruby
-        au!
-        au BufRead,BufNewFile Vagrantfile set filetype=ruby
-      augroup END
-    " }}}
-    " json {{{"{{{
-      augroup ft_json
-        au!
-        autocmd BufRead,BufNewFile *.json set ft=javascript
-      augroup END
-    " }}}
-    " make {{{
-      augroup ft_make
-        au!
-        au FileType make setl noexpandtab
-      augroup END
-    " }}}"}}}
-  " }}}
+  " }}}"}}}
 " Environment (GUI/Console) {{{
-au BufWritePre * :set binary | set noeol
-au BufWritePost * :set nobinary | set eol
-
 syntax enable
 set background=dark
 set colorcolumn=""
@@ -479,66 +299,7 @@ endif
     endfunction
     nnoremap <silent> <f1> :call g:ToggleRelativeNumber()<cr>
     " }}}
-  " Toggle Indicators {{{
-  " We'll use &number and &relativenumber (mutually eclusive) as proxies for
-  " the toggle state of all our preferred indicator UI
-  function! ToggleIndicators()
-      if (&number || &relativenumber) " turn off indicators
-          let b:IndicatorNumber = 0
-          let b:IndicatorRelativeNumber = 0
-          let b:IndicatorCursorColumn = 0
-          let b:IndicatorCursorLine = 0
-          let b:IndicatorColorColumn = 0
-          let b:IndicatorLastStatus = 0
-          if &number
-              let b:IndicatorNumber = 1
-              set nonumber
-          else " must be relativenumber
-              let b:IndicatorRelativeNumber = 1
-              set norelativenumber
-          endif
-          if &cursorcolumn==1
-              let b:IndicatorCursorColumn = 1
-              set nocursorcolumn
-          endif
-          if &cursorline
-              let b:IndicatorCursorLine = 1
-              set nocursorline
-          endif
-          if &colorcolumn > 0
-              let b:IndicatorColorColumn = &colorcolumn
-              set colorcolumn=0
-          endif
-          if &laststatus > 0
-              let b:IndicatorLastStatus = &laststatus
-              set laststatus=0
-          endif
-      else                            " turn on indicators
-          if b:IndicatorNumber
-              set number
-          else " must be relativenumber
-              set relativenumber
-          endif
-          if b:IndicatorCursorColumn
-              set cursorcolumn
-          endif
-          if b:IndicatorCursorLine
-              set cursorline
-          endif
-          if b:IndicatorColorColumn > 0
-              exe "set colorcolumn=" . b:IndicatorColorColumn
-          endif
-          if b:IndicatorLastStatus > 0
-              exe "set laststatus=" . b:IndicatorLastStatus
-          endif
-      endif
-  endfunction
-  nnoremap <F3> :call ToggleIndicators()<cr>
-  inoremap <F3> <esc>:call ToggleIndicators()<cr>
-  vnoremap <F3> <esc>:call ToggleIndicators()<cr>
-  " }}}
   " Swapping Split Screens {{{
-
   function! MarkWindowSwap()
       let g:markedWinNum = winnr()
   endfunction
