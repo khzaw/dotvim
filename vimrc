@@ -15,6 +15,7 @@ filetype off
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
   " }}}
   " python {{{
+      Plug 'tmhedberg/SimpylFold'
   " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
@@ -34,6 +35,8 @@ filetype off
       Plug 'tpope/vim-repeat'               " repeating of plugin commands
   " }}}
   " colorschemes {{{
+    Plug 'romainl/Apprentice'
+    Plug 'rakr/vim-two-firewatch'
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
     Plug 'sjl/badwolf'
@@ -43,6 +46,7 @@ filetype off
     Plug 'toupeira/vim-desertink'
     Plug 'jordwalke/flatlandia'
     Plug 'joshdick/onedark.vim'
+    Plug 'tyrannicaltoucan/vim-deep-space'
   " }}}
   " Fancy {{{
       Plug 'nathanaelkane/vim-indent-guides'
@@ -265,10 +269,10 @@ set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
       set guifont=Fira\ Code:h14
-      colorscheme Tomorrow-Night-Eighties
+      colorscheme deep-space 
       set bg=dark
-      set lsp=0
-      set transparency=0
+      set lsp=1
+      set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
