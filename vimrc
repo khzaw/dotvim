@@ -47,6 +47,7 @@ filetype off
     Plug 'jordwalke/flatlandia'
     Plug 'joshdick/onedark.vim'
     Plug 'tyrannicaltoucan/vim-deep-space'
+    Plug 'roosta/srcery'
   " }}}
   " Fancy {{{
       Plug 'nathanaelkane/vim-indent-guides'
@@ -268,10 +269,11 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=Fira\ Code:h14
-      colorscheme deep-space 
+      " set guifont=Fira\ Code:h14
+      set guifont=SF\ Mono:h15
+      colorscheme srcery
       set bg=dark
-      set lsp=1
+      set lsp=2
       set transparency=3
       set fuopt+=maxhorz
       set fuopt+=maxvert
