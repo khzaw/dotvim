@@ -39,7 +39,6 @@ filetype off
     Plug 'rakr/vim-two-firewatch'
     Plug 'flazz/vim-colorschemes'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'sjl/badwolf'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     Plug 'chriskempson/base16-vim'
     Plug 'ajh17/Spacegray.vim'
@@ -48,11 +47,13 @@ filetype off
     Plug 'joshdick/onedark.vim'
     Plug 'tyrannicaltoucan/vim-deep-space'
     Plug 'roosta/srcery'
+    Plug 'ayu-theme/ayu-vim'
   " }}}
   " Fancy {{{
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'jaxbot/semantic-highlight.vim'
       Plug 'calebsmith/vim-lambdify'
+      Plug 'Yggdroot/indentLine'
   " }}}
   " Others {{{
     Plug 'tpope/vim-eunuch'
@@ -182,6 +183,12 @@ filetype plugin indent on
   " Gundo {{{
     nnoremap <F5> :GundoToggle<cr>
   " }}}
+  " Indentline {{{
+    let g:indentLine_char = ''
+    let g:indentLine_first_char = ''
+    let g:indentLine_showFirstIndentLevel = 1
+    let g:indentLine_setColors = 0
+  " }}}
   " NERDCommenter {{{
     map <leader>/ <plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
@@ -208,43 +215,14 @@ filetype plugin indent on
     let g:NERDChristmasTree=1
     let g:NERDTreeChDirMode=2
     let g:NERDTreeHijackNetrw=1
-    let g:NERDTreeIgnore=['\.pyc$']
+    let g:NERDTreeIgnore=['\.pyc$', '^\.DS_Store$']
     nnoremap <leader>ntf :NERDTreeFind<cr>
   " }}}
-  " CtrlP {{{
-        map <leader>p :CtrlP<cr>
-        let g:ctrlp_map = '<c-p>'
-        let g:ctrlp_cmd = 'CtrlP'
-        let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/](\.git|\.hg|\.svn|build)$',
-            \ 'file': '\.exe$\|\.so$\|\.javac$\|\.pyc$'
-            \ }
-    " }}}
-  " Tagbar {{{
-          nnoremap <silent> <leader>l :TagbarToggle<cr>
-          let g:tagbar_foldlevel = 2
-          let g:tagbar_width = 30
-          let g:tagbar_type_css = {
-          \ 'ctagstype' : 'Css',
-              \ 'kinds'     : [
-                  \ 'c:classes',
-                  \ 's:selectors',
-                  \ 'i:identities'
-              \ ]
-          \ }
-    " }}}
   " Solarized {{{
       let g:solarized_menu = 1
       if has('gui_running')
           call togglebg#map("<F6>")
       endif
-  " }}}
-  " Badwolf {{{
-    let g:badwolf_html_link_underline = 0
-    let g:badwolf_css_props_highlight = 1
-  " }}}
-  " RainbowParentheses {{{
-    nnoremap <leader>R :RainbowParenthesesToggle<cr>
   " }}}
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
@@ -253,12 +231,6 @@ filetype plugin indent on
     let g:gitgutter_enabled = 1 " enable git gutter by default
     nnoremap <leader>gg :GitGutterLineHighlightsToggle<cr>
   " }}}
-  " IndentGuides {{{
-    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'tagbar']
-  " }}}
-  " }}}
-  " Emmet {{{
-    let g:use_emmet_complete_tag = 1
   " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
@@ -269,9 +241,11 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      " set guifont=Fira\ Code:h14
-      set guifont=SF\ Mono:h15
-      colorscheme srcery
+      " set guifont=SF\ Mono:h15
+      set guifont=Roboto\ Mono\ for\ Powerline:h15
+      " colorscheme srcery
+      colorscheme ayu
+      set termguicolors
       set bg=dark
       set lsp=2
       set transparency=3
