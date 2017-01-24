@@ -16,6 +16,7 @@ filetype off
   " }}}
   " python {{{
       Plug 'tmhedberg/SimpylFold'
+      Plug 'hynek/vim-python-pep8-indent'
   " }}}
   " css, less {{{
       Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
@@ -25,11 +26,11 @@ filetype off
       Plug 'pangloss/vim-javascript' 
       Plug 'isRuslan/vim-es6'
       Plug 'mxw/vim-jsx'
+      let g:jsx_ext_required = 0 " Allow JSX in js files
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
       Plug 'airblade/vim-gitgutter'
-      Plug 'idanarye/vim-merginal'
   " }}}
   " Utilities {{{
       Plug 'tpope/vim-repeat'               " repeating of plugin commands
@@ -54,6 +55,8 @@ filetype off
       Plug 'jaxbot/semantic-highlight.vim'
       Plug 'calebsmith/vim-lambdify'
       Plug 'Yggdroot/indentLine'
+      Plug 'vim-airline/vim-airline'
+      Plug 'vim-airline/vim-airline-themes'
   " }}}
   " Others {{{
     Plug 'tpope/vim-eunuch'
@@ -135,7 +138,7 @@ filetype plugin indent on
   set ts=2
   set sts=2
   set sw=2
-  set smartindent
+  set nosmartindent
   set autoindent
   set ci
   set formatoptions=qrn1
@@ -201,7 +204,7 @@ filetype plugin indent on
     let g:syntastic_loc_list_height=1
     let g:syntastic_mode_map = { 'mode': 'passive',
                                 \ 'passive_filetypes': ['python', 'html'] }
-    let g:syntastic_javascript_checkers=['jshint']
+    let g:syntastic_javascript_checkers=['eslint']
     let g:syntastic_ocaml_checkers=['merlin']
   " }}}
   " NERDTree {{{
@@ -241,14 +244,14 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      " set guifont=SF\ Mono:h15
+      " set guifont=Fira\ Code:h15
       set guifont=Roboto\ Mono\ for\ Powerline:h15
       " colorscheme srcery
       colorscheme ayu
       set termguicolors
       set bg=dark
-      set lsp=2
-      set transparency=3
+      set lsp=0
+      set transparency=4
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set nofu
