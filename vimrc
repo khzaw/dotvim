@@ -24,9 +24,7 @@ filetype off
   " }}}
   " js {{{
       Plug 'pangloss/vim-javascript' 
-      Plug 'isRuslan/vim-es6'
-      Plug 'mxw/vim-jsx'
-      let g:jsx_ext_required = 0 " Allow JSX in js files
+      Plug 'maxmellon/vim-jsx-pretty'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
@@ -187,10 +185,11 @@ filetype plugin indent on
     nnoremap <F5> :GundoToggle<cr>
   " }}}
   " Indentline {{{
-    let g:indentLine_char = ''
-    let g:indentLine_first_char = ''
-    let g:indentLine_showFirstIndentLevel = 1
-    let g:indentLine_setColors = 0
+    " let g:indentLine_char = ''
+    " let g:indentLine_first_char = ''
+    " let g:indentLine_showFirstIndentLevel = 1
+    " let g:indentLine_setColors = 0
+    let g:indentLine_enabled = 0
   " }}}
   " NERDCommenter {{{
     map <leader>/ <plug>NERDCommenterToggle
@@ -244,13 +243,12 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      " set guifont=Fira\ Code:h15
-      set guifont=Roboto\ Mono\ for\ Powerline:h15
-      " colorscheme srcery
+      set guifont=PragmataPro:h15
+      " set guifont=IBM\ Plex\ Mono:h15
       colorscheme ayu
       set termguicolors
       set bg=dark
-      set lsp=0
+      set lsp=2
       set transparency=4
       set fuopt+=maxhorz
       set fuopt+=maxvert
