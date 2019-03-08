@@ -1,10 +1,11 @@
-" Source: http://github.com/emoosx/dotvim
+" Source: https://github.com/khzaw/dotvim
 
 set nocompatible
 filetype off
 " Plugins installed {{{
     call plug#begin('~/.vim/plugged')
   " Coding {{{
+      Plug '/usr/local/opt/fzf'
       Plug 'sjl/gundo.vim'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
@@ -13,18 +14,23 @@ filetype off
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
+      Plug 'ctrlpvim/ctrlp.vim'
   " }}}
   " python {{{
       Plug 'tmhedberg/SimpylFold'
       Plug 'hynek/vim-python-pep8-indent'
   " }}}
-  " css, less {{{
-      Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
-      Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
-  " }}}
-  " js {{{
-      Plug 'pangloss/vim-javascript' 
-      Plug 'maxmellon/vim-jsx-pretty'
+  " web {{{
+    " css, less {{{
+        Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
+        Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
+    " }}}
+    " js {{{
+        Plug 'pangloss/vim-javascript' 
+        Plug 'nemtsov/JavaScript-Indent'
+        Plug 'mxw/vim-jsx'
+        Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
+    " }}}
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
@@ -36,7 +42,7 @@ filetype off
   " colorschemes {{{
     Plug 'romainl/Apprentice'
     Plug 'rakr/vim-two-firewatch'
-    Plug 'flazz/vim-colorschemes'
+    Plug 'dikiaap/minimalist'
     Plug 'altercation/vim-colors-solarized'
     Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
     Plug 'chriskempson/base16-vim'
@@ -55,6 +61,7 @@ filetype off
       Plug 'Yggdroot/indentLine'
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
+      Plug 'terryma/vim-smooth-scroll'
   " }}}
   " Others {{{
     Plug 'tpope/vim-eunuch'
@@ -177,6 +184,12 @@ filetype plugin indent on
   " }}}
 " }}}
 " Plug settings {{{
+  " CtrlP {{{
+    let g:ctrlp_map = '<C-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+  " }}}
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -236,23 +249,28 @@ filetype plugin indent on
   " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
-  " }}}"}}}
+  " }}}
+  " prettier {{{
+    let g:prettier#autoformat = 0
+    let g:prettier#exec_cmd_async = 1
+  " }}}
+" }}}
 " Environment (GUI/Console) {{{
 syntax enable
 set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      set guifont=PragmataPro:h15
-      " set guifont=IBM\ Plex\ Mono:h15
-      colorscheme ayu
+      colorscheme srcery
+      set guifont=Iosevka:h16
+      set fu
       set termguicolors
       set bg=dark
       set lsp=2
-      set transparency=4
+      set transp=5
+      set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
-      set nofu
       set macmeta
     elseif has('gui_gtk')
       set guifont=Monospace\ 11
