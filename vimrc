@@ -6,69 +6,34 @@ filetype off
     call plug#begin('~/.vim/plugged')
   " Coding {{{
       Plug '/usr/local/opt/fzf'
-      Plug 'sjl/gundo.vim'
+      Plug 'mileszs/ack.vim'
+      let g:ackprg = 'ag --nogroup --nocolor --column'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
-      Plug 'scrooloose/syntastic'        "syntax wise error checking
       Plug 'scrooloose/nerdtree'          "filebrowser
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
       Plug 'ctrlpvim/ctrlp.vim'
   " }}}
-  " python {{{
-      Plug 'tmhedberg/SimpylFold'
-      Plug 'hynek/vim-python-pep8-indent'
-  " }}}
-  " web {{{
-    " css, less {{{
-        Plug 'ap/vim-css-color', {'for' : ['css', 'less', 'scss']}
-        Plug 'mattn/emmet-vim', {'for' : ['htmldjango', 'html', 'liquid', 'html.handlebars']}
-    " }}}
-    " js {{{
-        Plug 'pangloss/vim-javascript' 
-        Plug 'nemtsov/JavaScript-Indent'
-        Plug 'mxw/vim-jsx'
-        Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
-    " }}}
+  " js {{{
+      Plug 'pangloss/vim-javascript' 
+      Plug 'mxw/vim-jsx'
+      Plug 'prettier/vim-prettier'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
       Plug 'airblade/vim-gitgutter'
   " }}}
-  " Utilities {{{
-      Plug 'tpope/vim-repeat'               " repeating of plugin commands
-  " }}}
   " colorschemes {{{
-    Plug 'romainl/Apprentice'
-    Plug 'rakr/vim-two-firewatch'
-    Plug 'dikiaap/minimalist'
-    Plug 'altercation/vim-colors-solarized'
-    Plug 'chriskempson/tomorrow-theme', { 'rtp' : 'vim/' }
-    Plug 'chriskempson/base16-vim'
-    Plug 'ajh17/Spacegray.vim'
-    Plug 'toupeira/vim-desertink'
-    Plug 'jordwalke/flatlandia'
-    Plug 'joshdick/onedark.vim'
-    Plug 'tyrannicaltoucan/vim-deep-space'
-    Plug 'roosta/srcery'
+    Plug 'soft-aesthetic/soft-era-vim'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'hzchirs/vim-material'
   " }}}
   " Fancy {{{
-      Plug 'nathanaelkane/vim-indent-guides'
-      Plug 'jaxbot/semantic-highlight.vim'
-      Plug 'calebsmith/vim-lambdify'
-      Plug 'Yggdroot/indentLine'
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
-      Plug 'terryma/vim-smooth-scroll'
   " }}}
-  " Others {{{
-    Plug 'tpope/vim-eunuch'
-    Plug 'tpope/vim-speeddating'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'vim-scripts/scratch.vim'
-    " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
   " }}}
@@ -89,18 +54,15 @@ filetype plugin indent on
   set nocompatible        " leave vi-compatibility mode
   set encoding=utf-8      " unicode encoding by default
   set title               " show title in terminal
-  set ttyfast
   set noexrc              " enables reading of .vimrc in the current directory
   set gdefault            " global searching as default
   set linebreak
   set showcmd
-  set lisp
   set nostartofline
   set history=1000
   set visualbell          " supress audio/visual error
   set backspace=indent,eol,start
   set number
-  set showmode            " show the current mode
   set mousehide           " hide the mouse pointer while typing
   set hlsearch
   set autowrite
@@ -108,7 +70,6 @@ filetype plugin indent on
   set shiftround
   set incsearch
   set showmatch
-  set cursorline
   set notimeout
   set ttimeout
   set ttimeoutlen=10
@@ -184,6 +145,7 @@ filetype plugin indent on
   " }}}
 " }}}
 " Plug settings {{{
+  let g:jsx_ext_required=0
   " CtrlP {{{
     let g:ctrlp_map = '<C-p>'
     let g:ctrlp_cmd = 'CtrlP'
@@ -194,30 +156,9 @@ filetype plugin indent on
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
   " }}}
-  " Gundo {{{
-    nnoremap <F5> :GundoToggle<cr>
-  " }}}
-  " Indentline {{{
-    " let g:indentLine_char = ''
-    " let g:indentLine_first_char = ''
-    " let g:indentLine_showFirstIndentLevel = 1
-    " let g:indentLine_setColors = 0
-    let g:indentLine_enabled = 0
-  " }}}
   " NERDCommenter {{{
     map <leader>/ <plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
-  " }}}
-  " Syntastic {{{
-    nnoremap <leader>e :Errors<cr>
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_enable_signs=1
-    let g:syntastic_loc_list_height=1
-    let g:syntastic_mode_map = { 'mode': 'passive',
-                                \ 'passive_filetypes': ['python', 'html'] }
-    let g:syntastic_javascript_checkers=['eslint']
-    let g:syntastic_ocaml_checkers=['merlin']
   " }}}
   " NERDTree {{{
     nnoremap <leader>nt :NERDTree<cr>
@@ -233,12 +174,6 @@ filetype plugin indent on
     let g:NERDTreeIgnore=['\.pyc$', '^\.DS_Store$']
     nnoremap <leader>ntf :NERDTreeFind<cr>
   " }}}
-  " Solarized {{{
-      let g:solarized_menu = 1
-      if has('gui_running')
-          call togglebg#map("<F6>")
-      endif
-  " }}}
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
   " }}}
@@ -251,8 +186,10 @@ filetype plugin indent on
     let javascript_enable_domhtmlcss = 1
   " }}}
   " prettier {{{
-    let g:prettier#autoformat = 0
-    let g:prettier#exec_cmd_async = 1
+    let g:prettier#autoformat=0
+    let g:prettier#exec_cmd_async=1
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsy
+    nnoremap = :Prettier<cr>
   " }}}
 " }}}
 " Environment (GUI/Console) {{{
@@ -261,19 +198,20 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      colorscheme srcery
-      set guifont=Iosevka:h16
-      set fu
+      let g:material_style='oceanic'
+      colorscheme vim-material
+      set guifont=Iosevka\ Term:h16
+      set nofu
       set termguicolors
       set bg=dark
       set lsp=2
-      set transp=5
+      set transp=3
       set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
       set macmeta
     elseif has('gui_gtk')
-      set guifont=Monospace\ 11
+      set guifont=Monospace\ 16
     elseif has('gui_win32')
       echo ":("
     endif
@@ -284,7 +222,7 @@ if has('gui_running')
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 else
     set t_Co=256
-    colorscheme solarized
+    colorscheme default
 endif
 " }}}
 " Utlitiy Functions {{{
