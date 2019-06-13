@@ -8,6 +8,7 @@ filetype off
       Plug '/usr/local/opt/fzf'
       Plug 'mileszs/ack.vim'
       let g:ackprg = 'ag --nogroup --nocolor --column'
+      nnoremap <leader>f :FZF<cr>
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
       Plug 'scrooloose/nerdtree'          "filebrowser
@@ -178,7 +179,7 @@ filetype plugin indent on
     nnoremap <leader>gs :Gstatus<cr>
   " }}}
   " Vim Git Gutter {{{
-    let g:gitgutter_enabled = 1 " enable git gutter by default
+    let g:gitgutter_enabled = 0 " enable git gutter by default
     nnoremap <leader>gg :GitGutterLineHighlightsToggle<cr>
   " }}}
   " }}}
@@ -204,7 +205,7 @@ if has('gui_running')
       set nofu
       set termguicolors
       set bg=dark
-      set lsp=2
+      set lsp=3
       set transp=3
       set nonumber
       set fuopt+=maxhorz
@@ -309,7 +310,7 @@ endif
     inoremap <right> <nop>
   " }}}
   " Quick editing {{{
-    nnoremap <leader>rc :tabnew ~/code/dotvim/vimrc<cr>
+    nnoremap <leader>rc :vsp ~/code/dotvim/vimrc<cr>
     nnoremap <leader>zsh :tabnew ~/.zshrc<cr>
   " }}}
   " Search {{{
