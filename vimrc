@@ -30,6 +30,7 @@ filetype off
     Plug 'soft-aesthetic/soft-era-vim'
     Plug 'ayu-theme/ayu-vim'
     Plug 'hzchirs/vim-material'
+    Plug 'andreypopp/vim-colors-plain'
   " }}}
   " Fancy {{{
       Plug 'vim-airline/vim-airline'
