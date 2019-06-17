@@ -8,14 +8,12 @@ filetype off
       Plug '/usr/local/opt/fzf'
       Plug 'mileszs/ack.vim'
       let g:ackprg = 'ag --nogroup --nocolor --column'
-      nnoremap <leader>f :FZF<cr>
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
       Plug 'scrooloose/nerdtree'          "filebrowser
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
-      Plug 'ctrlpvim/ctrlp.vim'
   " }}}
   " js {{{
       Plug 'pangloss/vim-javascript' 
@@ -24,7 +22,6 @@ filetype off
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
-      Plug 'airblade/vim-gitgutter'
   " }}}
   " colorschemes {{{
     Plug 'soft-aesthetic/soft-era-vim'
@@ -122,6 +119,9 @@ filetype plugin indent on
 " Triggers {{{
   au VimResized * :wincmd = " resize splits when the window is resized
 " }}}
+" FZF {{{
+  nnoremap <leader>f :FZF<cr>
+" }}}
 " Wildmenu {{{
   set wildchar=<Tab>
   set wildmode=longest:full:list
@@ -131,6 +131,7 @@ filetype plugin indent on
   set wildignore+=*.sw?,*.exe,*.dll,*.manifest
   set wildignore+=migrations
   set wildignore+=*.jpg,*.bmp,*.jpeg,*.gif,*.png
+  set wildignore+=node_modules
 " }}}
 " Navigation {{{
   " Buffers {{{
@@ -148,12 +149,6 @@ filetype plugin indent on
 " }}}
 " Plug settings {{{
   let g:jsx_ext_required=0
-  " CtrlP {{{
-    let g:ctrlp_map = '<C-p>'
-    let g:ctrlp_cmd = 'CtrlP'
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-  " }}}
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -179,18 +174,13 @@ filetype plugin indent on
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
   " }}}
-  " Vim Git Gutter {{{
-    let g:gitgutter_enabled = 0 " enable git gutter by default
-    nnoremap <leader>gg :GitGutterLineHighlightsToggle<cr>
-  " }}}
-  " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
   " }}}
   " prettier {{{
     let g:prettier#autoformat=0
     let g:prettier#exec_cmd_async=1
-    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsy
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
     nnoremap = :Prettier<cr>
   " }}}
 " }}}
