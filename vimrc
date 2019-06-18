@@ -33,6 +33,7 @@ filetype off
   " Fancy {{{
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
+      Plug 'junegunn/goyo.vim'
   " }}}
   " Markdown {{{
     Plug 'tpope/vim-markdown'
