@@ -17,8 +17,9 @@ filetype off
   " }}}
   " js {{{
       Plug 'pangloss/vim-javascript' 
-      Plug 'mxw/vim-jsx'
+      " Plug 'mxw/vim-jsx'
       Plug 'prettier/vim-prettier'
+      Plug 'chemzqm/vim-jsx-improve'
   " }}}
   " git {{{
       Plug 'tpope/vim-fugitive'
@@ -192,12 +193,12 @@ if has('gui_running')
     if has('gui_macvim')
       let g:material_style='oceanic'
       colorscheme vim-material
-      set guifont=Iosevka\ Term:h16
+      set guifont=Iosevka\ Term:h20
       set nofu
       set termguicolors
       set bg=dark
       set lsp=3
-      set transp=3
+      set transp=25
       set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
