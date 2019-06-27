@@ -199,11 +199,8 @@ if has('gui_running')
       set termguicolors
       set bg=dark
       set lsp=3
-<<<<<<< HEAD
       set transp=25
-=======
       set transp=30
->>>>>>> Install python black
       set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
