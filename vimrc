@@ -15,12 +15,11 @@ filetype off
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
   " }}}
-  " js {{{
-      Plug 'pangloss/vim-javascript' 
-      " Plug 'mxw/vim-jsx'
-      Plug 'prettier/vim-prettier'
-      Plug 'chemzqm/vim-jsx-improve'
-  " }}}
+    Plug 'pangloss/vim-javascript'
+    Plug 'mxw/vim-jsx'
+    Plug 'prettier/vim-prettier'
+    Plug 'python/black'
+    Plug 'chemzqm/vim-jsx-improve'
   " git {{{
       Plug 'tpope/vim-fugitive'
   " }}}
@@ -184,6 +183,7 @@ filetype plugin indent on
     let g:prettier#exec_cmd_async=1
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
     nnoremap = :Prettier<cr>
+    autocmd BufWritePre *.py Black
   " }}}
 " }}}
 " Environment (GUI/Console) {{{
@@ -199,7 +199,11 @@ if has('gui_running')
       set termguicolors
       set bg=dark
       set lsp=3
+<<<<<<< HEAD
       set transp=25
+=======
+      set transp=30
+>>>>>>> Install python black
       set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
