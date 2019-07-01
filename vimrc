@@ -16,18 +16,20 @@ filetype off
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
   " }}}
     Plug 'pangloss/vim-javascript'
-    Plug 'mxw/vim-jsx'
+    Plug 'maxmellon/vim-jsx-pretty'
+    Plug 'leafgarland/typescript-vim'
     Plug 'prettier/vim-prettier'
     Plug 'python/black'
-    Plug 'chemzqm/vim-jsx-improve'
   " git {{{
       Plug 'tpope/vim-fugitive'
   " }}}
   " colorschemes {{{
+    Plug 'NLKNguyen/papercolor-theme'
     Plug 'soft-aesthetic/soft-era-vim'
     Plug 'ayu-theme/ayu-vim'
     Plug 'hzchirs/vim-material'
     Plug 'andreypopp/vim-colors-plain'
+    Plug 'balanceiskey/vim-framer-syntax'
   " }}}
   " Fancy {{{
       Plug 'vim-airline/vim-airline'
@@ -149,7 +151,7 @@ filetype plugin indent on
   " }}}
 " }}}
 " Plug settings {{{
-  let g:jsx_ext_required=0
+  let g:vim_jsx_pretty_colorful_config = 1
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -192,15 +194,13 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
-      let g:material_style='oceanic'
-      colorscheme vim-material
-      set guifont=Iosevka\ Term:h20
+      colorscheme PaperColor
+      set guifont=Iosevka\ Term:h16
       set nofu
       set termguicolors
       set bg=dark
       set lsp=3
-      set transp=25
-      set transp=30
+      set transp=1
       set nonumber
       set fuopt+=maxhorz
       set fuopt+=maxvert
