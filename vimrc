@@ -195,11 +195,12 @@ set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
       colorscheme PaperColor
-      set guifont=Iosevka\ Term:h16
+      set guifont=IosevkaCC:h18
       set nofu
       set termguicolors
       set bg=dark
       set lsp=3
+      set foldcolumn=10
       set transp=1
       set nonumber
       set fuopt+=maxhorz
