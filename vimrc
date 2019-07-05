@@ -18,8 +18,10 @@ filetype off
     Plug 'pangloss/vim-javascript'
     Plug 'maxmellon/vim-jsx-pretty'
     Plug 'leafgarland/typescript-vim'
-    Plug 'prettier/vim-prettier'
+    Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'html']}
+    Plug 'hdima/python-syntax'
     Plug 'python/black'
+    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
   " git {{{
       Plug 'tpope/vim-fugitive'
   " }}}
@@ -151,7 +153,8 @@ filetype plugin indent on
   " }}}
 " }}}
 " Plug settings {{{
-  let g:vim_jsx_pretty_colorful_config = 1
+    let g:python_highlight_all = 1
+    let g:vim_jsx_pretty_colorful_config = 1
   " DelimitMate {{{
     let delimitMate_excluded_regions = "Comment"
     au FileType ocaml let b:delimitMate_quotes = "\""
@@ -179,9 +182,13 @@ filetype plugin indent on
   " }}}
   " vim-javascript {{{
     let javascript_enable_domhtmlcss = 1
+    let g:javascript_plugin_flow = 1
+    let g:javascript_plugin_ngdoc = 1
+    let g:javascript_conceal_function = "ƒ"
+    let g:javascript_conceal_arrow_function  = "⇒"
   " }}}
   " prettier {{{
-    let g:prettier#autoformat=0
+    let g:prettier#autoformat=1
     let g:prettier#exec_cmd_async=1
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
     nnoremap = :Prettier<cr>
@@ -194,8 +201,21 @@ set background=dark
 set colorcolumn=""
 if has('gui_running')
     if has('gui_macvim')
+      let g:PaperColor_Theme_Options = {
+            \ 'language': {
+            \     'python': {
+            \        'highlight_builtins': 1
+            \      },
+            \      'cpp': {
+            \        'highlight_standard_library': 1
+            \      },
+            \      'c': {
+            \        'highlight_builtins': 1
+            \      }
+            \   }
+            \ }
       colorscheme PaperColor
-      set guifont=IosevkaCC:h18
+      set guifont=Iosevka\ Term:h18
       set nofu
       set termguicolors
       set bg=dark
