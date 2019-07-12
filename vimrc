@@ -10,7 +10,7 @@ filetype off
       let g:ackprg = 'ag --nogroup --nocolor --column'
       Plug 'Raimondi/delimitMate'        "matching quotes, brackets ., etc
       Plug 'scrooloose/nerdcommenter'    "commenting
-      Plug 'scrooloose/nerdtree'          "filebrowser
+      Plug 'tpope/vim-vinegar'
       Plug 'tpope/vim-surround'          "quoting/parenthizing made simple
       Plug 'editorconfig/editorconfig-vim'
       let g:EditorConfig_exclude_patterns=['fugitive://.*', 'scp://.*']
@@ -163,20 +163,6 @@ filetype plugin indent on
     map <leader>/ <plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
   " }}}
-  " NERDTree {{{
-    nnoremap <leader>nt :NERDTree<cr>
-    nnoremap <F2> :NERDTreeToggle<cr>
-    let g:NERDTreeHighlightCursorline=1
-    let g:NERDTreeWinSize=25
-    let g:NERDTreeShowHidden=1
-    let g:NERDTreeDirArrows=1
-    let g:NERDTreeMinimalUI=1
-    let g:NERDChristmasTree=1
-    let g:NERDTreeChDirMode=2
-    let g:NERDTreeHijackNetrw=1
-    let g:NERDTreeIgnore=['\.pyc$', '^\.DS_Store$']
-    nnoremap <leader>ntf :NERDTreeFind<cr>
-  " }}}
   " Fugitive {{{
     nnoremap <leader>gs :Gstatus<cr>
   " }}}
@@ -220,7 +206,6 @@ if has('gui_running')
       set termguicolors
       set bg=dark
       set lsp=3
-      set foldcolumn=10
       set transp=1
       set nonumber
       set fuopt+=maxhorz
