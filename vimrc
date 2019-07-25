@@ -86,7 +86,10 @@ filetype plugin indent on
   set completeopt=longest,menuone,preview
 " }}}
 " Folding {{{
-  set nofoldenable
+  set foldmethod=syntax
+  let javaScript_fold=1
+  set foldcolumn=1
+  set foldlevelstart=99
   nnoremap <Space> za
   vnoremap <Space> za
   " Make z0 recursively open whatever top level fold we're in
